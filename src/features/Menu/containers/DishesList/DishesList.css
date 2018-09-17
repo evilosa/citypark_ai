@@ -1,0 +1,29 @@
+.dishes-list {
+  height: 100%;
+  overflow-y: auto;
+  position: relative;
+}
+
+.dish-item {
+  padding: 10px;
+  overflow: auto;
+}
+
+.dish-item h3 {
+  font: bold 20px/1.5 Helvetica, Verdana, sans-serif;
+}
+
+.dish-item img {
+  float: left;
+  margin: 0 15px 0 0;
+}
+
+.dish-item p {
+  font: 200 12px/1.5 Georgia, Times New Roman, serif;
+}
+
+.dishes-list li i {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+}

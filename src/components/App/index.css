@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css?family=Forum|Roboto+Condensed|Suez+One|Roboto+Slab');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  overflow: hidden;
+  background-color: #fbfbfb;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html, body, #root, #container, main {
+  height: 100%;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+a {
+  color: #FA713E;
+  text-decoration: none;
+  transition: all.6s ease;
+  cursor: pointer;
+}
+
+a:hover {
+  color: #C34F25;
+  text-decoration: underline;
+  transition: all.6s ease;
+}
+
+.btn {
+	box-shadow: inset 0px 39px 0px -24px #e67a73;
+	background-color: #e4685d;
+	border-radius: 5px;
+	border: 1px solid #ffffff;
+	display: inline-block;
+	cursor: pointer;
+  font-family: 'Roboto Slab', serif;
+  font-size: 0.85em;
+  font-weight: bold;
+	color: #fff;
+	padding: 0.5rem 1rem;
+	text-decoration: none;
+	text-shadow: 0px 1px 0px #b23e35;
+  position: relative;
+}
+.btn:hover {
+	background-color: #eb675e;
+}
+.btn:active {
+	position: relative;
+	top: 1px;
+}
+
+.material-icons:hover {
+  color: red;
+  transition: all.6s ease;
+}
+
+.material-icons, .pointer {
+  cursor: pointer;
+  color: #486DAA;
+  transition: all.6s ease;
+}
+
+.file-fields-label {
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 0.2rem;
+}

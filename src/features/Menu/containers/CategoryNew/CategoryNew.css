@@ -1,0 +1,37 @@
+#category-new {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #aaa;
+  border-bottom: none;
+  /*border-radius: 5px 5px 0 0;*/
+}
+
+#category-new-header {
+  background-color: #008B8B;
+  padding: 5px 20px;
+}
+
+#category-new-content {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+input[type="text"] {
+  border: 1px solid #e2e2e2;
+  border-radius: 5px;
+  padding: 5px 10px;
+  height: 30px;
+  margin-bottom: 10px;
+}
+
+#category-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+#category-bottom input {
+  margin-bottom: 30px;
+  margin-right: 10px;
+}

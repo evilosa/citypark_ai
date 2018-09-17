@@ -1,0 +1,36 @@
+[role="listbox"] {
+	padding: 0px;
+	background: white;
+	border: 1px solid #aaa;
+}
+
+[role="option"] {
+	display: block;
+	padding: 0 1em;
+	position: relative;
+	line-height: 1.8em;
+  cursor: pointer;
+	border-bottom: 1px solid #eee;
+}
+
+[role="option"].focused {
+	background: #bde4ff;
+}
+
+[role="option"]:hover {
+	background: #eee;
+}
+
+[role="option"][aria-selected] {
+	padding-left: 1.5em;
+}
+
+[role="option"][aria-selected="true"] {
+	background: #bde4ff;
+}
+
+#ss_elem_list {
+	height: 100%;
+	overflow-y: auto;
+	position: relative;
+}

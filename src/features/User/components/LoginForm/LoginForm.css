@@ -1,0 +1,131 @@
+.align {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+}
+
+.grid {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 24em;
+  width: 90%;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+main {
+  background-color: #eaeaea;
+  font-family: 'Helvetica', 'Arial', sans-serif;
+  font-size: 14px;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+fieldset {
+  border: none;
+  margin: 0;
+}
+
+.form__field input {
+  appearance: none;
+  border: none;
+  font: inherit;
+  margin: 0;
+  outline: none;
+  padding: 0;
+}
+
+.form {
+  margin-top: -200px;
+}
+
+.form input[type='email'],
+.form input[type='password'] {
+  width: 100%;
+}
+
+.login__header {
+  background-color: #282830;
+  border-top-left-radius: 0.25em;
+  border-top-right-radius: 0.25em;
+  color: #fff;
+  padding: 1.5em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.login__title {
+  font-size: 16px;
+  font-size: 1rem;
+  margin: 0;
+}
+
+.login__body {
+  background-color: #fff;
+  padding: 1.5em;
+  position: relative;
+}
+
+.login__body::before {
+  background-color: #fff;
+  content: '';
+  height: 0.5em;
+  left: 50%;
+  margin-left: -0.25em;
+  margin-top: -0.25em;
+  position: absolute;
+  top: 0;
+  transform: rotate(45deg);
+  width: 0.5em;
+}
+
+.login input[type='email'],
+.login input[type='password'] {
+  border: 0.0625em solid #e5e5e5;
+  padding: 1em 1.25em;
+}
+
+.login input[type='email'] {
+  border-top-left-radius: 0.25em;
+  border-top-right-radius: 0.25em;
+}
+
+.login input[type='password'] {
+  border-bottom-left-radius: 0.25em;
+  border-bottom-right-radius: 0.25em;
+  border-top: 0;
+}
+
+.form_button {
+  background-color: #1dabb8;
+  border-radius: 0.25em;
+  color: #fff;
+  font-weight: 700;
+  order: 1;
+  padding: 0.75em 1.25em;
+  transition: background-color 0.3s;
+  width: 100%;
+  cursor: pointer;
+}
+
+.form_button:hover {
+  background-color: #198d98;
+}
+
+.login__footer {
+  align-items: center;
+  background-color: #fff;
+  border-bottom-left-radius: 0.25em;
+  border-bottom-right-radius: 0.25em;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 1.5em;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+}

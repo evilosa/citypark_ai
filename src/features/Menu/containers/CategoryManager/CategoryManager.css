@@ -1,0 +1,13 @@
+#categories-manager {
+  display: flex;
+  padding: 5px 15px 10px;
+  border: 1px solid #aaa;
+  border-bottom: none;
+  border-top: none;
+  justify-content: space-between;
+}
+
+
+#categories-manager>i {
+  font-size: 1.7em;
+}
