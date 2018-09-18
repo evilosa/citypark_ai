@@ -22,6 +22,10 @@ html {
   box-sizing: border-box;
 }
 
+.grow {
+  flex-grow: 1,
+}
+
 a {
   color: #FA713E;
   text-decoration: none;

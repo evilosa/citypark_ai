@@ -1,10 +1,9 @@
 import * as components from './components'
-
-export const MENU    = '/menu/'
+import * as links from './links'
 
 const routes = [
   {
-    path: MENU,
+    path: links.MENU.PATH,
     exact: true,
     component: components.Menu
   }
