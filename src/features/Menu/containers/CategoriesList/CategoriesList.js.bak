@@ -1,42 +1,37 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import PropTypes from 'prop-types'
-import { withStyles } from '@material-ui/core/styles'
-import List from '@material-ui/core/List'
-import ListItem from '@material-ui/core/ListItem'
-import ListItemText from '@material-ui/core/ListItemText'
 
-import styles from './CategoriesListStyles'
 import * as actions from '../../actions'
 
 class CategoriesList extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      selectedIndex: 1,
+      categorySlected: 0
     }
   }
 
   categoriesList = () => {
     const { categories } = this.props
-    const { selectedIndex } = this.state
     return categories ? categories.map(category =>
-      <ListItem
-        button
-        selected={selectedIndex === category.id}
-        onClick={() => this.handleSelect(category.id)}
+      <li
+        role="option"
+        aria-selected={ category.id === this.state.categorySlected ? 'true' : 'false' }
+        onClick={this.handleSelect}
         key={category.id}
+        value={category.id}
       >
-        <ListItemText primary={category.title} />
-      </ListItem>
+        {category.title}
+      </li>
     ) : null
   }
 
-  handleSelect = id => {
+  handleSelect = event => {
+    const id = event.target.value
     const { getCategory, fetching, categories, selectCategory } = this.props
     this.setState({
-      selectedIndex: id
+      categorySlected: id
     })
     categories.find(categ => categ.id === id).dishes ? selectCategory(id) : !fetching && getCategory(id)
   }
@@ -46,21 +41,16 @@ class CategoriesList extends React.Component {
     !fetching && !categories.length && getCategories()
   }
 
-  render() {
-    const { classes } = this.props;
-
+  render = () => {
     return (
-      <div className={classes.root}>
-        <List component="nav">
-          { this.categoriesList() }
-        </List>
-      </div>
+      <ul id="ss_elem_list"
+        role="listbox"
+        aria-labelledby="ss_elem">
+        { this.categoriesList() }
+      </ul>
     )
   }
-}
 
-CategoriesList.propTypes = {
-  classes: PropTypes.object.isRequired,
 }
 
 const mapStateToProps = state => {
@@ -76,6 +66,5 @@ const mapDispatchToProps = dispatch => bindActionCreators({
 }, dispatch)
 
 const ReduxWrapper = connect(mapStateToProps, mapDispatchToProps)
-const StylesWrapper = withStyles(styles)
-const WrappedComponent = ReduxWrapper(StylesWrapper(CategoriesList))
+const WrappedComponent = ReduxWrapper(CategoriesList)
 export default WrappedComponent
