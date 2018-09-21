@@ -2,19 +2,21 @@ import React from 'react'
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid'
-import Paper from '@material-ui/core/Paper';
-
 import { CategoriesList, CategoryNew, CategoryManager, DishNew, DishesList } from '../../containers'
 import styles from './MenuStyles'
 
-function Menu (props) {
+function Menu(props) {
   const { classes } = props
   return (
-    <Grid style={{height: "100%"}} container spacing={24}>
-      <Grid item xs={3}>
-        <CategoriesList />
+    <div className="height100">
+      <Grid className="height100" container spacing={24}>
+        <Grid item xs={3}>
+          <CategoryManager />
+          <CategoriesList />
+        </Grid>
       </Grid>
-    </Grid>
+      <CategoryNew />
+    </div>
   )
 }
 

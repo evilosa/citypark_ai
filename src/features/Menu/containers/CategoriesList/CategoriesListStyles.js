@@ -5,5 +5,5 @@ export default theme => ({
     borderRight: '1px solid gray',
     backgroundColor: theme.palette.background.paper,
     height: '100%'
-  },
+  }
 })

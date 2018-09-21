@@ -7,6 +7,7 @@ export const CATEGORIES_CHANGE_ORDER  = '@@CATEGORIES_CHANGE_ORDER'
 export const CATEGORY_EDIT            = '@@CATEGORY_EDIT'
 export const CATEGORY_SELECT          = '@@CATEGORY_SELECT'
 export const CATEGORY_DESTROY         = '@@CATEGORY_DESTROY'
+export const CATEGORY_NEW_SHOW        = '@@CATEGORY_NEW_SHOW'
 
 export const DISHES_CREATE            = '@@DISHES_CREATE'
 export const DISH_UPDATE              = '@@DISH_UPDATE'

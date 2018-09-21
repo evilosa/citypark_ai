@@ -48,11 +48,10 @@ class CategoriesList extends React.Component {
 
   render() {
     const { classes } = this.props;
-
     return (
       <div className={classes.root}>
         <List component="nav">
-          { this.categoriesList() }
+          {this.categoriesList()}
         </List>
       </div>
     )

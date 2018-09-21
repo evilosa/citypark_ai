@@ -1,10 +1,17 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import { withStyles } from '@material-ui/core/styles'
+import Toolbar from '@material-ui/core/Toolbar'
+import Button from '@material-ui/core/Button'
+import AddIcon from '@material-ui/icons/Add'
+import Icon from '@material-ui/core/Icon'
+import DeleteIcon from '@material-ui/icons/Delete'
 
+import styles from './CategoryManagerStyles'
 import * as actions from '../../actions'
 
-const CategoryManager = ({ category, categories, moveCategory, changeOrder, editCategory, deleteCategory }) => {
+const CategoryManager = ({ classes, category, categories, moveCategory, changeOrder, showCategoryNew, editCategory, deleteCategory }) => {
 
   const handleApply = () =>
     changeOrder(categories.map(category => ({
@@ -13,16 +20,18 @@ const CategoryManager = ({ category, categories, moveCategory, changeOrder, edit
     })))
 
   return (
-    <div id="categories-manager">
-      <div>
-        <i className="material-icons" onClick={ () => moveCategory(-1) }>keyboard_arrow_up</i>
-        <i className="material-icons" onClick={ () => moveCategory(1) }>keyboard_arrow_down</i>
-        <i className="material-icons" onClick={ handleApply }>done</i>
-      </div>
-      <div>
-        <i className="material-icons" onClick={ editCategory }>edit</i>
-        <i className="material-icons" onClick={ () => category && deleteCategory(category.id) }>delete</i>
-      </div>
+    <div>
+      <Toolbar>
+        <Button onClick={() => showCategoryNew(true)} mini variant="fab" color="primary" aria-label="Add" className={classes.button}>
+          <AddIcon fontSize="small" />
+        </Button>
+        <Button onClick={ editCategory } mini variant="fab" color="secondary" aria-label="Edit" className={classes.button}>
+          <Icon fontSize="small">edit_icon</Icon>
+        </Button>
+        <Button onClick={ () => category && deleteCategory(category.id) } mini variant="fab" aria-label="Delete" className={classes.button}>
+          <DeleteIcon />
+        </Button>
+      </Toolbar>
     </div>
   )
 }
@@ -40,5 +49,6 @@ const mapDispatchToProps = dispatch => bindActionCreators({
 }, dispatch)
 
 const ReduxWrapper = connect(mapStateToProps, mapDispatchToProps)
-const WrappedComponent = ReduxWrapper(CategoryManager)
+const StylesWrapper = withStyles(styles)
+const WrappedComponent = ReduxWrapper(StylesWrapper(CategoryManager))
 export default WrappedComponent

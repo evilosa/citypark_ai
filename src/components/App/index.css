@@ -14,7 +14,7 @@ body, html {
   padding: 0;
 }
 
-html, body, #root, #container, main {
+html, body, #root, #container, main, .height100 {
   height: 100%;
 }
 

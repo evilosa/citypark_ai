@@ -6,7 +6,7 @@ const initialState = {
   fetching: null,
   payload: [],
   errors: {},
-  category_index: null,
+  category_index: 0,
   dish_index: null
 }
 
@@ -74,50 +74,57 @@ const menuReducer = (state, action) => {
             else return category
           }
         }).sort((a, b) => parseFloat(a.y_index) - parseFloat(b.y_index))
-      return { ...state, category_index, payload }
-    }
-
-    case types.CATEGORY_EDIT:
-      return {
-        ...state,
-        isEditMode: !state.isEditMode
+        return { ...state, category_index, payload }
       }
 
-    case types.CATEGORY_SELECT:
-      return {
-        ...state,
-        category_index: state.payload.findIndex(item => item.id === action.id)
+      case types.CATEGORY_EDIT:
+        return {
+          ...state,
+          isEditMode: true,
+          open: true
+        }
+
+      case types.CATEGORY_SELECT:
+        return {
+          ...state,
+          category_index: state.payload.findIndex(item => item.id === action.id)
+        }
+
+      case types.CATEGORY_NEW_SHOW:
+        return {
+          ...state,
+          open: action.open
+        }
+
+      case types.DISHES_CREATE: {
+        let { payload, category_index } = state
+        payload[category_index].dishes = [...payload[category_index].dishes, action.payload]
+        return toPayload(state, payload)
       }
 
-    case types.DISHES_CREATE: {
-      let { payload, category_index } = state
-      payload[category_index].dishes = [...payload[category_index].dishes, action.payload]
-      return toPayload(state, payload)
-    }
-
-    case types.DISH_EDIT: {
-      const { payload, category_index } = state
-      return {
-        ...state,
-        dish_index: payload[category_index].dishes.findIndex(item => item.id === action.id)
+      case types.DISH_EDIT: {
+        const { payload, category_index } = state
+        return {
+          ...state,
+          dish_index: payload[category_index].dishes.findIndex(item => item.id === action.id)
+        }
       }
+
+      case types.DISH_UPDATE: {
+        let { payload, category_index } = state
+        payload[category_index].dishes = payload[category_index].dishes.map(dish =>
+          dish.id === action.payload.id ? action.payload : dish
+        )
+        return toPayload(state, payload)
+      }
+
+      case types.DISH_DESTROY:
+        let { payload, category_index } = state
+        payload[category_index].dishes = payload[category_index].dishes.filter(dish => dish.id !== action.payload.id)
+        return toPayload(state, payload)
+
+      default: return false
     }
-
-    case types.DISH_UPDATE: {
-      let { payload, category_index } = state
-      payload[category_index].dishes = payload[category_index].dishes.map(dish =>
-        dish.id === action.payload.id ? action.payload : dish
-      )
-      return toPayload(state, payload)
-    }
-
-    case types.DISH_DESTROY:
-      let { payload, category_index } = state
-      payload[category_index].dishes = payload[category_index].dishes.filter(dish => dish.id !== action.payload.id)
-      return toPayload(state, payload)
-
-    default: return false
-  }
 }
 
 export default (state = initialState, action) =>

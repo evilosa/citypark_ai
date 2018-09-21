@@ -25,18 +25,23 @@ export const moveCategory = value => ({
 
 export const changeOrder = newOrder =>
   feedback.patch(apiConst.CATEGORIES_CHANGE_ORDER,
-   types.CATEGORIES_CHANGE_ORDER,
-   { category: { new_order: newOrder } }
- )
+    types.CATEGORIES_CHANGE_ORDER,
+    { category: { new_order: newOrder } }
+  )
 
- export const editCategory = () => ({
-   type: types.CATEGORY_EDIT + feedback.statuses.SUCCESS
- })
+export const editCategory = () => ({
+  type: types.CATEGORY_EDIT + feedback.statuses.SUCCESS
+})
 
- export const selectCategory = id => ({
-   id,
-   type:types.CATEGORY_SELECT + feedback.statuses.SUCCESS
- })
+export const selectCategory = id => ({
+  id,
+  type: types.CATEGORY_SELECT + feedback.statuses.SUCCESS
+})
 
- export const deleteCategory = id =>
-   feedback.destroy(apiConst.CATEGORIES + id, types.CATEGORY_DESTROY)
+export const deleteCategory = id =>
+  feedback.destroy(apiConst.CATEGORIES + id, types.CATEGORY_DESTROY)
+
+export const showCategoryNew = open => ({
+  open,
+  type: types.CATEGORY_NEW_SHOW + feedback.statuses.SUCCESS
+})
