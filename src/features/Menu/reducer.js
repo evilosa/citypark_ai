@@ -7,7 +7,7 @@ const initialState = {
   payload: [],
   errors: {},
   selectedCategory: 0,
-  selectedDish: 0,
+  selectedDish: null,
   categoryDialog: {
     open: false,
     edit: false
@@ -19,45 +19,27 @@ const initialState = {
 }
 
 const menuReducer = (state, action) => {
+  const { fetching, categoryDialog, selectedDish, dishDialog  } = initialState
   if (getStatus(action.type) === statuses.SUCCESS)
     switch (getAction(action.type)) {
 
-      case types.CATEGORIES_CREATE:
-        return {
-          ...state,
-          categoryDialog: initialState.categoryDialog,
-          payload: [...state.payload, action.payload]
-        }
+      case types.CATEGORIES_CREATE: 
+        return { ...state, fetching, categoryDialog, payload: [...state.payload, action.payload] }
 
-      case types.CATEGORIES_SHOW: {
-        let selectedCategory
-        const payload = state.payload.map((category, index) => {
-          if (category.id === action.payload.id) {
-            selectedCategory = index
-            return action.payload
-          }
-          else return category
-        })
-        return {
-          ...state,
-          ...initialState,
-          selectedCategory,
-          payload
-        }
-      }
       case types.CATEGORIES_UPDATE:
-        return {
-          ...state,
-          categoryDialog: initialState.categoryDialog,
+        return { ...state, fetching, categoryDialog,
           payload: state.payload.map(category => category.id === action.payload.id ? action.payload : category)
         }
 
+      case types.CATEGORIES_SHOW: {
+        const { payload } = state
+        const selectedCategory = payload.findIndex(item => item.id === action.payload.id)
+        payload[selectedCategory] = action.payload
+        return { ...initialState, selectedCategory, payload } 
+      }
+      
       case types.CATEGORY_DESTROY:
-        return {
-          ...state,
-          ...initialState,
-          payload: state.payload.filter(category => category.id !== action.payload.id)
-        }
+        return { ...initialState, payload: state.payload.filter(category => category.id !== action.payload.id) }
 
       case types.CATEGORY_MOVE: {
         let { selectedCategory } = state
@@ -65,7 +47,7 @@ const menuReducer = (state, action) => {
         const { value } = action
         const i = payload.findIndex(item => item.id === payload[selectedCategory].id)
         if (i + value < payload.length && i + value >= 0) {
-          let category = payload[i]
+          const category = payload[i]
           payload[i] = payload[i + value]
           payload[i + value] = category
           payload[i + value].y_index = payload[i].y_index
@@ -92,15 +74,7 @@ const menuReducer = (state, action) => {
       case types.DISHES_CREATE: {
         let { payload, selectedCategory } = state
         payload[selectedCategory].dishes = [...payload[selectedCategory].dishes, action.payload]
-        return toPayload(state, payload)
-      }
-
-      case types.DISH_DIALOG_OPEN: {
-        const { open, edit } = action.dishDialog
-        return {
-          ...state,
-          dishDialog: { open, edit }
-        }
+        return { ...state, fetching, selectedDish, dishDialog, payload }
       }
 
       case types.DISH_UPDATE: {
@@ -108,7 +82,22 @@ const menuReducer = (state, action) => {
         payload[selectedCategory].dishes = payload[selectedCategory].dishes.map(dish =>
           dish.id === action.payload.id ? action.payload : dish
         )
-        return toPayload(state, payload)
+        return { ...state, fetching, dishDialog, payload }
+      }
+
+      case types.DISH_SELECT: 
+        const { index } = action
+        return { ...state, selectedDish: state.selectedDish === index ? null : index }
+  
+
+      case types.DISH_DIALOG_OPEN: {
+        const { open, edit } = action.dishDialog
+        const { selectedDish } = state
+        return {
+          ...state,
+          selectedDish: edit ? selectedDish : null,
+          dishDialog: { open, edit }
+        }
       }
 
       case types.DISH_DESTROY:

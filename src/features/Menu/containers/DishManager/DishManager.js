@@ -11,33 +11,28 @@ import DeleteIcon from '@material-ui/icons/Delete'
 import styles from './DishManagerStyles'
 import * as actions from '../../actions'
 
-const DishManager = () => {
-
-  return (
-    <Toolbar className={classes.toolbar}>
-      <Button onClick={() => categoryDialogOpen(true)} mini variant="fab" color="primary" aria-label="Add" className={classes.button}>
-        <AddIcon fontSize="small" />
-      </Button>
-      <Button onClick={() => categoryDialogOpen(true, true)} mini variant="fab" color="secondary" aria-label="Edit" className={classes.button}>
-        <Icon style={{ color: "white" }} fontSize="small">edit_icon</Icon>
-      </Button>
-      <Button onClick={() => category && deleteCategory(category.id)} mini variant="fab" aria-label="Delete" className={classes.button}>
-        <DeleteIcon />
-      </Button>
-    </Toolbar>
-  )
-}
+const DishManager = ({ classes, dishDialogOpen, deleteDish, dish }) =>
+  <Toolbar className={classes.toolbar}>
+    <Button onClick={() => dishDialogOpen(true)} mini variant="fab" color="primary" aria-label="Add" className={classes.button}>
+      <AddIcon fontSize="small" />
+    </Button>
+    <Button onClick={() => dishDialogOpen(true, true)} mini variant="fab" color="secondary" aria-label="Edit" className={classes.button}>
+      <Icon style={{ color: "white" }} fontSize="small">edit_icon</Icon>
+    </Button>
+    <Button onClick={() => dish && deleteDish(dish.id)} mini variant="fab" aria-label="Delete" className={classes.button}>
+      <DeleteIcon />
+    </Button>
+  </Toolbar>
 
 const mapStateToProps = state => {
-  const { payload, selectedCategory } = state.menu
+  const { payload, selectedCategory, selectedDish } = state.menu
   return {
-    categories: payload,
-    category: payload[selectedCategory] ? payload[selectedCategory] : null
+    dish: payload[selectedCategory] && payload[selectedCategory].dishes ? payload[selectedCategory].dishes[selectedDish] : {},
   }
 }
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  ...actions.categories
+  ...actions.dishes
 }, dispatch)
 
 const ReduxWrapper = connect(mapStateToProps, mapDispatchToProps)

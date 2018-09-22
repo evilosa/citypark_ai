@@ -10,5 +10,6 @@ export const CATEGORY_DIALOG_OPEN     = '@@CATEGORY_DIALOG_OPEN'
 
 export const DISHES_CREATE            = '@@DISHES_CREATE'
 export const DISH_UPDATE              = '@@DISH_UPDATE'
+export const DISH_SELECT              = '@@DISH_SELECT'
 export const DISH_DIALOG_OPEN         = '@@DISH_EDIT'
 export const DISH_DESTROY             = '@@DISH_DESTROY'

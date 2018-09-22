@@ -1,6 +1,6 @@
 import React from 'react'
 import Grid from '@material-ui/core/Grid'
-import { CategoriesList, CategoryDialog, CategoryManager, DishNew, DishesList } from '../../containers'
+import { CategoriesList, CategoryDialog, CategoryManager, DishManager, DishDialog, DishesList } from '../../containers'
 
 function Menu() {
   return (
@@ -11,10 +11,12 @@ function Menu() {
           <CategoriesList />
         </Grid>
         <Grid item xs={8}>
+          <DishManager />
           <DishesList />
         </Grid>
       </Grid>
       <CategoryDialog />
+      <DishDialog />
     </div>
   )
 }

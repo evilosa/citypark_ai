@@ -8,6 +8,8 @@ import Dialog from '@material-ui/core/Dialog'
 import DialogActions from '@material-ui/core/DialogActions'
 import DialogContent from '@material-ui/core/DialogContent'
 import DialogTitle from '@material-ui/core/DialogTitle'
+import FormControlLabel from '@material-ui/core/FormControlLabel'
+import Switch from '@material-ui/core/Switch'
 import { SpinButton, ErrorBox } from 'components'
 
 import styles from './DishDialogStyles'
@@ -27,10 +29,9 @@ class DishNew extends React.Component {
   handleChange = prop => {
     const { target } = prop
     this.setState(prev => ({
-      ...prev,
       dish: {
         ...prev.dish,
-        ...(() => target ? {[target.name]: target.value} : prop)()
+        ...(() => target ? { [target.name]: target.value } : prop)()
       }
     }))
   }
@@ -50,28 +51,22 @@ class DishNew extends React.Component {
     const { dish, errors } = nextProps
     const fetching = nextProps.fetching === types.DISHES_CREATE || nextProps.fetching === types.DISH_UPDATE
     if (!fetching && !errors.msg) {
-      this.setState(prev => ({
-        ...prev,
+      this.setState({
         dish: createDish(dish)
-      }))
+      })
       ErrorBox.clear()
     } else {
       errors.msg && ErrorBox.create(errors.msg)
     }
   }
 
-  handleClose = () => {
-    const { categoryDialogOpen } = this.props
-    categoryDialogOpen(false)
-  }
-
   render() {
     const { id, title, cost, weight, can_order, description, imageAttributes } = this.state.dish
-    const { fetching, classes, categoryDialog: { open } } = this.props
+    const { fetching, dishDialogOpen, classes, dishDialog: { open } } = this.props
     return (
       <Dialog
         open={open || false}
-        onClose={this.handleClose}
+        onClose={() => dishDialogOpen(false, true)}
         aria-labelledby="form-categoryDialog-title"
       >
         <DialogTitle id="form-categoryDialog-title">Создание нового блюда</DialogTitle>
@@ -85,23 +80,73 @@ class DishNew extends React.Component {
             margin="normal"
             variant="outlined"
           />
+          <div>
+            <TextField
+              onChange={this.handleChange}
+              className={classes.textField}
+              value={weight}
+              label="Масса / Количество"
+              name="weight"
+              margin="normal"
+              variant="outlined"
+            />
+            <TextField
+              onChange={this.handleChange}
+              className={classes.textField}
+              value={cost}
+              label="Цена"
+              name="cost"
+              margin="normal"
+              variant="outlined"
+              inputProps={{ type: "number" }}
+            />
+          </div>
           <TextField
             onChange={this.handleChange}
-            value={weight}
-            label="Время пригтовления"
             className={classes.textField}
-            name="cooking_time"
+            label="Описание"
+            name="description"
+            multiline
+            rowsMax="4"
+            value={description}
             margin="normal"
             variant="outlined"
           />
+          <div className={classes.formBottom}>
+            <input
+              onChange={event => this.handleChange({ imageAttributes: event.target })}
+              name="image_attributes"
+              value={imageAttributes.value}
+              accept="image/*"
+              className={classes.input}
+              id="outlined-button-file"
+              type="file"
+            />
+            <label htmlFor="outlined-button-file">
+              <Button variant="outlined" component="span" className={classes.button}>
+                Загрузить фото
+             </Button>
+            </label>
+            <FormControlLabel
+              control={
+                <Switch
+                  onChange={() => this.handleChange({ can_order: !can_order })}
+                  checked={can_order}
+                  name="can_order"
+                  color="primary"
+                />
+              }
+              label="Доступно на вынос"
+            />
+          </div>
         </DialogContent>
         <DialogActions>
-          <Button onClick={this.handleClose} color="primary">
+          <Button onClick={() => dishDialogOpen(false, true)} color="primary">
             Отмена
-            </Button>
+          </Button>
           <Button onClick={this.handleSubmit} color="primary">
-            Отарвить
-            </Button>
+            Отправить
+          </Button>
         </DialogActions>
       </Dialog>
     )
@@ -113,7 +158,7 @@ const mapStateToProps = state => {
   return {
     dishDialog,
     category: payload[selectedCategory],
-    dish: payload[selectedCategory] ? payload[selectedCategory].dishes[selectedDish] : {},
+    dish: payload[selectedCategory] && payload[selectedCategory].dishes ? payload[selectedCategory].dishes[selectedDish] : {},
     fetching,
     errors
   }
@@ -124,5 +169,6 @@ const mapDispatchToProps = dispatch => bindActionCreators({
 }, dispatch)
 
 const ReduxWrapper = connect(mapStateToProps, mapDispatchToProps)
-const WrappedComponent = ReduxWrapper(DishNew)
+const StylesWrapper = withStyles(styles)
+const WrappedComponent = ReduxWrapper(StylesWrapper(DishNew))
 export default WrappedComponent

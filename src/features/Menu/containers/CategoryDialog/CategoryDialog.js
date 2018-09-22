@@ -26,7 +26,6 @@ class CategoryNew extends React.Component {
   handleChange = event => {
     const { name, value } = event.target
     this.setState(prev => ({
-      ...prev,
       category: {
         ...prev.category,
         [name]: value
@@ -45,15 +44,13 @@ class CategoryNew extends React.Component {
     const fetching = nextProps.fetching === types.CATEGORIES_CREATE || nextProps.fetching === types.CATEGORIES_UPDATE
     if (!fetching && !errors.msg) {
       if (edit) {
-        this.setState(prev => ({
-          ...prev,
+        this.setState({
           category: createCategory(category)
-        }))
+        })
       } else {
-        this.setState(prev => ({
-          ...prev,
+        this.setState({
           category: createCategory()
-        }))
+        })
       }
       ErrorBox.clear()
     } else {
