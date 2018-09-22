@@ -7,6 +7,8 @@ export default theme => ({
   },
   toolbar: {
     display: 'flex',
-    justifyContent: 'flex-end'
+    justifyContent: 'flex-end',
+    borderBottom: '1px solid gray',
+    borderLeft: '1px solid gray'
   }
 })

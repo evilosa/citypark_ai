@@ -11,21 +11,14 @@ import styles from './CategoriesListStyles'
 import * as actions from '../../actions'
 
 class CategoriesList extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      selectedIndex: 1,
-    }
-  }
 
   categoriesList = () => {
-    const { categories } = this.props
-    const { selectedIndex } = this.state
-    return categories ? categories.map(category =>
+    const { categories, selectedCategory } = this.props
+    return categories ? categories.map((category, index) =>
       <ListItem
         button
-        selected={selectedIndex === category.id}
-        onClick={() => this.handleSelect(category.id)}
+        selected={index === selectedCategory}
+        onClick={() => this.handleSelect(index)}
         key={category.id}
       >
         <ListItemText primary={category.title} />
@@ -33,12 +26,9 @@ class CategoriesList extends React.Component {
     ) : null
   }
 
-  handleSelect = id => {
+  handleSelect = index => {
     const { getCategory, fetching, categories, selectCategory } = this.props
-    this.setState({
-      selectedIndex: id
-    })
-    categories.find(categ => categ.id === id).dishes ? selectCategory(id) : !fetching && getCategory(id)
+    categories[index].dishes ? selectCategory(index) : !fetching && getCategory(categories[index].id)
   }
 
   componentDidMount = () => {
@@ -63,8 +53,9 @@ CategoriesList.propTypes = {
 }
 
 const mapStateToProps = state => {
-  const { payload, fetching } = state.menu
+  const { payload, fetching, selectedCategory } = state.menu
   return {
+    selectedCategory,
     categories: payload,
     fetching,
   }

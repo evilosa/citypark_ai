@@ -6,6 +6,8 @@ export default theme => ({
     marginRight: theme.spacing.unit,
   },
   toolbar: {
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    borderBottom: '1px solid gray',
+    borderRight: '1px solid gray'
   }
 })

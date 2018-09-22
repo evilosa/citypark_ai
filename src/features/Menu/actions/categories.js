@@ -29,8 +29,8 @@ export const changeOrder = newOrder =>
     { category: { new_order: newOrder } }
   )
 
-export const selectCategory = id => ({
-  id,
+export const selectCategory = index => ({
+  index,
   type: types.CATEGORY_SELECT + feedback.statuses.SUCCESS
 })
 

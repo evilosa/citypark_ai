@@ -10,7 +10,8 @@ import DialogContent from '@material-ui/core/DialogContent'
 import DialogTitle from '@material-ui/core/DialogTitle'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import Switch from '@material-ui/core/Switch'
-import { SpinButton, ErrorBox } from 'components'
+import CircularProgress from '@material-ui/core/CircularProgress'
+import { ErrorBox } from 'components'
 
 import styles from './DishDialogStyles'
 import { createDish } from '../../models'
@@ -69,7 +70,7 @@ class DishNew extends React.Component {
         onClose={() => dishDialogOpen(false, true)}
         aria-labelledby="form-categoryDialog-title"
       >
-        <DialogTitle id="form-categoryDialog-title">Создание нового блюда</DialogTitle>
+        <DialogTitle id="form-categoryDialog-title">{ id ? 'Изменение блюда' : 'Добавление нового блюда'}</DialogTitle>
         <DialogContent className={classes.container}>
           <TextField
             onChange={this.handleChange}
@@ -144,9 +145,12 @@ class DishNew extends React.Component {
           <Button onClick={() => dishDialogOpen(false, true)} color="primary">
             Отмена
           </Button>
-          <Button onClick={this.handleSubmit} color="primary">
-            Отправить
-          </Button>
+          <div className={classes.wrapper}>
+            <Button onClick={this.handleSubmit} color="primary" disabled={!!fetching}>
+              { id ? 'Изменить' : 'Добавить' }
+            </Button>
+            { fetching && <CircularProgress size={24} className={classes.buttonProgress} /> }
+          </div>
         </DialogActions>
       </Dialog>
     )

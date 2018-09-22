@@ -8,7 +8,8 @@ import Dialog from '@material-ui/core/Dialog'
 import DialogActions from '@material-ui/core/DialogActions'
 import DialogContent from '@material-ui/core/DialogContent'
 import DialogTitle from '@material-ui/core/DialogTitle'
-import { SpinButton, ErrorBox } from 'components'
+import CircularProgress from '@material-ui/core/CircularProgress'
+import { ErrorBox } from 'components'
 
 import styles from './CategoryDialogStyles'
 import { createCategory } from '../../models'
@@ -63,8 +64,8 @@ class CategoryNew extends React.Component {
     categoryDialogOpen(false)
   }
 
-  render() {
-    const { categoryDialog: { open }, classes } = this.props
+  render = () => {
+    const { categoryDialog: { open }, classes, fetching } = this.props
     const { title, cooking_time, id } = this.state.category
     return (
       <Dialog
@@ -72,7 +73,7 @@ class CategoryNew extends React.Component {
         onClose={this.handleClose}
         aria-labelledby="form-categoryDialog-title"
       >
-        <DialogTitle id="form-categoryDialog-title">Создание новой категории</DialogTitle>
+        <DialogTitle id="form-categoryDialog-title">{ id ? 'Изменение категории' : 'Добавление новой категории'}</DialogTitle>
         <DialogContent className={classes.container}>
           <TextField
             onChange={this.handleChange}
@@ -97,9 +98,12 @@ class CategoryNew extends React.Component {
           <Button onClick={this.handleClose} color="primary">
             Отмена
             </Button>
-          <Button onClick={this.handleSubmit} color="primary">
-            Отарвить
+          <div className={classes.wrapper}>
+            <Button onClick={this.handleSubmit} color="primary" disabled={!!fetching}>
+              {id ? 'Изменить' : 'Добавить'}
             </Button>
+            {fetching && <CircularProgress size={24} className={classes.buttonProgress} />}
+          </div>
         </DialogActions>
       </Dialog>
     )

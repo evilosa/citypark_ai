@@ -11,15 +11,15 @@ import DeleteIcon from '@material-ui/icons/Delete'
 import styles from './DishManagerStyles'
 import * as actions from '../../actions'
 
-const DishManager = ({ classes, dishDialogOpen, deleteDish, dish }) =>
+const DishManager = ({ classes, dishDialogOpen, deleteDish, dish, disableButtons, disableAddButton }) =>
   <Toolbar className={classes.toolbar}>
-    <Button onClick={() => dishDialogOpen(true)} mini variant="fab" color="primary" aria-label="Add" className={classes.button}>
+    <Button onClick={() => dishDialogOpen(true)} disabled={disableAddButton} mini variant="fab" color="primary" aria-label="Add" className={classes.button}>
       <AddIcon fontSize="small" />
     </Button>
-    <Button onClick={() => dishDialogOpen(true, true)} mini variant="fab" color="secondary" aria-label="Edit" className={classes.button}>
+    <Button onClick={() => dishDialogOpen(true, true)} disabled={disableButtons} mini variant="fab" color="secondary" aria-label="Edit" className={classes.button}>
       <Icon style={{ color: "white" }} fontSize="small">edit_icon</Icon>
     </Button>
-    <Button onClick={() => dish && deleteDish(dish.id)} mini variant="fab" aria-label="Delete" className={classes.button}>
+    <Button onClick={() => dish && deleteDish(dish.id)} disabled={disableButtons} mini variant="fab" aria-label="Delete" className={classes.button}>
       <DeleteIcon />
     </Button>
   </Toolbar>
@@ -27,6 +27,8 @@ const DishManager = ({ classes, dishDialogOpen, deleteDish, dish }) =>
 const mapStateToProps = state => {
   const { payload, selectedCategory, selectedDish } = state.menu
   return {
+    disableAddButton: selectedCategory === null,
+    disableButtons: selectedDish === null,
     dish: payload[selectedCategory] && payload[selectedCategory].dishes ? payload[selectedCategory].dishes[selectedDish] : {},
   }
 }

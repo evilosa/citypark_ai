@@ -6,7 +6,7 @@ const initialState = {
   fetching: null,
   payload: [],
   errors: {},
-  selectedCategory: 0,
+  selectedCategory: null,
   selectedDish: null,
   categoryDialog: {
     open: false,
@@ -57,18 +57,14 @@ const menuReducer = (state, action) => {
         return { ...state, selectedCategory, payload }
       }
 
-      case types.CATEGORY_SELECT:
-        return {
-          ...state,
-          selectedCategory: state.payload.findIndex(item => item.id === action.id)
-        }
+      case types.CATEGORY_SELECT: {
+        const { index } = action
+        return { ...state, selectedCategory: index }
+      }
 
       case types.CATEGORY_DIALOG_OPEN: {
         const { open, edit } = action.categoryDialog
-        return {
-          ...state,
-          categoryDialog: { open, edit }
-        }
+        return { ...state, categoryDialog: { open, edit } }
       }
 
       case types.DISHES_CREATE: {
