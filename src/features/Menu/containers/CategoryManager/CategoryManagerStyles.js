@@ -5,4 +5,7 @@ export default theme => ({
   extendedIcon: {
     marginRight: theme.spacing.unit,
   },
+  toolbar: {
+    justifyContent: 'space-between'
+  }
 })

@@ -41,10 +41,10 @@ class CategoryNew extends React.Component {
   }
 
   componentWillReceiveProps = nextProps => {
-    const { isEditMode, category, errors } = nextProps
+    const { category, errors, dialog: { edit } } = nextProps
     const fetching = nextProps.fetching === types.CATEGORIES_CREATE || nextProps.fetching === types.CATEGORIES_UPDATE
     if (!fetching && !errors.msg) {
-      if (isEditMode) {
+      if (edit) {
         this.setState(prev => ({
           ...prev,
           category: createCategory(category)
@@ -67,7 +67,7 @@ class CategoryNew extends React.Component {
   }
 
   render() {
-    const { open, classes } = this.props
+    const { dialog: { open }, classes } = this.props
     const { title, cooking_time, id } = this.state.category
     return (
       <Dialog
@@ -110,13 +110,12 @@ class CategoryNew extends React.Component {
 }
 
 const mapStateToProps = state => {
-  const { payload, isEditMode, fetching, errors, category_index, open } = state.categories
+  const { payload, fetching, errors, category_index, dialog } = state.categories
   return {
-    open,
-    isEditMode,
+    dialog,
     fetching,
     errors,
-    category: payload[category_index]
+    category: payload[category_index],
   }
 }
 

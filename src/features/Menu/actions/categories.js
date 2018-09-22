@@ -29,10 +29,6 @@ export const changeOrder = newOrder =>
     { category: { new_order: newOrder } }
   )
 
-export const editCategory = () => ({
-  type: types.CATEGORY_EDIT + feedback.statuses.SUCCESS
-})
-
 export const selectCategory = id => ({
   id,
   type: types.CATEGORY_SELECT + feedback.statuses.SUCCESS
@@ -41,7 +37,7 @@ export const selectCategory = id => ({
 export const deleteCategory = id =>
   feedback.destroy(apiConst.CATEGORIES + id, types.CATEGORY_DESTROY)
 
-export const showCategoryNew = open => ({
-  open,
+export const showCategoryNew = (open, edit) => ({
+  dialog: { open, edit },
   type: types.CATEGORY_NEW_SHOW + feedback.statuses.SUCCESS
 })

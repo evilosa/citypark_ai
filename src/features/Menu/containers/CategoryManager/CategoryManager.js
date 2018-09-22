@@ -21,16 +21,29 @@ const CategoryManager = ({ classes, category, categories, moveCategory, changeOr
 
   return (
     <div>
-      <Toolbar>
-        <Button onClick={() => showCategoryNew(true)} mini variant="fab" color="primary" aria-label="Add" className={classes.button}>
-          <AddIcon fontSize="small" />
-        </Button>
-        <Button onClick={ editCategory } mini variant="fab" color="secondary" aria-label="Edit" className={classes.button}>
-          <Icon fontSize="small">edit_icon</Icon>
-        </Button>
-        <Button onClick={ () => category && deleteCategory(category.id) } mini variant="fab" aria-label="Delete" className={classes.button}>
-          <DeleteIcon />
-        </Button>
+      <Toolbar className={classes.toolbar}>
+        <div>
+          <Button onClick={() => showCategoryNew(true)} mini variant="fab" color="primary" aria-label="Add" className={classes.button}>
+            <AddIcon fontSize="small" />
+          </Button>
+          <Button onClick={() => showCategoryNew(true, true)} mini variant="fab" color="secondary" aria-label="Edit" className={classes.button}>
+            <Icon style={{ color: "white" }} fontSize="small">edit_icon</Icon>
+          </Button>
+          <Button onClick={() => category && deleteCategory(category.id)} mini variant="fab" aria-label="Delete" className={classes.button}>
+            <DeleteIcon />
+          </Button>
+        </div>
+        <div>
+          <Button onClick={() => moveCategory(-1)} mini variant="fab" aria-label="Delete" className={classes.button}>
+            <Icon fontSize="small">keyboard_arrow_up</Icon>
+          </Button>
+          <Button onClick={() => moveCategory(1)} mini variant="fab" aria-label="Delete" className={classes.button}>
+            <Icon fontSize="small">keyboard_arrow_down</Icon>
+          </Button>
+          <Button onClick={handleApply} mini variant="fab" aria-label="Delete" className={classes.button}>
+            <Icon fontSize="small">done</Icon>
+          </Button>
+        </div>
       </Toolbar>
     </div>
   )

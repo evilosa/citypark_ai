@@ -7,7 +7,11 @@ const initialState = {
   payload: [],
   errors: {},
   category_index: 0,
-  dish_index: null
+  dish_index: null,
+  dialog: {
+    open: false,
+    edit: false
+  }
 }
 
 const menuReducer = (state, action) => {
@@ -15,7 +19,11 @@ const menuReducer = (state, action) => {
     switch (getAction(action.type)) {
 
       case types.CATEGORIES_CREATE:
-        return toPayload(state, [...state.payload, action.payload])
+        return {
+          ...state,
+          dialog: initialState.dialog,
+          payload: [...state.payload, action.payload]
+        }
 
       case types.CATEGORIES_SHOW: {
         let category_index
@@ -34,9 +42,11 @@ const menuReducer = (state, action) => {
         }
       }
       case types.CATEGORIES_UPDATE:
-        return toPayload(state,
-          state.payload.map(category => category.id === action.payload.id ? action.payload : category)
-        )
+        return {
+          ...state,
+          dialog: initialState.dialog,
+          payload: state.payload.map(category => category.id === action.payload.id ? action.payload : category)
+        }
 
       case types.CATEGORY_DESTROY:
         return {
@@ -47,42 +57,19 @@ const menuReducer = (state, action) => {
 
       case types.CATEGORY_MOVE: {
         let { category_index } = state
-        const payload = state.payload.map((category, index, array) => {
-          if (action.value > 0) {
-            if (category.id === state.payload[category_index].id) {
-              if (index < array.length - 1) {
-                let y_index = category.y_index
-                category = { ...category, y_index: array[index + 1].y_index }
-                array[index + 1].y_index = y_index
-                category_index = index + 1
-                return category
-              }
-              else return category
-            }
-            else return category
-          } else {
-            if (category.id === state.payload[category_index].id) {
-              if (index > 0) {
-                let y_index = category.y_index
-                category = { ...category, y_index: array[index - 1].y_index }
-                array[index - 1].y_index = y_index
-                category_index = index - 1
-                return category
-              }
-              else return category
-            }
-            else return category
-          }
-        }).sort((a, b) => parseFloat(a.y_index) - parseFloat(b.y_index))
+        let payload = [...state.payload]
+        const { value } = action
+        const i = payload.findIndex(item => item.id === payload[category_index].id)
+        if (i + value < payload.length && i + value >= 0) {
+          let category = payload[i]
+          payload[i] = payload[i + value]
+          payload[i + value] = category
+          payload[i + value].y_index = payload[i].y_index
+          payload[i].y_index = category.y_index
+          category_index += value
+        }
         return { ...state, category_index, payload }
       }
-
-      case types.CATEGORY_EDIT:
-        return {
-          ...state,
-          isEditMode: true,
-          open: true
-        }
 
       case types.CATEGORY_SELECT:
         return {
@@ -91,9 +78,10 @@ const menuReducer = (state, action) => {
         }
 
       case types.CATEGORY_NEW_SHOW:
+        const { open, edit } = action.dialog
         return {
           ...state,
-          open: action.open
+          dialog: { open, edit }
         }
 
       case types.DISHES_CREATE: {

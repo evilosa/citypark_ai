@@ -6,6 +6,7 @@ import Typography from '@material-ui/core/Typography'
 import { renderRoutes } from 'react-router-config'
 
 import { Menu } from 'features'
+import { AdminResource } from 'features/User/containers'
 
 class MainLayout extends React.Component {
   constructor(props) {
@@ -28,18 +29,20 @@ class MainLayout extends React.Component {
     const { route } = this.props
     const { currentTab } = this.state
     return (
-      <div id="container">
-        <AppBar position="static">
-          <Tabs value={currentTab} onChange={this.handleChange}>
-            <Tab label={ Menu.links.MENU.TITLE } />
-            <Tab label="Item Two" />
-            <Tab label="Item Three" href="#basic-tabs" />
-          </Tabs>
-        </AppBar>
-        <Typography component="div" style={{ height: "100%" }}>
-          {route && renderRoutes(route.routes)}
-        </Typography>
-      </div>
+      <AdminResource>
+        <div id="container">
+          <AppBar position="static">
+            <Tabs value={currentTab} onChange={this.handleChange}>
+              <Tab label={Menu.links.MENU.TITLE} />
+              <Tab label="Item Two" />
+              <Tab label="Item Three" href="#basic-tabs" />
+            </Tabs>
+          </AppBar>
+          <Typography component="div" style={{ height: "100%" }}>
+            {route && renderRoutes(route.routes)}
+          </Typography>
+        </div>
+      </AdminResource>
     )
   }
 }
