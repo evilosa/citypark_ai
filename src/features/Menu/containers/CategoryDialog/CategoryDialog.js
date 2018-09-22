@@ -10,7 +10,7 @@ import DialogContent from '@material-ui/core/DialogContent'
 import DialogTitle from '@material-ui/core/DialogTitle'
 import { SpinButton, ErrorBox } from 'components'
 
-import styles from './CategoryNewStyles'
+import styles from './CategoryDialogStyles'
 import { createCategory } from '../../models'
 import * as actions from '../../actions'
 import * as types from '../../actionTypes'
@@ -41,7 +41,7 @@ class CategoryNew extends React.Component {
   }
 
   componentWillReceiveProps = nextProps => {
-    const { category, errors, dialog: { edit } } = nextProps
+    const { category, errors, categoryDialog: { edit } } = nextProps
     const fetching = nextProps.fetching === types.CATEGORIES_CREATE || nextProps.fetching === types.CATEGORIES_UPDATE
     if (!fetching && !errors.msg) {
       if (edit) {
@@ -62,20 +62,20 @@ class CategoryNew extends React.Component {
   }
 
   handleClose = () => {
-    const { showCategoryNew } = this.props
-    showCategoryNew(false)
+    const { categoryDialogOpen } = this.props
+    categoryDialogOpen(false)
   }
 
   render() {
-    const { dialog: { open }, classes } = this.props
+    const { categoryDialog: { open }, classes } = this.props
     const { title, cooking_time, id } = this.state.category
     return (
       <Dialog
         open={open || false}
         onClose={this.handleClose}
-        aria-labelledby="form-dialog-title"
+        aria-labelledby="form-categoryDialog-title"
       >
-        <DialogTitle id="form-dialog-title">Создание новой категории</DialogTitle>
+        <DialogTitle id="form-categoryDialog-title">Создание новой категории</DialogTitle>
         <DialogContent className={classes.container}>
           <TextField
             onChange={this.handleChange}
@@ -110,12 +110,12 @@ class CategoryNew extends React.Component {
 }
 
 const mapStateToProps = state => {
-  const { payload, fetching, errors, category_index, dialog } = state.categories
+  const { payload, fetching, errors, selectedCategory, categoryDialog } = state.menu
   return {
-    dialog,
+    categoryDialog,
     fetching,
     errors,
-    category: payload[category_index],
+    category: payload[selectedCategory],
   }
 }
 

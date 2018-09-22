@@ -16,9 +16,12 @@ export const createDish = (id, dish) =>
       { dish }
     )
 
-export const editDish = id => ({
-  type: types.DISH_EDIT + feedback.statuses.SUCCESS,
-  id
+export const dishDialogOpen = (open, edit) => ({
+  dishDialog: {
+    open,
+    edit,
+    type: types.DISH_DIALOG_OPEN + feedback.statuses.SUCCESS
+  }
 })
 
 export const destroyDish = id =>

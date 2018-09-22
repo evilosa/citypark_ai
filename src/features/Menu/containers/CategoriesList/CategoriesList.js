@@ -63,7 +63,7 @@ CategoriesList.propTypes = {
 }
 
 const mapStateToProps = state => {
-  const { payload, fetching } = state.categories
+  const { payload, fetching } = state.menu
   return {
     categories: payload,
     fetching,

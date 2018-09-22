@@ -11,7 +11,7 @@ import DeleteIcon from '@material-ui/icons/Delete'
 import styles from './CategoryManagerStyles'
 import * as actions from '../../actions'
 
-const CategoryManager = ({ classes, category, categories, moveCategory, changeOrder, showCategoryNew, editCategory, deleteCategory }) => {
+const CategoryManager = ({ classes, category, categories, moveCategory, changeOrder, categoryDialogOpen, editCategory, deleteCategory }) => {
 
   const handleApply = () =>
     changeOrder(categories.map(category => ({
@@ -23,10 +23,10 @@ const CategoryManager = ({ classes, category, categories, moveCategory, changeOr
     <div>
       <Toolbar className={classes.toolbar}>
         <div>
-          <Button onClick={() => showCategoryNew(true)} mini variant="fab" color="primary" aria-label="Add" className={classes.button}>
+          <Button onClick={() => categoryDialogOpen(true)} mini variant="fab" color="primary" aria-label="Add" className={classes.button}>
             <AddIcon fontSize="small" />
           </Button>
-          <Button onClick={() => showCategoryNew(true, true)} mini variant="fab" color="secondary" aria-label="Edit" className={classes.button}>
+          <Button onClick={() => categoryDialogOpen(true, true)} mini variant="fab" color="secondary" aria-label="Edit" className={classes.button}>
             <Icon style={{ color: "white" }} fontSize="small">edit_icon</Icon>
           </Button>
           <Button onClick={() => category && deleteCategory(category.id)} mini variant="fab" aria-label="Delete" className={classes.button}>
@@ -50,10 +50,10 @@ const CategoryManager = ({ classes, category, categories, moveCategory, changeOr
 }
 
 const mapStateToProps = state => {
-  const { payload, category_index } = state.categories
+  const { payload, selectedCategory } = state.menu
   return {
     categories: payload,
-    category: payload[category_index] ? payload[category_index] : null
+    category: payload[selectedCategory] ? payload[selectedCategory] : null
   }
 }
 

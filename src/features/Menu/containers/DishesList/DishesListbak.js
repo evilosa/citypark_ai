@@ -52,9 +52,9 @@ class DishesList extends React.Component {
 }
 
 const mapStateToProps = state => {
-  const { payload, category_index } = state.categories
+  const { payload, selectedCategory } = state.categories
   return {
-    dishes: payload[category_index] ? payload[category_index].dishes : []
+    dishes: payload[selectedCategory] ? payload[selectedCategory].dishes : []
   }
 }
 

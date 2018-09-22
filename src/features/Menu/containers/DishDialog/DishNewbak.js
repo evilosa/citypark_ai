@@ -130,10 +130,10 @@ class DishNew extends React.Component {
 }
 
 const mapStateToProps = state => {
-  const { payload, category_index, dish_index, fetching, errors } = state.categories
+  const { payload, selectedCategory, selectedDish, fetching, errors } = state.categories
   return {
-    category: payload[category_index],
-    dish: payload[category_index] ? payload[category_index].dishes[dish_index] : {},
+    category: payload[selectedCategory],
+    dish: payload[selectedCategory] ? payload[selectedCategory].dishes[selectedDish] : {},
     fetching,
     errors
   }

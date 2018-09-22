@@ -40,6 +40,7 @@ class DishesList extends React.Component {
     const { dishes, destroyDish } = this.props
     return dishes ? dishes.map(dish =>
       <ListItem
+        className="dish-item"
         onClick={() => this.handleClick(dish.id)}
         selected={dish.id === this.state.dishSlected ? true : false}
         key={dish.id}
@@ -50,7 +51,11 @@ class DishesList extends React.Component {
           src={dish.images ? dish.images.preview : null}
           alt="pic"
         />
-        <ListItemText primary={dish.title} secondary={dish.description} />
+        <div>
+          <h2>{dish.title}</h2>
+          <p>{dish.description}</p>
+          <p>{dish.cost}</p>
+        </div>
       </ListItem>
     ) : null
   }
@@ -72,9 +77,9 @@ DishesList.propTypes = {
 }
 
 const mapStateToProps = state => {
-  const { payload, category_index } = state.categories
+  const { payload, selectedCategory } = state.menu
   return {
-    dishes: payload[category_index] ? payload[category_index].dishes : []
+    dishes: payload[selectedCategory] ? payload[selectedCategory].dishes : []
   }
 }
 

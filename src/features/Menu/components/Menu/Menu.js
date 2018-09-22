@@ -1,6 +1,6 @@
 import React from 'react'
 import Grid from '@material-ui/core/Grid'
-import { CategoriesList, CategoryNew, CategoryManager, DishNew, DishesList } from '../../containers'
+import { CategoriesList, CategoryDialog, CategoryManager, DishNew, DishesList } from '../../containers'
 
 function Menu() {
   return (
@@ -14,7 +14,7 @@ function Menu() {
           <DishesList />
         </Grid>
       </Grid>
-      <CategoryNew />
+      <CategoryDialog />
     </div>
   )
 }
