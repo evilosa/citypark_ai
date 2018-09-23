@@ -26,5 +26,5 @@ export const dishDialogOpen = (open, edit) => ({
   type: types.DISH_DIALOG_OPEN + feedback.statuses.SUCCESS
 })
 
-export const destroyDish = id =>
+export const deleteDish = id =>
   feedback.destroy(apiConst.DISHES + id, types.DISH_DESTROY)

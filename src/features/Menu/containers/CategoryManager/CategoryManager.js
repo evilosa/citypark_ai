@@ -11,8 +11,8 @@ import DeleteIcon from '@material-ui/icons/Delete'
 import styles from './CategoryManagerStyles'
 import * as actions from '../../actions'
 
-const CategoryManager = ({ classes, category, categories, moveCategory, changeOrder, 
-  categoryDialogOpen, disabled, deleteCategory }) => {
+const CategoryManager = ({ classes, category, categories, moveCategory, changeOrder,
+  categoryDialogOpen, disabled, deleteCategory, selectedCategory }) => {
 
   const handleApply = () =>
     changeOrder(categories.map(category => ({
@@ -24,24 +24,60 @@ const CategoryManager = ({ classes, category, categories, moveCategory, changeOr
     <div>
       <Toolbar className={classes.toolbar}>
         <div>
-          <Button onClick={() => categoryDialogOpen(true)} mini variant="fab" color="primary" aria-label="Add" className={classes.button}>
+          <Button
+            onClick={() => categoryDialogOpen(true)}
+            mini variant="fab"
+            color="primary"
+            aria-label="Add"
+            className={classes.button}
+          >
             <AddIcon fontSize="small" />
           </Button>
-          <Button onClick={() => categoryDialogOpen(true, true)} disabled={disabled} mini variant="fab" color="secondary" aria-label="Edit" className={classes.button}>
+          <Button
+            onClick={() => categoryDialogOpen(true, true)}
+            disabled={disabled}
+            mini variant="fab"
+            color="secondary"
+            aria-label="Edit"
+            className={classes.button}
+          >
             <Icon style={{ color: "white" }} fontSize="small">edit_icon</Icon>
           </Button>
-          <Button onClick={() => category && deleteCategory(category.id)} disabled={disabled} mini variant="fab" aria-label="Delete" className={classes.button}>
+          <Button
+            onClick={() => window.confirm(`Вы действительно хотите удалить категорию "${category.title}"?`) && deleteCategory(category.id)}
+            disabled={disabled}
+            mini variant="fab"
+            aria-label="Delete"
+            className={classes.button}
+          >
             <DeleteIcon />
           </Button>
         </div>
         <div>
-          <Button onClick={() => moveCategory(-1)} disabled={disabled} mini variant="fab" aria-label="Delete" className={classes.button}>
+          <Button
+            onClick={() => moveCategory(-1)}
+            disabled={disabled || selectedCategory === 0}
+            mini variant="fab"
+            aria-label="Delete"
+            className={classes.button}
+          >
             <Icon fontSize="small">keyboard_arrow_up</Icon>
           </Button>
-          <Button onClick={() => moveCategory(1)} disabled={disabled} mini variant="fab" aria-label="Delete" className={classes.button}>
+          <Button
+            onClick={() => moveCategory(1)} disabled={disabled || selectedCategory === categories.length - 1}
+            mini variant="fab"
+            aria-label="Delete"
+            className={classes.button}
+          >
             <Icon fontSize="small">keyboard_arrow_down</Icon>
           </Button>
-          <Button onClick={handleApply} disabled={disabled} mini variant="fab" aria-label="Delete" className={classes.button}>
+          <Button
+            onClick={handleApply}
+            disabled={disabled}
+            mini variant="fab"
+            aria-label="Delete"
+            className={classes.button}
+          >
             <Icon fontSize="small">done</Icon>
           </Button>
         </div>
@@ -53,6 +89,7 @@ const CategoryManager = ({ classes, category, categories, moveCategory, changeOr
 const mapStateToProps = state => {
   const { payload, selectedCategory } = state.menu
   return {
+    selectedCategory,
     disabled: selectedCategory === null,
     categories: payload,
     category: payload[selectedCategory] ? payload[selectedCategory] : null

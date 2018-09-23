@@ -4,15 +4,14 @@ import { bindActionCreators } from 'redux'
 import { Link } from 'react-router-dom'
 
 import * as actions from '../../actions'
-import { ListItem } from 'components'
 
 class NewsList extends React.Component {
 
   newsList = () => {
-    const { news, deleteNews } = this.props
+    /*const { news, deleteNews } = this.props
     return news.length ? news.map(news =>
       <ListItem deleteItem={deleteNews} key={news.id} link={'/news/' + news.id} {...news} />
-    ) : null
+    ) : null*/
   }
 
   componentDidMount = () => {

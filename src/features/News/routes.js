@@ -1,22 +1,18 @@
-//import * as components from './components'
 import * as containers from './containers'
-
-export const NEWS          = '/news'
-export const CREATE_NEWS   = NEWS + '/create'
-export const NEWS_SHOW     = NEWS + '/:id'
+import * as links from './links'
 
 const routes = [
   {
-    path: NEWS,
+    path: links.NEWS.PATH,
     exact: true,
     component: containers.NewsList
   },
   {
-    path: CREATE_NEWS,
+    path: links.NEWS_NEW.PATH,
     component: containers.CreateNews
   },
   {
-    path: NEWS_SHOW,
+    path: links.NEWS_EDIT.PATH,
     component: containers.CreateNews
   }
 ]

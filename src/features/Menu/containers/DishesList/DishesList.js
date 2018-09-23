@@ -1,7 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import PropTypes from 'prop-types'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 
@@ -18,12 +17,16 @@ class DishesList extends React.Component {
         selected={index === selectedDish ? true : false}
         key={dish.id}
       >
-        <img
-          height="100"
-          width="152"
-          src={dish.images ? dish.images.preview : null}
-          alt="pic"
-        />
+        {
+          dish.images ?
+            <img
+              height="100"
+              width="152"
+              src={dish.images.preview}
+              alt="pic"
+            />
+            : null
+        }
         <div>
           <h2>{dish.title}</h2>
           <p>{dish.description}</p>
@@ -33,15 +36,11 @@ class DishesList extends React.Component {
     ) : null
   }
 
-  render = () => 
-        <List className="dishes-list">
-          {this.dishesList()}
-        </List>
-    
-}
+  render = () =>
+    <List className="dishes-list">
+      {this.dishesList()}
+    </List>
 
-DishesList.propTypes = {
-  classes: PropTypes.object.isRequired,
 }
 
 const mapStateToProps = state => {

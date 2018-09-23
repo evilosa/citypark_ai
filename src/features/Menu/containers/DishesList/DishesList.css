@@ -1,5 +1,5 @@
 .dishes-list {
-  height: 100%;
+  height: 90%;
   overflow-y: auto;
   position: relative;
   border-left: 1px solid gray;
@@ -17,10 +17,14 @@
 }
 
 .dish-item img {
-  float: left;
-  margin: 0 15px 0 0;
+  width: 152px;
   border-radius: 10px;
   border: 1px solid gray;
+}
+
+.dish-item div {
+  margin-left: 10px;
+  width: 100%;
 }
 
 .dish-item p {

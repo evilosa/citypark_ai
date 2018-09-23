@@ -1,4 +1,5 @@
 import React from 'react'
+import { withRouter } from 'react-router-dom'
 import AppBar from '@material-ui/core/AppBar'
 import Tabs from '@material-ui/core/Tabs'
 import Tab from '@material-ui/core/Tab'
@@ -25,6 +26,11 @@ class MainLayout extends React.Component {
     this.setState({ currentTab })
   }
 
+  componentDidMount = () => {
+    const { history, location: { pathname } } = this.props
+    if (pathname === "/") history.push(Menu.links.MENU.PATH)
+  }
+
   render = () => {
     const { route } = this.props
     const { currentTab } = this.state
@@ -47,4 +53,4 @@ class MainLayout extends React.Component {
   }
 }
 
-export default MainLayout
+export default withRouter(MainLayout)

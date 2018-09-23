@@ -3,6 +3,7 @@ export default theme => ({
     width: '100%',
     borderRight: '1px solid gray',
     backgroundColor: theme.palette.background.paper,
-    height: '100%'
+    height: '90%',
+    overflowY: 'auto',
   }
 })

@@ -36,14 +36,12 @@ class CategoriesList extends React.Component {
     !fetching && !categories.length && getCategories()
   }
 
-  render() {
-    const { classes } = this.props;
+  render = () => {
+    const { classes } = this.props
     return (
-      <div className={classes.root}>
-        <List component="nav">
-          {this.categoriesList()}
-        </List>
-      </div>
+      <List className={classes.root} component="nav">
+        {this.categoriesList()}
+      </List>
     )
   }
 }
