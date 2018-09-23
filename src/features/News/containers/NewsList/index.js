@@ -1,4 +1,4 @@
 import NewsList from './NewsList'
-import './NewsList.css'
+//import './NewsList.css'
 
 export default NewsList

@@ -26,18 +26,7 @@ html {
   flex-grow: 1,
 }
 
-a {
-  color: #FA713E;
-  text-decoration: none;
-  transition: all.6s ease;
-  cursor: pointer;
-}
 
-a:hover {
-  color: #C34F25;
-  text-decoration: underline;
-  transition: all.6s ease;
-}
 
 .btn {
 	box-shadow: inset 0px 39px 0px -24px #e67a73;

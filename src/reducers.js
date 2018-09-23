@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
 import { routerReducer } from 'react-router-redux'
-import { Blogs, News, Menu, User, Rooms } from 'features'
+import { Blogs, News, Menu, User } from 'features'
 
 export default combineReducers({
   routing: routerReducer,

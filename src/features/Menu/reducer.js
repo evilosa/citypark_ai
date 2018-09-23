@@ -6,8 +6,8 @@ const initialState = {
   fetching: null,
   payload: [],
   errors: {},
-  selectedCategory: null,
-  selectedDish: null,
+  selectedCategory: -1,
+  selectedDish: -1,
   categoryDialog: {
     open: false,
     edit: false

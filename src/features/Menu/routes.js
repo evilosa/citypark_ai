@@ -5,7 +5,7 @@ const routes = [
   {
     path: links.MENU.PATH,
     exact: true,
-    component: components.Menu
+    component: components.Layout
   }
 ]
 

@@ -6,29 +6,27 @@ import Tab from '@material-ui/core/Tab'
 import Typography from '@material-ui/core/Typography'
 import { renderRoutes } from 'react-router-config'
 
-import { Menu } from 'features'
+import { Menu, News } from 'features'
 import { AdminResource } from 'features/User/containers'
 
 class MainLayout extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      currentTab: 0
+      currentTab: Menu.links.MENU.PATH
     }
   }
 
   handleChange = (event, currentTab) => {
     const { history } = this.props
-    switch (currentTab) {
-      case 0: history.push(Menu.links.MENU.PATH)
-      default:
-    }
+    history.push(currentTab)
     this.setState({ currentTab })
   }
 
   componentDidMount = () => {
     const { history, location: { pathname } } = this.props
-    if (pathname === "/") history.push(Menu.links.MENU.PATH)
+    const { currentTab } = this.state
+    pathname === "/" ? history.push(currentTab) : this.setState({ currentTab: pathname })
   }
 
   render = () => {
@@ -39,8 +37,8 @@ class MainLayout extends React.Component {
         <div id="container">
           <AppBar position="static">
             <Tabs value={currentTab} onChange={this.handleChange}>
-              <Tab label={Menu.links.MENU.TITLE} />
-              <Tab label="Item Two" />
+              <Tab value={Menu.links.MENU.PATH} label={Menu.links.MENU.TITLE} />
+              <Tab value={News.links.NEWS.PATH} label={News.links.NEWS.TITLE} />
               <Tab label="Item Three" href="#basic-tabs" />
             </Tabs>
           </AppBar>
