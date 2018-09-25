@@ -12,21 +12,15 @@ import * as actions from '../../actions'
 
 class NewsList extends React.Component {
 
-  constructor(props) {
-    super(props)
-    this.state = { selectedNews: -1 }
-  }
-
   newsList = () => {
-    const { news } = this.props
-    const { selectedNews } = this.state
+    const { news, selectedNews, selectNews } = this.props
     return news.length ? news.map((news, index) => {
       const { image, title, description, created_at } = news
       return (
         <ListItem
           button
           selected={index === selectedNews}
-          onClick={() => this.handleSelect(index)}
+          onClick={() => selectNews(index)}
           key={news.id}
         >
           <img height="100" width="100" src={image} alt="pic" />
@@ -43,10 +37,6 @@ class NewsList extends React.Component {
   componentDidMount = () => {
     const { fetching, news, getNewsList } = this.props
     !fetching && !news.length && getNewsList()
-  }
-
-  handleSelect = index => {
-    this.setState({ selectedNews: index })
   }
 
   render = () => {
@@ -68,6 +58,7 @@ NewsList.propTypes = {
 
 const mapStateToProps = state => ({
   fetching: state.news.fetching,
+  selectedNews: state.news.selectedNews,
   news: state.news.payload
 })
 

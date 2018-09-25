@@ -1,5 +1,5 @@
-import CreateNews from './CreateNews'
+import NewsNew from './NewsNew'
 import NewsList from './NewsList'
 import NewsManager from './NewsManager'
 
-export { CreateNews, NewsList, NewsManager }
+export { NewsNew, NewsList, NewsManager }

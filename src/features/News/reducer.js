@@ -5,7 +5,8 @@ import * as types from './actionTypes'
 const initialState = {
   fetching: null,
   payload: [],
-  errors: {}
+  errors: {},
+  selectedNews: -1
 }
 
 const newsReducer = (state, action) => {
@@ -15,6 +16,8 @@ const newsReducer = (state, action) => {
         return toPayload(state,
           state.payload.filter(item => item.id !== action.payload.id)
         )
+      case types.NEWS_SELECT:
+        return { ...state, selectedNews: action.index }  
       default: return false
     }
 }

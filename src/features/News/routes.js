@@ -9,11 +9,11 @@ const routes = [
   },
   {
     path: links.NEWS_NEW.PATH,
-    component: containers.CreateNews
+    component: containers.NewsNew
   },
   {
     path: links.NEWS_EDIT.PATH,
-    component: containers.CreateNews
+    component: containers.NewsNew
   }
 ]
 

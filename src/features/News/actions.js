@@ -18,6 +18,11 @@ export const getNewsList = () =>
 export const getNewsItem = id =>
   feedback.get(api.NEWS + id, types.NEWS_SHOW)
 
+export const selectNews = index => ({
+  index,
+  type: types.NEWS_SELECT + feedback.statuses.SUCCESS
+})  
+
 export const deleteNews = id =>
   feedback.destroy(
     api.NEWS + id,

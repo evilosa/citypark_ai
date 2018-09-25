@@ -9,11 +9,12 @@ import * as actions from '../../actions'
 class DishesList extends React.Component {
 
   dishesList = () => {
-    const { dishes, selectedDish, selectDish } = this.props
+    const { dishes, selectedDish, selectDish, dishDialogOpen } = this.props
     return dishes ? dishes.map((dish, index) =>
       <ListItem
         className="dish-item"
         onClick={() => selectDish(index)}
+        onDoubleClick={() => dishDialogOpen(true, true)}
         selected={index === selectedDish ? true : false}
         key={dish.id}
       >

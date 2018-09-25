@@ -90,7 +90,7 @@ const mapStateToProps = state => {
   const { payload, selectedCategory } = state.menu
   return {
     selectedCategory,
-    disabled: selectedCategory === null,
+    disabled: selectedCategory === -1,
     categories: payload,
     category: payload[selectedCategory] ? payload[selectedCategory] : null
   }

@@ -47,8 +47,8 @@ const DishManager = ({ classes, dishDialogOpen, deleteDish, dish, disableButtons
 const mapStateToProps = state => {
   const { payload, selectedCategory, selectedDish } = state.menu
   return {
-    disableAddButton: selectedCategory === null,
-    disableButtons: selectedDish === null,
+    disableAddButton: selectedCategory === -1,
+    disableButtons: selectedDish === -1,
     dish: payload[selectedCategory] && payload[selectedCategory].dishes ? payload[selectedCategory].dishes[selectedDish] : {},
   }
 }
