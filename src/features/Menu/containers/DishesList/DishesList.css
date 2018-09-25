@@ -5,28 +5,28 @@
   border-left: 1px solid gray;
 }
 
-.dish-item {
+.list-item {
   padding: 10px;
   overflow: auto;
   border-bottom: 1px solid #ddd;
   align-items: flex-start !important;
 }
 
-.dish-item h2 {
+.list-item  h2 {
   font: bold 20px/1.5 Helvetica, Verdana, sans-serif;
 }
 
-.dish-item img {
+.list-item  img {
   width: 152px;
   border-radius: 10px;
   border: 1px solid gray;
 }
 
-.dish-item div {
+.list-item  div {
   margin-left: 10px;
   width: 100%;
 }
 
-.dish-item p {
+.list-item  p {
   font: 200 12px/1.5 Georgia, Times New Roman, serif;
 }

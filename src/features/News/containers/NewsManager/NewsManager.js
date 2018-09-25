@@ -13,7 +13,7 @@ import styles from './NewsManagerStyles'
 import * as actions from '../../actions'
 import * as links from '../../links'
 
-const NewsManager = ({ classes, disabled, news, deleteNews }) => {
+const NewsManager = ({ classes, disableButtons, news, deleteNews }) => {
 
   return (
     <div>
@@ -30,7 +30,7 @@ const NewsManager = ({ classes, disabled, news, deleteNews }) => {
         </Link>
         <Link to={news ? links.NEWS.PATH + '/' + news.id : ''}>
         <Button
-          disabled={disabled}
+          disabled={disableButtons}
           mini variant="fab"
           color="secondary"
           aria-label="Edit"
@@ -41,7 +41,7 @@ const NewsManager = ({ classes, disabled, news, deleteNews }) => {
         </Link>
         <Button
           onClick={() => window.confirm(`Вы действительно хотите удалить новость "${news.title}"?`) && deleteNews(news.id)}
-          disabled={disabled}
+          disabled={disableButtons}
           mini variant="fab"
           aria-label="Delete"
           className={classes.button}
@@ -56,7 +56,7 @@ const NewsManager = ({ classes, disabled, news, deleteNews }) => {
 const mapStateToProps = state => {
   const { payload, selectedNews } = state.news
   return {
-    disabled: selectedNews === null,
+    disableButtons: selectedNews === -1,
     news: payload[selectedNews] ? payload[selectedNews] : null
   }
 }

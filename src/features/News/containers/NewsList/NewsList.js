@@ -18,6 +18,7 @@ class NewsList extends React.Component {
       const { image, title, description, created_at } = news
       return (
         <ListItem
+        className="list-item"
           button
           selected={index === selectedNews}
           onClick={() => selectNews(index)}
@@ -25,7 +26,7 @@ class NewsList extends React.Component {
         >
           <img height="100" width="100" src={image} alt="pic" />
           <div>
-            <h5>{title}</h5>
+            <h2>{title}</h2>
             <p style={{ color: "gray" }}>{description}</p>
             <p>{created_at}</p>
           </div>
@@ -56,11 +57,14 @@ NewsList.propTypes = {
   classes: PropTypes.object.isRequired,
 }
 
-const mapStateToProps = state => ({
-  fetching: state.news.fetching,
-  selectedNews: state.news.selectedNews,
-  news: state.news.payload
-})
+const mapStateToProps = state => {
+  const { fetching, selectedNews, payload } = state.news
+  return {
+    fetching,
+    selectedNews,
+    news: payload
+  }
+}
 
 const mapDispatchToProps = dispatch => bindActionCreators({
   ...actions

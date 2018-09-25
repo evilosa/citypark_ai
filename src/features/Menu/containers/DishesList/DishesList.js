@@ -12,7 +12,7 @@ class DishesList extends React.Component {
     const { dishes, selectedDish, selectDish, dishDialogOpen } = this.props
     return dishes ? dishes.map((dish, index) =>
       <ListItem
-        className="dish-item"
+        className="list-item"
         onClick={() => selectDish(index)}
         onDoubleClick={() => dishDialogOpen(true, true)}
         selected={index === selectedDish ? true : false}

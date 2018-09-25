@@ -2,10 +2,25 @@
   display: flex;
   margin-top: 1rem;
   margin-right: 1rem;
+  align-items: baseline;
 }
 
 .file-fields {
   display: flex;
   flex-wrap: wrap;
   margin-bottom: 1rem;
+  border: 1px solid rgba(0, 0, 0, .25);
+  border-radius: 5px;
 }
+
+.material-icons:hover {
+  color: red;
+  transition: all.6s ease;
+}
+
+.material-icons {
+  cursor: pointer;
+  color: #486DAA;
+  transition: all.6s ease;
+}
+
