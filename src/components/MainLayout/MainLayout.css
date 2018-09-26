@@ -1,16 +1,4 @@
-#container {
-  display: flex;
-  flex-direction: column;
-}
-
-#content {
-  flex: 1 1 auto;
-  height: 100%;
-  position: relative;
-  overflow-y: auto;
-  width: 100%;
-}
-
-.tab-link  {
-  text-decoration: none
+.app-bar {
+  flex-direction: row !important;
+  justify-content: space-between;
 }

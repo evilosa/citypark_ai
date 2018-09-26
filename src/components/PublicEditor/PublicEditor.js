@@ -86,11 +86,11 @@ class PublicEditor extends React.Component {
 
   render = () => {
     const { classes, fetching } = this.props
-    const { editorState, item: { title, description, blobImageAttributes, id } } = this.state
+    const { editorState, item: { title, description, id } } = this.state
     return (
       <Paper className={classes.root} elevation={1}>
         <Typography variant="headline" component="h3">
-          {`${ id ? 'Изменение' : 'Добавление'} новости`}
+          {`${ id ? 'Изменение' : 'Добавление'} записи`}
         </Typography>
         <div className="news-new_fields">
           <TextField

@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import { createUser } from '../../models'
-import { SpinButton } from 'components'
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -57,7 +56,7 @@ class LoginForm extends React.Component {
             </div>
           </div>
           <footer className="login__footer">
-            <SpinButton className="form_button" onClick={this.handleSubmit}>Login</SpinButton>
+            <button className="form_button" onClick={this.handleSubmit}>Login</button>
           </footer>
         </div>
       </div>
