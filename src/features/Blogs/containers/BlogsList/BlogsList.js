@@ -1,40 +1,49 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { Link } from 'react-router-dom'
 
 import * as actions from '../../actions'
+import { PublicManager, PublicList } from 'components'
+import * as links from '../../links'
 
 class BlogsList extends React.Component {
 
-  newsList = () => {
-    /*const { blogs, deleteBlog } = this.props
-    return blogs.length ? blogs.map(blog =>
-      <ListItem deleteItem={deleteBlog} key={blog.id} link={'/blogs/' + blog.id} {...blog} />
-    ) : null*/
-  }
-
   componentDidMount = () => {
-    const { fetching, blogs, getBlogsList } = this.props
-    !fetching && !blogs.length && getBlogsList()
+    const { fetching, payload, getBlogsList } = this.props
+    !fetching && !payload.length && getBlogsList()
   }
 
-  render = () =>
-    <div>
-      <div id="news-list-header">
-        <h3>Блог шеф-повара</h3>
-        <Link to="/blogs/create">
-          <div className="btn">Добавить</div>
-        </Link>
+  render = () => {
+    const { payload, selectedBlog, selectBlog, deleteBlog, disableButtons, blog } = this.props
+    return (
+      <div className="height100">
+        <PublicManager
+          item={blog}
+          disableButtons={disableButtons}
+          handleDelete={deleteBlog}
+          pathNew={links.BLOGS_NEW.PATH}
+          pathEdit={blog ? links.BLOGS.PATH + '/' + blog.id : ''}
+        />
+        <PublicList
+          payload={payload}
+          selected={selectedBlog}
+          handleSelect={selectBlog}
+        />
       </div>
-      { this.newsList() }
-    </div>
+    )
+  }
 }
 
-const mapStateToProps = state => ({
-  fetching: state.blogs.fetching,
-  blogs: state.blogs.payload
-})
+const mapStateToProps = state => {
+  const { fetching, selectedBlog, payload } = state.blogs
+  return {
+    fetching,
+    selectedBlog,
+    payload,
+    disableButtons: selectedBlog === -1,
+    blog: payload[selectedBlog] ? payload[selectedBlog] : null
+  }
+}
 
 const mapDispatchToProps = dispatch => bindActionCreators({
   ...actions

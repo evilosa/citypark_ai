@@ -1,3 +1,3 @@
-import { createNews } from './news'
+import { createWithProps } from './news'
 
-export { createNews }
+export { createWithProps }

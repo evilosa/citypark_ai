@@ -45,7 +45,7 @@ const menuReducer = (state, action) => {
         let { selectedCategory, payload } = state
         let _payload = [...state.payload]
         const { value } = action
-        //Object.freeze(payload[selectedCategory]) //если расскоментировать - получим исключение в строке 56, лол?
+        //Object.freeze(payload[selectedCategory]) //из-за этой строски получим исключение в строке 54 "Cannot assign to read only property 'y_index' of object '#<Object>'"
         const prevYIndex = payload[selectedCategory].y_index //почему-то меняется объект в исходном массиве, поэтому без доп переменной не обойтись
         if (selectedCategory + value < payload.length && selectedCategory + value >= 0) {
           _payload[selectedCategory] = payload[selectedCategory + value]

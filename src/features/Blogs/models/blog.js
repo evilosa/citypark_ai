@@ -6,7 +6,7 @@ const blog = {
   blobGalleriesAttributes: []
 }
 
-export const createBlogs = props => ({
+export const createWithProps = props => ({
   ...blog,
   ...props
 })

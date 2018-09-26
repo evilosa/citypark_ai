@@ -23,3 +23,8 @@ export const deleteBlog = id =>
     api.BLOGS + id,
     types.BLOGS_DESTROY
   )
+
+export const selectBlog = index => ({
+  index,
+  type: types.BLOG_SELECT + feedback.statuses.SUCCESS
+})  

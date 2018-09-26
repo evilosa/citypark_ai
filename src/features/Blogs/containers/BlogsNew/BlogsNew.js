@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import { withRouter } from 'react-router-dom'
 
 import * as actions from '../../actions'
 import * as types from '../../actionTypes'
@@ -8,31 +9,31 @@ import * as links from '../../links'
 import { createWithProps } from '../../models'
 import { PublicEditor } from 'components'
 
-class NewsNew extends React.Component {
+class BlogsNew extends React.Component {
 
   componentDidMount = () => {
     const { id } = this.props.match.params
-    const { getNewsItem } = this.props
-    id && getNewsItem(id)
+    const { getBlogsItem } = this.props
+    id && getBlogsItem(id)
   }
 
   render = () => {
-    const { fetching, payload, errors, createNews } = this.props
+    const { fetching, payload, errors, createBlogs } = this.props
     return (
       <PublicEditor
         handleInit={createWithProps}
-        handleCreate={createNews}
-        fetching={ fetching === types.NEWS_CREATE || fetching === types.NEWS_SHOW }
+        handleCreate={createBlogs}
+        fetching={ fetching === types.BLOGS_CREATE || fetching === types.BLOGS_SHOW }
         item={payload}
         errors={errors}
-        pathOnCreate={ links.NEWS.PATH }
+        pathOnCreate={links.BLOGS.PATH}
       />
     )
   }
 }
 
 const mapStateToProps = state => ({
-  ...state.news
+  ...state.blogs
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({
@@ -40,5 +41,5 @@ const mapDispatchToProps = dispatch => bindActionCreators({
 }, dispatch)
 
 const ReduxWrapper = connect(mapStateToProps, mapDispatchToProps)
-const WrappedComponent = ReduxWrapper(NewsNew)
+const WrappedComponent = ReduxWrapper(withRouter(BlogsNew))
 export default WrappedComponent

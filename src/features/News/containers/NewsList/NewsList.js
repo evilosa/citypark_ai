@@ -1,60 +1,37 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import PropTypes from 'prop-types'
-import { withStyles } from '@material-ui/core/styles'
-import List from '@material-ui/core/List'
-import ListItem from '@material-ui/core/ListItem'
 
-import NewsManager from '../NewsManager'
-import styles from './NewsListStyles'
+import { PublicManager, PublicList } from 'components'
 import * as actions from '../../actions'
+import * as links from '../../links'
 
 class NewsList extends React.Component {
 
-  newsList = () => {
-    const { news, selectedNews, selectNews } = this.props
-    return news.length ? news.map((news, index) => {
-      const { image, title, description, created_at } = news
-      return (
-        <ListItem
-        className="list-item"
-          button
-          selected={index === selectedNews}
-          onClick={() => selectNews(index)}
-          key={news.id}
-        >
-          <img height="100" width="100" src={image} alt="pic" />
-          <div>
-            <h2>{title}</h2>
-            <p style={{ color: "gray" }}>{description}</p>
-            <p>{created_at}</p>
-          </div>
-        </ListItem>
-      )
-    }) : null
-  }
-
   componentDidMount = () => {
-    const { fetching, news, getNewsList } = this.props
-    !fetching && !news.length && getNewsList()
+    const { fetching, payload, getNewsList } = this.props
+    !fetching && !payload.length && getNewsList()
   }
 
   render = () => {
-    const { classes } = this.props
+    const { payload, selectedNews, selectNews, deleteNews, disableButtons, news } = this.props
     return (
       <div className="height100">
-        <NewsManager />
-        <List className={classes.root} component="nav">
-          {this.newsList()}
-        </List>
+        <PublicManager
+          item={news}
+          disableButtons={disableButtons}
+          handleDelete={deleteNews}
+          pathNew={links.NEWS_NEW.PATH}
+          pathEdit={news ? links.NEWS.PATH + '/' + news.id : ''}
+        />
+        <PublicList
+          payload={payload}
+          selected={selectedNews}
+          handleSelect={selectNews}
+        />
       </div>
     )
   }
-}
-
-NewsList.propTypes = {
-  classes: PropTypes.object.isRequired,
 }
 
 const mapStateToProps = state => {
@@ -62,7 +39,9 @@ const mapStateToProps = state => {
   return {
     fetching,
     selectedNews,
-    news: payload
+    payload,
+    disableButtons: selectedNews === -1,
+    news: payload[selectedNews] ? payload[selectedNews] : null
   }
 }
 
@@ -71,6 +50,5 @@ const mapDispatchToProps = dispatch => bindActionCreators({
 }, dispatch)
 
 const ReduxWrapper = connect(mapStateToProps, mapDispatchToProps)
-const StylesWrapper = withStyles(styles)
-const WrappedComponent = ReduxWrapper(StylesWrapper(NewsList))
+const WrappedComponent = ReduxWrapper(NewsList)
 export default WrappedComponent

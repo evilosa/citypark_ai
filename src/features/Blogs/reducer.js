@@ -1,20 +1,23 @@
-import { toPayload } from 'utils'
 import feedback, { getStatus, getAction, statuses } from 'feedback'
 import * as types from './actionTypes'
 
 const initialState = {
   fetching: null,
   payload: [],
-  errors: {}
+  errors: {},
+  selectedBlog: -1
 }
 
 const blogsReducer = (state, action) => {
   if (getStatus(action.type) === statuses.SUCCESS)
     switch (getAction(action.type)) {
       case types.BLOGS_DESTROY:
-        return toPayload(state,
-          state.payload.filter(item => item.id !== action.payload.id)
-        )
+        return {
+          ...initialState,
+          payload: state.payload.filter(item => item.id !== action.payload.id)
+        }
+      case types.BLOG_SELECT:
+        return { ...state, selectedBlog: action.index }
       default: return false
     }
 }

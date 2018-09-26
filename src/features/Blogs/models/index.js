@@ -1,3 +1,3 @@
-import { createBlogs } from './blog'
+import { createWithProps } from './blog'
 
-export { createBlogs }
+export { createWithProps }

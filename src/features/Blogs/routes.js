@@ -1,23 +1,19 @@
-//import * as components from './components'
 import * as containers from './containers'
-
-export const BLOGS          = '/blogs'
-export const CREATE_BLOGS   = BLOGS + '/create'
-export const BLOGS_SHOW     = BLOGS + '/:id'
+import * as links from './links'
 
 const routes = [
   {
-    path: BLOGS,
+    path: links.BLOGS.PATH,
     exact: true,
     component: containers.BlogsList
   },
   {
-    path: CREATE_BLOGS,
-    component: containers.CreateBlogs
+    path: links.BLOGS_NEW.PATH,
+    component: containers.BlogsNew
   },
   {
-    path: BLOGS_SHOW,
-    component: containers.CreateBlogs
+    path: links.BLOGS_EDIT.PATH,
+    component: containers.BlogsNew
   }
 ]
 

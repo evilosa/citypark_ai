@@ -6,10 +6,11 @@ import Tab from '@material-ui/core/Tab'
 import Typography from '@material-ui/core/Typography'
 import { renderRoutes } from 'react-router-config'
 
-import { Menu, News } from 'features'
+import { Menu, News, Blogs } from 'features'
 import { AdminResource } from 'features/User/containers'
 
 class MainLayout extends React.Component {
+
   constructor(props) {
     super(props)
     this.state = {
@@ -39,7 +40,7 @@ class MainLayout extends React.Component {
             <Tabs value={currentTab} onChange={this.handleChange}>
               <Tab value={Menu.links.MENU.PATH} label={Menu.links.MENU.TITLE} />
               <Tab value={News.links.NEWS.PATH} label={News.links.NEWS.TITLE} />
-              <Tab label="Item Three" href="#basic-tabs" />
+              <Tab value={Blogs.links.BLOGS.PATH} label={Blogs.links.BLOGS.TITLE} />
             </Tabs>
           </AppBar>
           <Typography component="div" style={{ height: "100%" }}>

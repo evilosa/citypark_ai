@@ -1,0 +1,43 @@
+.editor {
+  position: relative;
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.23);
+  border-radius: 4px;
+  overflow: auto;
+  min-height: 100%;
+  padding: 0 15px;
+}
+
+.editor-wrapper {
+  padding: 10px;
+  flex-grow: 1;
+}
+
+.news-new_fields {
+  display: flex;
+  width: 100%;
+  align-items: flex-start;
+}
+
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 84%;
+}
+
+.news-buttons {
+  flex-grow: 0
+}
+
+.file-fields-label {
+  margin: 0 10px;
+}
+
+.public-editor_root {
+  height: 100%;
+  padding-top: 16px;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-bottom: 16px;
+  background-color: #fafafa;
+}

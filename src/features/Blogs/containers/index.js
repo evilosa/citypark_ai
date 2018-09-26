@@ -1,4 +1,4 @@
-import CreateBlogs from './CreateBlogs'
+import BlogsNew from './BlogsNew'
 import BlogsList from './BlogsList'
 
-export { CreateBlogs, BlogsList }
+export { BlogsNew, BlogsList }
