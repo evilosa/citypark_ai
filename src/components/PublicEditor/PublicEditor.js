@@ -170,7 +170,7 @@ PublicEditor.defaultProps = {
 
 PublicEditor.propTypes = {
   classes: PropTypes.object.isRequired,
-  /*handleInit: PropTypes.func.isRequred,
+  handleInit: PropTypes.func.isRequred,
   handleCreate: PropTypes.func.isRequred,
   fetching: PropTypes.string,
   errors: PropTypes.object,
@@ -180,7 +180,7 @@ PublicEditor.propTypes = {
     title: PropTypes.string, 
     description: PropTypes.string,
     body: PropTypes.string
-  })*/
+  })
 }
 
 const StylesWrapper = withStyles(styles)

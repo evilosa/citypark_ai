@@ -38,7 +38,7 @@ class DishesList extends React.Component {
   }
 
   render = () =>
-    <List className="dishes-list">
+    <List role="ul" className="dishes-list">
       {this.dishesList()}
     </List>
 
