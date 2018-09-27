@@ -29,6 +29,7 @@ class DishNew extends React.Component {
 
   handleChange = prop => {
     const { target } = prop
+    //console.log(target)
     this.setState(prev => ({
       dish: {
         ...prev.dish,
@@ -124,7 +125,7 @@ class DishNew extends React.Component {
             />
             <label htmlFor="outlined-button-file">
               <Button variant="outlined" component="span" className={classes.button}>
-                Загрузить фото
+                { imageAttributes.files.length && imageAttributes.files[0].name || "Загрузить фото" }
              </Button>
             </label>
             <FormControlLabel

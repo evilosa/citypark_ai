@@ -63,7 +63,7 @@ class PublicEditor extends React.Component {
   componentWillReceiveProps = nextProps => {
     const { item, history, errors, fetching } = nextProps
     const { handleInit, pathOnCreate } = this.props
-    if (item.created) { 
+    if (item.created) {
       history.push(pathOnCreate)
       return
     }
@@ -85,11 +85,11 @@ class PublicEditor extends React.Component {
 
   render = () => {
     const { classes, fetching } = this.props
-    const { editorState, item: { title, description, id } } = this.state
+    const { editorState, item: { title, description, blobImageAttributes, id } } = this.state
     return (
       <Paper className={classes.root} elevation={1}>
         <Typography variant="headline" component="h3">
-          {`${ id ? 'Изменение' : 'Добавление'} записи`}
+          {`${id ? 'Изменение' : 'Добавление'} записи`}
         </Typography>
         <div className="news-new_fields">
           <TextField
@@ -121,6 +121,7 @@ class PublicEditor extends React.Component {
             editorState={editorState}
             wrapperClassName="editor-wrapper"
             editorClassName="editor"
+            toolbarClassName="toolbar-class"
             onEditorStateChange={this.onEditorStateChange}
             localization={{
               locale: 'ru',
@@ -137,25 +138,25 @@ class PublicEditor extends React.Component {
               type="file"
             />
             <label htmlFor="outlined-button-file">
-              <Button 
-              variant="outlined" 
-              component="span" 
-              className={classes.button}
+              <Button
+                variant="outlined"
+                component="span"
+                className={classes.button}
               >
-                Загрузить фото
-                </Button>
+                { blobImageAttributes.length && blobImageAttributes[0].name || "Загрузить фото" }
+              </Button>
             </label>
             <h4 className="file-fields-label">Фотогаллерея</h4>
             <FileFields name="blobGalleriesAttributes" onChange={this.handleChange} />
-              <Button 
-              onClick={this.handleSubmit} 
-              variant="outlined" 
-              component="span" 
-              className={classes.button} 
+            <Button
+              onClick={this.handleSubmit}
+              variant="outlined"
+              component="span"
+              className={classes.button}
               disabled={fetching}>
-                {id ? 'Изменить' : 'Добавить'}
-              </Button>
-              {fetching && <CircularProgress size={24} className={classes.buttonProgress} />}
+              {id ? 'Изменить' : 'Добавить'}
+            </Button>
+            {fetching && <CircularProgress size={24} className={classes.buttonProgress} />}
           </div>
         </div>
       </Paper >
@@ -176,7 +177,7 @@ PublicEditor.propTypes = {
   pathOnCreate: PropTypes.string.isRequired,
   item: PropTypes.shape({
     id: PropTypes.number,
-    title: PropTypes.string, 
+    title: PropTypes.string,
     description: PropTypes.string,
     body: PropTypes.string
   })
