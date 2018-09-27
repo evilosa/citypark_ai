@@ -2,6 +2,7 @@ const news = {
   title: '',
   body: '',
   description: '',
+  hidden: false,
   blobImageAttributes: [],
   blobGalleriesAttributes: []
 }

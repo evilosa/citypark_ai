@@ -12,6 +12,8 @@ import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
 import CircularProgress from '@material-ui/core/CircularProgress'
+import FormControlLabel from '@material-ui/core/FormControlLabel'
+import Switch from '@material-ui/core/Switch'
 
 import styles from './PublicEditorStyles'
 import { Snackbars, FileFields } from 'components'
@@ -85,7 +87,7 @@ class PublicEditor extends React.Component {
 
   render = () => {
     const { classes, fetching } = this.props
-    const { editorState, item: { title, description, blobImageAttributes, id } } = this.state
+    const { editorState, item: { title, description, blobImageAttributes, hidden, id } } = this.state
     return (
       <Paper className={classes.root} elevation={1}>
         <Typography variant="headline" component="h3">
@@ -143,20 +145,35 @@ class PublicEditor extends React.Component {
                 component="span"
                 className={classes.button}
               >
-                { blobImageAttributes.length && blobImageAttributes[0].name || "Загрузить фото" }
+                { blobImageAttributes.length ? blobImageAttributes[0].name : "Загрузить фото" }
               </Button>
             </label>
             <h4 className="file-fields-label">Фотогаллерея</h4>
             <FileFields name="blobGalleriesAttributes" onChange={this.handleChange} />
-            <Button
-              onClick={this.handleSubmit}
-              variant="outlined"
-              component="span"
-              className={classes.button}
-              disabled={fetching}>
-              {id ? 'Изменить' : 'Добавить'}
-            </Button>
-            {fetching && <CircularProgress size={24} className={classes.buttonProgress} />}
+            <div style={{display: 'flex'}}>
+              <div style={{position: 'relative'}}>
+                <Button
+                  onClick={this.handleSubmit}
+                  variant="outlined"
+                  component="span"
+                  className={classes.button}
+                  disabled={fetching}>
+                  {id ? 'Изменить' : 'Добавить'}
+                </Button>
+                {fetching && <CircularProgress size={24} className={classes.buttonProgress} />}
+              </div>
+              <FormControlLabel
+                control={
+                  <Switch
+                    onChange={() => this.handleChange({ hidden: !hidden })}
+                    checked={hidden}
+                    name="hidden"
+                    color="primary"
+                  />
+                }
+                label="Скрыть"
+              />
+            </div>
           </div>
         </div>
       </Paper >
@@ -170,17 +187,12 @@ PublicEditor.defaultProps = {
 
 PublicEditor.propTypes = {
   classes: PropTypes.object.isRequired,
-  handleInit: PropTypes.func.isRequred,
-  handleCreate: PropTypes.func.isRequred,
-  fetching: PropTypes.string,
+  handleInit: PropTypes.func,
+  handleCreate: PropTypes.func,
+  fetching: PropTypes.bool,
   errors: PropTypes.object,
   pathOnCreate: PropTypes.string.isRequired,
-  item: PropTypes.shape({
-    id: PropTypes.number,
-    title: PropTypes.string,
-    description: PropTypes.string,
-    body: PropTypes.string
-  })
+  item: PropTypes.any.isRequired
 }
 
 const StylesWrapper = withStyles(styles)

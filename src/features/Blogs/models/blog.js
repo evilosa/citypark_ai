@@ -2,6 +2,7 @@ const blog = {
   title: '',
   body: '',
   description: '',
+  hidden: false,
   blobImageAttributes: [],
   blobGalleriesAttributes: []
 }

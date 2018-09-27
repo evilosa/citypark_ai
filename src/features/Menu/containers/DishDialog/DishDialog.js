@@ -125,7 +125,7 @@ class DishNew extends React.Component {
             />
             <label htmlFor="outlined-button-file">
               <Button variant="outlined" component="span" className={classes.button}>
-                { imageAttributes.files.length && imageAttributes.files[0].name || "Загрузить фото" }
+                { imageAttributes.files.length ? imageAttributes.files[0].name : "Загрузить фото" }
              </Button>
             </label>
             <FormControlLabel

@@ -13,6 +13,11 @@ class NewsList extends React.Component {
     !fetching && !payload.length && getNewsList()
   }
 
+  handleDoubleClick = () => {
+    const { history, news } = this.props
+    news && history.push(links.NEWS.PATH + '/' + news.id)
+  }
+
   render = () => {
     const { payload, selectedNews, selectNews, deleteNews, disableButtons, news } = this.props
     return (
@@ -28,6 +33,7 @@ class NewsList extends React.Component {
           payload={payload}
           selected={selectedNews}
           handleSelect={selectNews}
+          handleDoubleClick={this.handleDoubleClick}
         />
       </div>
     )

@@ -6,7 +6,7 @@ import ListItem from '@material-ui/core/ListItem'
 
 import styles from './PublicListStyles'
 
-const PublicList = ({ payload, selected, handleSelect, classes }) => {
+const PublicList = ({ payload, selected, handleSelect, handleDoubleClick, classes }) => {
 
   const publicList = () => {
     return payload.length ? payload.map((item, index) => {
@@ -17,6 +17,7 @@ const PublicList = ({ payload, selected, handleSelect, classes }) => {
           button
           selected={index === selected}
           onClick={() => handleSelect(index)}
+          onDoubleClick={() => handleDoubleClick()}
           key={item.id}
         >
           <img height="100" width="100" src={image} alt="pic" />
@@ -41,7 +42,8 @@ PublicList.propTypes = {
   classes: PropTypes.object.isRequired,
   payload: PropTypes.array.isRequired,
   selected: PropTypes.number.isRequired,
-  handleSelect: PropTypes.func.isRequired
+  handleSelect: PropTypes.func.isRequired,
+  handleDoubleClick: PropTypes.func.isRequired
 }
 
 
