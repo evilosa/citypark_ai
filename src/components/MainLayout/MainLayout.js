@@ -37,19 +37,17 @@ class MainLayout extends React.Component {
     const { currentTab } = this.state
     return (
       <AdminResource>
-        <div>
-          <AppBar className="app-bar" position="static">
-            <Tabs value={currentTab} onChange={this.handleChange}>
-              <Tab value={Menu.links.MENU.PATH} label={Menu.links.MENU.TITLE} />
-              <Tab value={News.links.NEWS.PATH} label={News.links.NEWS.TITLE} />
-              <Tab value={Blogs.links.BLOGS.PATH} label={Blogs.links.BLOGS.TITLE} />
-            </Tabs>
-            <Button onClick={() => signOut()} color="inherit">Выйти</Button>
-          </AppBar>
-          <Typography component="div" style={{ height: "100%" }}>
-            {route && renderRoutes(route.routes)}
-          </Typography>
-        </div>
+        <AppBar className="app-bar" position="static">
+          <Tabs value={currentTab} onChange={this.handleChange}>
+            <Tab value={Menu.links.MENU.PATH} label={Menu.links.MENU.TITLE} />
+            <Tab value={News.links.NEWS.PATH} label={News.links.NEWS.TITLE} />
+            <Tab value={Blogs.links.BLOGS.PATH} label={Blogs.links.BLOGS.TITLE} />
+          </Tabs>
+          <Button onClick={() => signOut()} color="inherit">Выйти</Button>
+        </AppBar>
+        <Typography component="div" style={{ height: "100%" }}>
+          {route && renderRoutes(route.routes)}
+        </Typography>
       </AdminResource>
     )
   }

@@ -14,7 +14,7 @@ import Button from '@material-ui/core/Button'
 import CircularProgress from '@material-ui/core/CircularProgress'
 
 import styles from './PublicEditorStyles'
-import { ErrorBox, FileFields } from 'components'
+import { Snackbars, FileFields } from 'components'
 import { base64Loader } from 'utils'
 
 class PublicEditor extends React.Component {
@@ -78,9 +78,8 @@ class PublicEditor extends React.Component {
           editorState
         }))
       }
-      ErrorBox.clear()
     } else {
-      errors.msg && ErrorBox.create(errors.msg)
+      errors.msg && Snackbars.error(errors.msg)
     }
   }
 

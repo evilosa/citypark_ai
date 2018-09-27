@@ -11,8 +11,8 @@ import DialogTitle from '@material-ui/core/DialogTitle'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import Switch from '@material-ui/core/Switch'
 import CircularProgress from '@material-ui/core/CircularProgress'
-import { ErrorBox } from 'components'
 
+import { Snackbars } from 'components'
 import styles from './DishDialogStyles'
 import { createDish } from '../../models'
 import * as actions from '../../actions'
@@ -55,9 +55,8 @@ class DishNew extends React.Component {
       this.setState({
         dish: createDish(dish)
       })
-      ErrorBox.clear()
     } else {
-      errors.msg && ErrorBox.create(errors.msg)
+      errors.msg && Snackbars.error(errors.msg)
     }
   }
 

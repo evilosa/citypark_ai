@@ -64,7 +64,7 @@ const menuReducer = (state, action) => {
 
       case types.CATEGORY_DIALOG_OPEN: {
         const { open, edit } = action.categoryDialog
-        return { ...state, categoryDialog: { open, edit } }
+        return { ...state, categoryDialog: { open, edit }, errors: {} }
       }
 
       case types.DISHES_CREATE: {
@@ -92,7 +92,8 @@ const menuReducer = (state, action) => {
         return {
           ...state,
           selectedDish: edit ? selectedDish : null,
-          dishDialog: { open, edit }
+          dishDialog: { open, edit },
+          errors: {}
         }
       }
 

@@ -9,7 +9,7 @@ import DialogActions from '@material-ui/core/DialogActions'
 import DialogContent from '@material-ui/core/DialogContent'
 import DialogTitle from '@material-ui/core/DialogTitle'
 import CircularProgress from '@material-ui/core/CircularProgress'
-import { ErrorBox } from 'components'
+import { Snackbars } from 'components'
 
 import styles from './CategoryDialogStyles'
 import { createCategory } from '../../models'
@@ -53,9 +53,9 @@ class CategoryNew extends React.Component {
           category: createCategory()
         })
       }
-      ErrorBox.clear()
+      Snackbars.close()
     } else {
-      errors.msg && ErrorBox.create(errors.msg)
+      errors.msg && Snackbars.error(errors.msg)
     }
   }
 

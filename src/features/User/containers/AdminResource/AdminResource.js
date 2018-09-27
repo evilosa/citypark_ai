@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux'
 
 import { LoginForm } from '../../components'
 import * as actions from '../../actions'
-import { ErrorBox } from 'components'
+import { Snackbars } from 'components'
 import * as types from '../../actionTypes'
 
 class AdminResource extends React.Component {
@@ -16,9 +16,9 @@ class AdminResource extends React.Component {
 
   componentWillReceiveProps = nextProps => {
     const { errors } = nextProps
-    const fetching = nextProps.fetching === types.USER_SIGN_IN
-    !fetching && !errors.msg ? ErrorBox.clear() :
-      errors.msg && ErrorBox.create([errors.msg])
+    //const fetching = nextProps.fetching === types.USER_SIGN_IN
+    //!fetching && !errors.msg ? ErrorBox.clear() :
+      errors.msg && Snackbars.error([errors.msg])
   }
 
   render = () => {
