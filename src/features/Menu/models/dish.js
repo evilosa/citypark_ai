@@ -4,6 +4,7 @@ const dish = {
   weight: '',
   cost: '',
   can_order: true,
+  code: '',
   imageAttributes: {
     value: '',
     files: []

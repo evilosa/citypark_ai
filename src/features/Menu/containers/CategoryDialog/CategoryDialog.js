@@ -76,6 +76,7 @@ class CategoryNew extends React.Component {
         <DialogTitle id="form-categoryDialog-title">{ id ? 'Изменение категории' : 'Добавление новой категории'}</DialogTitle>
         <DialogContent className={classes.container}>
           <TextField
+            required
             onChange={this.handleChange}
             value={title}
             label="Название"
@@ -85,6 +86,7 @@ class CategoryNew extends React.Component {
             variant="outlined"
           />
           <TextField
+            required
             onChange={this.handleChange}
             value={cooking_time}
             label="Время пригтовления"

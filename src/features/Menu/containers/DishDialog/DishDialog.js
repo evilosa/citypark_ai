@@ -62,7 +62,7 @@ class DishNew extends React.Component {
   }
 
   render() {
-    const { id, title, cost, weight, can_order, description, imageAttributes } = this.state.dish
+    const { id, title, cost, weight, can_order, description, code, imageAttributes } = this.state.dish
     const { fetching, dishDialogOpen, classes, dishDialog: { open } } = this.props
     return (
       <Dialog
@@ -73,6 +73,7 @@ class DishNew extends React.Component {
         <DialogTitle id="form-categoryDialog-title">{ id ? 'Изменение блюда' : 'Добавление нового блюда'}</DialogTitle>
         <DialogContent className={classes.container}>
           <TextField
+            required
             onChange={this.handleChange}
             value={title}
             label="Название"
@@ -81,17 +82,18 @@ class DishNew extends React.Component {
             margin="normal"
             variant="outlined"
           />
-          <div>
+          <div style={{display: 'flex'}}>
             <TextField
               onChange={this.handleChange}
               className={classes.textField}
               value={weight}
-              label="Масса / Количество"
+              label="Масса / Кол-во"
               name="weight"
               margin="normal"
               variant="outlined"
             />
             <TextField
+              required
               onChange={this.handleChange}
               className={classes.textField}
               value={cost}
@@ -100,6 +102,16 @@ class DishNew extends React.Component {
               margin="normal"
               variant="outlined"
               inputProps={{ type: "number" }}
+            />
+            <TextField
+              onChange={this.handleChange}
+              className={classes.textField}
+              value={code}
+              label="Код в 1С"
+              name="code"
+              margin="normal"
+              variant="outlined"
+              required
             />
           </div>
           <TextField

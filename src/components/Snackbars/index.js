@@ -1,4 +1,4 @@
-import Snackbar from './Snackbar'
+import Snackbars from './Snackbars'
 //import './ErrorBox.css'
 
-export default Snackbar
+export default Snackbars
