@@ -13,6 +13,11 @@ class BlogsList extends React.Component {
     !fetching && !payload.length && getBlogsList()
   }
 
+  handleDoubleClick = () => {
+    const { history, blog } = this.props
+    blog && history.push(links.BLOGS.PATH + '/' + blog.id)
+  }
+
   render = () => {
     const { payload, selectedBlog, selectBlog, deleteBlog, disableButtons, blog } = this.props
     return (
@@ -28,6 +33,7 @@ class BlogsList extends React.Component {
           payload={payload}
           selected={selectedBlog}
           handleSelect={selectBlog}
+          handleDoubleClick={this.handleDoubleClick}
         />
       </div>
     )
