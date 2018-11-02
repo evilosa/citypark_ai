@@ -64,7 +64,8 @@ const CategoryManager = ({ classes, category, categories, moveCategory, changeOr
             <Icon fontSize="small">keyboard_arrow_up</Icon>
           </Button>
           <Button
-            onClick={() => moveCategory(1)} disabled={disabled || selectedCategory === categories.length - 1}
+            onClick={() => moveCategory(1)} 
+            disabled={disabled || selectedCategory === categories.length - 1}
             mini variant="fab"
             aria-label="Delete"
             className={classes.button}

@@ -18,16 +18,30 @@ const initialState = {
   }
 }
 
+function changeYIndex(payload, slectedIndex, value) {
+  let _payload = [...payload]
+  const prevYIndex = payload[slectedIndex].y_index
+  if (slectedIndex + value < payload.length && slectedIndex + value >= 0) {
+    _payload[slectedIndex] = payload[slectedIndex + value]
+    _payload[slectedIndex + value] = payload[slectedIndex]
+    _payload[slectedIndex + value].y_index = payload[slectedIndex + value].y_index
+    _payload[slectedIndex].y_index = prevYIndex
+    slectedIndex += value
+  }
+  return _payload
+}
+
 const menuReducer = (state, action) => {
-  const { fetching, categoryDialog, selectedDish, dishDialog  } = initialState
+  const { fetching, categoryDialog, selectedDish, dishDialog } = initialState
   if (getStatus(action.type) === statuses.SUCCESS)
     switch (getAction(action.type)) {
 
-      case types.CATEGORIES_CREATE: 
+      case types.CATEGORIES_CREATE:
         return { ...state, fetching, categoryDialog, payload: [...state.payload, action.payload] }
 
       case types.CATEGORIES_UPDATE:
-        return { ...state, fetching, categoryDialog,
+        return {
+          ...state, fetching, categoryDialog,
           payload: state.payload.map(category => category.id === action.payload.id ? action.payload : category)
         }
 
@@ -35,26 +49,31 @@ const menuReducer = (state, action) => {
         const { payload } = state
         const selectedCategory = payload.findIndex(item => item.id === action.payload.id)
         payload[selectedCategory] = action.payload
-        return { ...initialState, selectedCategory, payload } 
+        return { ...initialState, selectedCategory, payload }
       }
-      
+
       case types.CATEGORY_DESTROY:
         return { ...initialState, payload: state.payload.filter(category => category.id !== action.payload.id) }
 
       case types.CATEGORY_MOVE: {
         let { selectedCategory, payload } = state
-        let _payload = [...state.payload]
         const { value } = action
-        //Object.freeze(payload[selectedCategory]) //из-за этой строски получим исключение в строке 54 "Cannot assign to read only property 'y_index' of object '#<Object>'"
-        const prevYIndex = payload[selectedCategory].y_index //почему-то меняется объект в исходном массиве, поэтому без доп переменной не обойтись
-        if (selectedCategory + value < payload.length && selectedCategory + value >= 0) {
-          _payload[selectedCategory] = payload[selectedCategory + value]
-          _payload[selectedCategory + value] = payload[selectedCategory]
-          _payload[selectedCategory + value].y_index = payload[selectedCategory + value].y_index
-          _payload[selectedCategory].y_index = prevYIndex
-          selectedCategory += value
+        return { 
+          ...state, 
+          selectedCategory: selectedCategory + value,
+          payload: changeYIndex(payload, selectedCategory, value) 
         }
-        return { ...state, selectedCategory, payload: _payload }
+      }
+
+      case types.DISH_MOVE: {
+        let { selectedCategory, selectedDish, payload } = state
+        const { value } = action
+        payload[selectedCategory].dishes = changeYIndex(payload[selectedCategory].dishes, selectedDish, value)
+        return { 
+          ...state, 
+          selectedDish: selectedDish + value,
+          payload
+        }
       }
 
       case types.CATEGORY_SELECT: {
@@ -81,10 +100,10 @@ const menuReducer = (state, action) => {
         return { ...state, fetching, dishDialog, payload }
       }
 
-      case types.DISH_SELECT: 
+      case types.DISH_SELECT:
         const { index } = action
         return { ...state, selectedDish: index }
-  
+
 
       case types.DISH_DIALOG_OPEN: {
         const { open, edit } = action.dishDialog

@@ -1,6 +1,7 @@
 const category = {
   title: '',
-  cooking_time: ''
+  cooking_time: '',
+  hidden: false,
 }
 
 export const createCategory = props => ({

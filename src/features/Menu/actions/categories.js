@@ -6,11 +6,14 @@ export const getCategories = () =>
   feedback.get(apiConst.CATEGORIES, types.CATEGORIES_INDEX)
 
 export const createCategory = category => {
-  category.id = category.id || ''
+  const id = category.id || ''
+  delete category.id
+  delete category.dishes
+  delete category.y_index
   return feedback.actions(
-    category.id === '' ? 'POST' : 'PATCH',
-    apiConst.CATEGORIES + category.id,
-    category.id === '' ? types.CATEGORIES_CREATE : types.CATEGORIES_UPDATE,
+    id === '' ? 'POST' : 'PATCH',
+    apiConst.CATEGORIES + id,
+    id === '' ? types.CATEGORIES_CREATE : types.CATEGORIES_UPDATE,
     { category }
   )
 }

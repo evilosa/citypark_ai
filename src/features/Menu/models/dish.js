@@ -5,6 +5,7 @@ const dish = {
   cost: '',
   can_order: true,
   code: '',
+  hidden: false,
   imageAttributes: {
     value: '',
     files: []

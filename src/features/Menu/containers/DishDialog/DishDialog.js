@@ -29,7 +29,6 @@ class DishNew extends React.Component {
 
   handleChange = prop => {
     const { target } = prop
-    //console.log(target)
     this.setState(prev => ({
       dish: {
         ...prev.dish,
@@ -62,7 +61,7 @@ class DishNew extends React.Component {
   }
 
   render() {
-    const { id, title, cost, weight, can_order, description, code, imageAttributes } = this.state.dish
+    const { id, title, cost, weight, can_order, description, code, hidden, imageAttributes } = this.state.dish
     const { fetching, dishDialogOpen, classes, dishDialog: { open } } = this.props
     return (
       <Dialog
@@ -140,6 +139,17 @@ class DishNew extends React.Component {
                 { imageAttributes.files.length ? imageAttributes.files[0].name : "Загрузить фото" }
              </Button>
             </label>
+            <FormControlLabel
+              control={
+                <Switch
+                  onChange={() => this.handleChange({ hidden: !hidden })}
+                  checked={hidden}
+                  name="can_order"
+                  color="primary"
+                />
+              }
+              label="Скрыть"
+            />
             <FormControlLabel
               control={
                 <Switch

@@ -9,6 +9,8 @@ import DialogActions from '@material-ui/core/DialogActions'
 import DialogContent from '@material-ui/core/DialogContent'
 import DialogTitle from '@material-ui/core/DialogTitle'
 import CircularProgress from '@material-ui/core/CircularProgress'
+import FormControlLabel from '@material-ui/core/FormControlLabel'
+import Switch from '@material-ui/core/Switch'
 import { Snackbars } from 'components'
 
 import styles from './CategoryDialogStyles'
@@ -24,12 +26,12 @@ class CategoryNew extends React.Component {
     }
   }
 
-  handleChange = event => {
-    const { name, value } = event.target
+  handleChange = prop => {
+    const { target } = prop
     this.setState(prev => ({
       category: {
         ...prev.category,
-        [name]: value
+        ...(() => target ? { [target.name]: target.value } : prop)()
       }
     }))
   }
@@ -66,7 +68,7 @@ class CategoryNew extends React.Component {
 
   render = () => {
     const { categoryDialog: { open }, classes, fetching } = this.props
-    const { title, cooking_time, id } = this.state.category
+    const { title, cooking_time, hidden, id } = this.state.category
     return (
       <Dialog
         open={open || false}
@@ -95,6 +97,17 @@ class CategoryNew extends React.Component {
             margin="normal"
             variant="outlined"
           />
+          <FormControlLabel
+              control={
+                <Switch
+                  onChange={() => this.handleChange({ hidden: !hidden })}
+                  checked={hidden}
+                  name="can_order"
+                  color="primary"
+                />
+              }
+              label="Скрыть"
+            />
         </DialogContent>
         <DialogActions>
           <Button onClick={this.handleClose} color="primary">
