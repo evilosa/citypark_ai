@@ -28,12 +28,12 @@ const htmlToEditorState = html => {
 }
 
 const colors = ['rgba(0,0,0,0)', '#ffc0d2', '#f6dfc4', '#f9b89c', '#45312b', '#bba080', '#d4b58e',
-    'rgba(69, 49, 43, 0.7)', 'rgb(26,188,156)', 'rgb(84,172,210)', 'rgb(44,130,201)', 'rgb(97,189,109)',
-    'rgb(147,101,184)', 'rgb(71,85,119)', 'rgb(204,204,204)', 'rgb(65,168,95)', 'rgb(0,168,133)',
-    'rgb(61,142,185)', 'rgb(41,105,176)', 'rgb(85,57,130)', 'rgb(40,50,78)', 'rgb(0,0,0)',
-    'rgb(247,218,100)', 'rgb(251,160,38)', 'rgb(235,107,86)', 'rgb(226,80,65)', 'rgb(163,143,132)',
-    'rgb(239,239,239)', 'rgb(255,255,255)', 'rgb(250,197,28)', 'rgb(243,121,52)', 'rgb(209,72,65)',
-    'rgb(184,49,47)', 'rgb(124,112,107)', 'rgb(209,213,216)']
+  'rgba(69, 49, 43, 0.7)', 'rgb(26,188,156)', 'rgb(84,172,210)', 'rgb(44,130,201)', 'rgb(97,189,109)',
+  'rgb(147,101,184)', 'rgb(71,85,119)', 'rgb(204,204,204)', 'rgb(65,168,95)', 'rgb(0,168,133)',
+  'rgb(61,142,185)', 'rgb(41,105,176)', 'rgb(85,57,130)', 'rgb(40,50,78)', 'rgb(0,0,0)',
+  'rgb(247,218,100)', 'rgb(251,160,38)', 'rgb(235,107,86)', 'rgb(226,80,65)', 'rgb(163,143,132)',
+  'rgb(239,239,239)', 'rgb(255,255,255)', 'rgb(250,197,28)', 'rgb(243,121,52)', 'rgb(209,72,65)',
+  'rgb(184,49,47)', 'rgb(124,112,107)', 'rgb(209,213,216)']
 
 class PublicEditor extends React.Component {
 
@@ -166,7 +166,7 @@ class PublicEditor extends React.Component {
                 toolbarClassName="toolbar-class"
                 onEditorStateChange={this.onEditorStateChange}
                 toolbar={{
-                  colorPicker: { colors } 
+                  colorPicker: { colors }
                 }}
                 localization={{
                   locale: 'ru',
@@ -213,10 +213,18 @@ class PublicEditor extends React.Component {
                   component="span"
                   className={classes.button}
                   disabled={fetching}>
-                  {id ? 'Изменить' : 'Добавить'}
+                  {id ? 'Сохранить' : 'Добавить'}
                 </Button>
                 {fetching && <CircularProgress size={24} className={classes.buttonProgress} />}
               </div>
+              <Button
+                onClick={() => this.props.history.push(this.props.pathOnCreate)}
+                variant="outlined"
+                component="span"
+                className={classes.button}
+              >
+                Отмена
+              </Button>
               <FormControlLabel
                 control={
                   <Switch

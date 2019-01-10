@@ -59,6 +59,7 @@ const DishManager = ({ classes, dishDialogOpen, moveDish, deleteDish, dish, dish
           mini variant="fab"
           aria-label="Delete"
           className={classes.button}
+          title="Переместить блюдо вверх"
         >
           <Icon fontSize="small">keyboard_arrow_up</Icon>
         </Button>
@@ -68,6 +69,7 @@ const DishManager = ({ classes, dishDialogOpen, moveDish, deleteDish, dish, dish
           mini variant="fab"
           aria-label="Delete"
           className={classes.button}
+          title="Переместить блюдо вниз"
         >
           <Icon fontSize="small">keyboard_arrow_down</Icon>
         </Button>
@@ -77,6 +79,7 @@ const DishManager = ({ classes, dishDialogOpen, moveDish, deleteDish, dish, dish
           mini variant="fab"
           aria-label="Delete"
           className={classes.button}
+          title="Применить"
         >
           <Icon fontSize="small">done</Icon>
         </Button>
