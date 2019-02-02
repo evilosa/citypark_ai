@@ -75,7 +75,7 @@ class DishNew extends React.Component {
   }
 
   render() {
-    const { id, title, cost, weight, can_order, description, code, hidden, imageAttributes } = this.state.dish
+    const { id, title, cost, weight, can_order, description, code, hidden, imageAttributes, weighter } = this.state.dish
     const { fetching, dishDialogOpen, classes, dishDialog: { open } } = this.props
     return (
       <Dialog
@@ -175,6 +175,17 @@ class DishNew extends React.Component {
                 />
               }
               label="Доступно на вынос"
+            />
+            <FormControlLabel
+              control={
+                <Switch
+                  onChange={() => this.handleChange({ weighter: !weighter })}
+                  checked={weighter}
+                  name="weighter"
+                  color="primary"
+                />
+              }
+              label="Весовое"
             />
           </div>
         </DialogContent>
