@@ -10,6 +10,10 @@ export default theme => ({
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
   },
+  textGroup: {
+    display: 'flex',
+    justifyContent: 'space-between'
+  },
   button: {
     margin: theme.spacing.unit,
   },

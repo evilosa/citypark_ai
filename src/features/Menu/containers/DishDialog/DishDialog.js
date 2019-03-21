@@ -53,11 +53,11 @@ class DishNew extends React.Component {
     let { code } = this.state.dish
     if (code.length < lengthDishCode) {
       code = '0'.repeat(lengthDishCode - code.length) + code
-      this.setState(prev => ({ 
+      this.setState(prev => ({
         ...prev,
         dish: {
           ...prev.dish,
-          code 
+          code
         }}))
     }
   }
@@ -82,6 +82,8 @@ class DishNew extends React.Component {
         open={open || false}
         onClose={() => dishDialogOpen(false, true)}
         aria-labelledby="form-categoryDialog-title"
+        fullWidth
+        maxWidth="md"
       >
         <DialogTitle id="form-categoryDialog-title">{ id ? 'Изменение блюда' : 'Добавление нового блюда'}</DialogTitle>
         <DialogContent className={classes.container}>
@@ -95,7 +97,7 @@ class DishNew extends React.Component {
             margin="normal"
             variant="outlined"
           />
-          <div style={{display: 'flex'}}>
+          <div className={classes.textGroup}>
             <TextField
               onChange={this.handleChange}
               className={classes.textField}
