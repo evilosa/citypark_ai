@@ -41,7 +41,6 @@ class DishesList extends React.Component {
     <List className="dishes-list">
       {this.dishesList()}
     </List>
-
 }
 
 const mapStateToProps = state => {

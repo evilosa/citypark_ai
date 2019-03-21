@@ -5,11 +5,11 @@ import { CategoriesList, CategoryDialog, CategoryManager, DishManager, DishDialo
 export default () =>
   <div className="height100">
     <Grid className="height100" container spacing={8}>
-      <Grid item xs={4}>
+      <Grid className="height100" item xs={4}>
         <CategoryManager />
         <CategoriesList />
       </Grid>
-      <Grid item xs={8}>
+      <Grid className="height100" item xs={8}>
         <DishManager />
         <DishesList />
       </Grid>
