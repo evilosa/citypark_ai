@@ -48,6 +48,20 @@ class DishNew extends React.Component {
       })
   }
 
+  handleOnBlur1CCode = () => {
+    const lengthDishCode = 9
+    let { code } = this.state.dish
+    if (code.length < lengthDishCode) {
+      code = '0'.repeat(lengthDishCode - code.length) + code
+      this.setState(prev => ({ 
+        ...prev,
+        dish: {
+          ...prev.dish,
+          code 
+        }}))
+    }
+  }
+
   componentWillReceiveProps = nextProps => {
     const { dish, errors } = nextProps
     const fetching = nextProps.fetching === types.DISHES_CREATE || nextProps.fetching === types.DISH_UPDATE
@@ -61,7 +75,7 @@ class DishNew extends React.Component {
   }
 
   render() {
-    const { id, title, cost, weight, can_order, description, code, hidden, imageAttributes } = this.state.dish
+    const { id, title, cost, weight, can_order, description, code, hidden, imageAttributes, weighter } = this.state.dish
     const { fetching, dishDialogOpen, classes, dishDialog: { open } } = this.props
     return (
       <Dialog
@@ -104,6 +118,7 @@ class DishNew extends React.Component {
             />
             <TextField
               onChange={this.handleChange}
+              onBlur={this.handleOnBlur1CCode}
               className={classes.textField}
               value={code}
               label="Код в 1С"
@@ -160,6 +175,17 @@ class DishNew extends React.Component {
                 />
               }
               label="Доступно на вынос"
+            />
+            <FormControlLabel
+              control={
+                <Switch
+                  onChange={() => this.handleChange({ weighter: !weighter })}
+                  checked={weighter}
+                  name="weighter"
+                  color="primary"
+                />
+              }
+              label="Весовое"
             />
           </div>
         </DialogContent>

@@ -60,6 +60,7 @@ const CategoryManager = ({ classes, category, categories, moveCategory, changeOr
             mini variant="fab"
             aria-label="Delete"
             className={classes.button}
+            title="Переместить категорию вверх"
           >
             <Icon fontSize="small">keyboard_arrow_up</Icon>
           </Button>
@@ -69,6 +70,7 @@ const CategoryManager = ({ classes, category, categories, moveCategory, changeOr
             mini variant="fab"
             aria-label="Delete"
             className={classes.button}
+            title="Переместить категорию вниз"
           >
             <Icon fontSize="small">keyboard_arrow_down</Icon>
           </Button>
@@ -78,6 +80,7 @@ const CategoryManager = ({ classes, category, categories, moveCategory, changeOr
             mini variant="fab"
             aria-label="Delete"
             className={classes.button}
+            title="Применить"
           >
             <Icon fontSize="small">done</Icon>
           </Button>
