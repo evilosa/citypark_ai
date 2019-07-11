@@ -8,7 +8,7 @@ import Typography from '@material-ui/core/Typography'
 import { renderRoutes } from 'react-router-config'
 import Button from '@material-ui/core/Button'
 
-import { Menu, News, Blogs, User } from 'features'
+import { Menu, News, Blogs, User, Reports } from 'features'
 import { AdminResource } from 'features/User/containers'
 
 class MainLayout extends React.Component {
@@ -33,6 +33,7 @@ class MainLayout extends React.Component {
   }
 
   render = () => {
+    console.log(Reports)
     const { route, signOut } = this.props
     const { currentTab } = this.state
     return (
@@ -42,6 +43,7 @@ class MainLayout extends React.Component {
             <Tab value={Menu.links.MENU.PATH} label={Menu.links.MENU.TITLE} />
             <Tab value={News.links.NEWS.PATH} label={News.links.NEWS.TITLE} />
             <Tab value={Blogs.links.BLOGS.PATH} label={Blogs.links.BLOGS.TITLE} />
+            <Tab value={Reports.links.REPORTS.PATH} label={Reports.links.REPORTS.TITLE} />
           </Tabs>
           <Button onClick={() => signOut()} color="inherit">Выйти</Button>
         </AppBar>

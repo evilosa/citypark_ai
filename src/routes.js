@@ -1,5 +1,5 @@
 import { MainLayout } from './components'
-import { Blogs, News, Menu } from 'features'
+import { Blogs, News, Menu, Reports } from 'features'
 
 const routes = [
   {
@@ -9,6 +9,7 @@ const routes = [
        ...Menu.routes,
        ...News.routes,
        ...Blogs.routes,
+       ...Reports.routes
     ]
   }
 ]
