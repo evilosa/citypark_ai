@@ -1,0 +1,10 @@
+.selectionPageContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 2rem;
+}
+
+.finishField {
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}

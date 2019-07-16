@@ -1,5 +1,6 @@
 import React from 'react'
 import { Menu, Icon, Button } from 'antd'
+import { Link, withRouter } from 'react-router-dom'
 import './ReportsMenu.css'
 
 const { SubMenu } = Menu
@@ -18,12 +19,15 @@ class ReportsMenu extends React.Component {
     })
   }
 
+  menuClickHandler = (path) => {
+    console.log('call onclick func')
+    this.props.history.push(path)
+  }
+
   render() {
     return (
       <div style={{ display: 'flex', width: 300, height: '100vh' }}>
         <Menu
-          // defaultSelectedKeys={['1']}
-          // defaultOpenKeys={['sub1']}
           mode="inline"
           theme="dark"
           inlineCollapsed={this.state.collapsed}
@@ -55,7 +59,7 @@ class ReportsMenu extends React.Component {
             }
           >
             <Menu.Item key="9">Сводно</Menu.Item>
-            <Menu.Item key="10">Продажи</Menu.Item>
+            <Menu.Item key="10" onClick={e => this.menuClickHandler('/reports/settings2')}>Продажи</Menu.Item>
             <Menu.Item key="11">По местам</Menu.Item>
             <Menu.Item key="12">По видам</Menu.Item>
             <Menu.Item key="13">Средний чек</Menu.Item>
@@ -96,4 +100,4 @@ class ReportsMenu extends React.Component {
   }
 }
 
-export default ReportsMenu
+export default withRouter(ReportsMenu)

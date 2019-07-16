@@ -3,6 +3,8 @@ import './SalesCombined.css'
 import { Table } from 'antd'
 import uuid from 'uuid'
 
+import Breadcrumbs from '../BreadCrumb'
+
 const fakeData = [
   {
     number: 1,
@@ -228,14 +230,19 @@ const groupBy = (sourceTable, groupFields, totalFields) => {
 
 const result = groupBy(fakeData, ['organization', 'restaurantСomplex', 'hall', 'placeOfPreparation', 'name'], ['sum', 'count'])
 
-export const SalesCombined = () => {
-  console.log('result', result)
+export const SalesCombined = (props) => {
+  console.log(result)
   return (
-    <Table 
+    <div style={{margin: '2rem'}}>
+      <Breadcrumbs title={props.route.title} path={props.route.path} />
+      <Table 
       columns={columns} 
       dataSource={result}
       bordered={true} 
       pagination={false}
     />
+    </div>
   )
+    
+    
 }

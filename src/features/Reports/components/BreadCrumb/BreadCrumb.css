@@ -1,0 +1,13 @@
+@import '~antd/dist/antd.css';
+
+.breadCrumbContainer {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  min-height: 5rem;
+  
+}
+
+.breadCrumb {
+  margin: 2rem;
+}

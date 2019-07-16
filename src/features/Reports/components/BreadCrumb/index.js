@@ -1,1 +1,3 @@
-export * from './BreadCrumb'
+import Breadcrumbs from './BreadCrumb'
+
+export default Breadcrumbs

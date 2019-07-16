@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 
-import { MainPageReports } from '../components/'
+import { MainPageReports } from '../components'
 
 const mapStateToProps = (state, ownProps) => ({})
 
@@ -10,4 +10,4 @@ const mapDispatchToProps = {
 
 const ReduxWrapper = connect(mapStateToProps, mapDispatchToProps)
 
-export const ReportsContainer = ReduxWrapper(MainPageReports)
+export const MainPageReportsContainer = ReduxWrapper(MainPageReports)
