@@ -7,6 +7,7 @@ const { Title } = Typography
 
 const Breadcrumbs = (props) => {
 
+  console.log('Bread props', props)
   let titles = props.title.split(', ');
   
   const renderItem = () => {

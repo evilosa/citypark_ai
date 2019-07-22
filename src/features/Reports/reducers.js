@@ -5,7 +5,12 @@ const initialState = {
   error: '',
   salesCombined: [],
   salesTotal: [],
-  salesByTradePlace: []
+  salesByCookingPlace: [],
+  salesByCookingType: [],
+  averageBill: [],
+  minimalStore: [],
+  cardDiscount: []
+  
 }
 
 const reportsReducer = (state = initialState, action) => {

@@ -7,6 +7,24 @@ const routes = [
     exact: true,
     component: containers.MainPageReportsContainer
   },
+  //settings
+  {
+    path: links.REPORTS_SELECTION_SETTINGS_ONE.PATH,
+    title: `${links.REPORTS.TITLE}, ${links.REPORTS_SELECTION_SETTINGS_ONE.TITLE}`,
+    component: containers.SelectionSettingsOneContainer
+  },
+  {
+    path: links.REPORTS_SELECTION_SETTINGS_TWO.PATH,
+    title: `${links.REPORTS.TITLE}, ${links.REPORTS_SELECTION_SETTINGS_TWO.TITLE}`,
+    component: containers.SelectionSettingsTwoContainer
+  },
+  //cash
+  {
+    path: links.REPORTS_CASH.PATH,
+    title: `${links.REPORTS.TITLE}, ${links.REPORTS_CASH.TITLE}`,
+    component: 
+  },
+  //restaurant
   {
     path: links.REPORTS_RESTAURANT_SALES_COMBINED.PATH,
     title: `${links.REPORTS.TITLE}, ${links.REPORTS_RESTAURANT_SALES_COMBINED.TITLE}`,
@@ -26,17 +44,22 @@ const routes = [
     path: links.REPORTS_RESTAURANT_SALES_BY_COOKING_TYPE.PATH,
     title: `${links.REPORTS.TITLE}, ${links.REPORTS_RESTAURANT_SALES_BY_COOKING_TYPE.TITLE}`,
     component: containers.SalesByCookingTypeContainer
+  }, {
+    path: links.REPORTS_RESTAURANT_AVERAGE_BILL.PATH,
+    title: `${links.REPORTS.TITLE}, ${links.REPORTS_RESTAURANT_AVERAGE_BILL.TITLE}`,
+    component: containers.AverageBillContainer
   },
   {
-    path: links.REPORTS_SELECTION_SETTINGS_ONE.PATH,
-    title: `${links.REPORTS.TITLE}, ${links.REPORTS_SELECTION_SETTINGS_ONE.TITLE}`,
-    component: containers.SelectionSettingsOneContainer
+    path: links.REPORTS_RESTAURANT_MINIMAL_STORE.PATH,
+    title: `${links.REPORTS.TITLE}, ${links.REPORTS_RESTAURANT_MINIMAL_STORE.TITLE}`,
+    component: containers.MinimalStoreContainer
   },
   {
-    path: links.REPORTS_SELECTION_SETTINGS_TWO.PATH,
-    title: `${links.REPORTS.TITLE}, ${links.REPORTS_SELECTION_SETTINGS_TWO.TITLE}`,
-    component: containers.SelectionSettingsTwoContainer
+    path: links.REPORTS_RESTAURANT_CARD_DISCOUNT.PATH,
+    title: `${links.REPORTS.TITLE}, ${links.REPORTS_RESTAURANT_CARD_DISCOUNT.TITLE}`,
+    component: containers.CardDiscountContainer
   }
+  
 ]
 
 export default routes

@@ -26,7 +26,7 @@ export class SelectionSettingsOne extends React.Component {
     console.log('state', this.state)
     return (
       <div>
-        <BreadCrumb title={this.props.route.title} path={this.props.route.path} />
+        {/* <BreadCrumb title={this.props.route.title} path={this.props.route.path} /> */}
         <div className='selectionPageContainer'>
           <div className='dateField'>
             <Title level={4} type='secondary'>Период</Title>
@@ -39,7 +39,12 @@ export class SelectionSettingsOne extends React.Component {
             />
           </div>
           <div className='buttonContainer'>
-            <Button type="primary" icon="save" size='large'>
+            <Button
+              type="primary"
+              icon="save"
+              size='large'
+              onClick={e => this.props.getData(this.state.selectedDate)}
+            >
               Сформировать
             </Button>
           </div>

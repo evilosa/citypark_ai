@@ -13,6 +13,11 @@ export const REPORTS_SELECTION_SETTINGS_TWO = {
   TITLE: 'Настройки отбора'
 }
 
+export const REPORTS_CASH = {
+  PATH: REPORTS.PATH + '/cash',
+  TITLE: 'Остатки в кассе ресторана'
+}
+
 export const REPORTS_RESTAURANT_SALES_COMBINED = {
   PATH: REPORTS.PATH + '/salesCombined',
   TITLE: 'Общая выручка по ресторанам'
@@ -31,4 +36,19 @@ export const REPORTS_RESTAURANT_SALES_BY_COOKING_PLACE = {
 export const REPORTS_RESTAURANT_SALES_BY_COOKING_TYPE = {
   PATH: REPORTS.PATH + '/salesByCookingType',
   TITLE: 'Продажи по видам мест приготовления'
+}
+
+export const REPORTS_RESTAURANT_AVERAGE_BILL = {
+  PATH: REPORTS.PATH + '/averageBill',
+  TITLE: 'Средний чек'
+}
+
+export const REPORTS_RESTAURANT_MINIMAL_STORE = {
+  PATH: REPORTS.PATH + '/minimalStore',
+  TITLE: 'Минимальные остатки запасов'
+}
+
+export const REPORTS_RESTAURANT_CARD_DISCOUNT = {
+  PATH: REPORTS.PATH + '/cardDiscount',
+  TITLE: 'Накопления по дисконтным картам'
 }
