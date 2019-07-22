@@ -25,5 +25,10 @@ export const REPORTS_RESTAURANT_SALES_TOTAL = {
 
 export const REPORTS_RESTAURANT_SALES_BY_COOKING_PLACE = {
   PATH: REPORTS.PATH + '/salesByCookingPlace',
+  TITLE: 'Продажи по местам приготовления'
+}
+
+export const REPORTS_RESTAURANT_SALES_BY_COOKING_TYPE = {
+  PATH: REPORTS.PATH + '/salesByCookingType',
   TITLE: 'Продажи по видам мест приготовления'
 }

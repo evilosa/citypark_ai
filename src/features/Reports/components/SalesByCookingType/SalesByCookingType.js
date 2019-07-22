@@ -1,5 +1,4 @@
 import React from 'react'
-import './SalesCombined.css'
 import { Table } from 'antd'
 import { Spin } from 'antd'
 import uuid from 'uuid'
@@ -14,25 +13,13 @@ import { groupBy } from '../../../../utils'
 numeral.locale('ru');
 numeral.defaultFormat('0,0.00')
 
-const keyName = 'Product'
+const keyName = 'CookingPlace'
 
 const columns = [
   {
     title: 'Показатель',
     dataIndex: keyName,
     key: keyName,
-  },
-  {
-    title: 'Единица измерения',
-    dataIndex: 'ProductUnit',
-    key: 'ProductUnit',
-    width: '12%'
-  },
-  {
-    title: 'Количество',
-    dataIndex: 'Count',
-    key: 'Count',
-    width: '12%',
   },
   {
     title: 'Сумма',
@@ -42,7 +29,7 @@ const columns = [
   },
 ];
 
-export class SalesCombined extends React.Component {
+export class SalesByCookingType extends React.Component {
 
   state = {
     isSettingsVisible: true,
@@ -51,7 +38,7 @@ export class SalesCombined extends React.Component {
    
   componentWillReceiveProps(nextProps) {
     if (nextProps.items && this.props.items != nextProps.items) {
-      const result = groupBy(nextProps.items, keyName, ['Organization', 'Restaurant', 'TradePlace', 'CookingPlace'], ['Sum', 'Count'])
+      const result = groupBy(nextProps.items, keyName, ['Organization'], ['Sum'])
       this.setState({
         items: result
       })
@@ -67,7 +54,7 @@ export class SalesCombined extends React.Component {
     // convert to 1c dates
     const startFormatted=moment(start).format('YYYYMMDDHHmmss')
     const finishFormatted=moment(finish).format('YYYYMMDDHHmmss')
-    this.props.fetchSalesCombined(startFormatted, finishFormatted)
+    this.props.fetchSalesByCookingType(startFormatted, finishFormatted)
   }
 
   render() {

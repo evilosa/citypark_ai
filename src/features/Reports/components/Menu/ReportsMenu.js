@@ -62,7 +62,7 @@ class ReportsMenu extends React.Component {
             <Menu.Item key="9" onClick={e => this.menuClickHandler('/reports/salesTotal')}>Сводно</Menu.Item>
             <Menu.Item key="10" onClick={e => this.menuClickHandler('/reports/salesCombined')}>Продажи</Menu.Item>
             <Menu.Item key="11" onClick={e => this.menuClickHandler('/reports/salesByCookingPlace')}>По местам</Menu.Item>
-            <Menu.Item key="12">По видам</Menu.Item>
+            <Menu.Item key="12" onClick={e => this.menuClickHandler('/reports/salesByCookingType')}>По видам</Menu.Item>
             <Menu.Item key="13">Средний чек</Menu.Item>
             <Menu.Item key="14">Остатки товаров</Menu.Item>
             <Menu.Item key="15">Накопления по картам</Menu.Item>

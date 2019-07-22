@@ -23,6 +23,11 @@ const routes = [
     component: containers.SalesByCookingPlaceContainer
   },
   {
+    path: links.REPORTS_RESTAURANT_SALES_BY_COOKING_TYPE.PATH,
+    title: `${links.REPORTS.TITLE}, ${links.REPORTS_RESTAURANT_SALES_BY_COOKING_TYPE.TITLE}`,
+    component: containers.SalesByCookingTypeContainer
+  },
+  {
     path: links.REPORTS_SELECTION_SETTINGS_ONE.PATH,
     title: `${links.REPORTS.TITLE}, ${links.REPORTS_SELECTION_SETTINGS_ONE.TITLE}`,
     component: containers.SelectionSettingsOneContainer
