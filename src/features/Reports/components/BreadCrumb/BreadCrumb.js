@@ -7,7 +7,6 @@ const { Title } = Typography
 
 const Breadcrumbs = (props) => {
 
-  console.log('Bread props', props)
   let titles = props.title.split(', ');
   
   const renderItem = () => {
@@ -30,7 +29,6 @@ const Breadcrumbs = (props) => {
     return result;
   }
  
-  console.log('Titles', titles)
   return (
     <div className='breadCrumbContainer'>
       <div className='breadCrumb'>

@@ -1,14 +1,12 @@
 import React from 'react'
 import { Table } from 'antd'
 import { Spin } from 'antd'
-import uuid from 'uuid'
 import moment from 'moment'
 import numeral from 'numeral'
-import locales from 'numeral/locales'
-
 import Breadcrumbs from '../BreadCrumb'
 import { SelectionSettingsTwo } from '../SelectionSettingsTwo'
 import { groupBy } from '../../../../utils'
+import locale from 'numeral/locales'
 
 numeral.locale('ru');
 numeral.defaultFormat('0,0.00')
@@ -37,7 +35,7 @@ export class SalesByCookingPlace extends React.Component {
   }
    
   componentWillReceiveProps(nextProps) {
-    if (nextProps.items && this.props.items != nextProps.items) {
+    if (nextProps.items && this.props.items !== nextProps.items) {
       const result = groupBy(nextProps.items, keyName, ['Organization'], ['Sum'])
       this.setState({
         items: result

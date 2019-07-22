@@ -1,10 +1,8 @@
 import React from 'react'
 import { Table } from 'antd'
 import { Spin } from 'antd'
-import uuid from 'uuid'
 import moment from 'moment'
 import numeral from 'numeral'
-import locales from 'numeral/locales'
 
 import Breadcrumbs from '../BreadCrumb'
 import { SelectionSettingsOne } from '../SelectionSettingsOne'
@@ -49,7 +47,7 @@ export class MinimalStore extends React.Component {
   }
    
   componentWillReceiveProps(nextProps) {
-    if (nextProps.items && this.props.items != nextProps.items) {
+    if (nextProps.items && this.props.items !== nextProps.items) {
       const result = groupBy(nextProps.items, keyName, ['Organization', 'Stock'], ['Count',  'MinimalBalance', 'ToBuy'])
       this.setState({
         items: result

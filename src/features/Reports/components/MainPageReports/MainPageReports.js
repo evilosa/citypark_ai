@@ -1,6 +1,4 @@
 import React from 'react'
-import { SalesCombined } from '../SalesCombined'
-import BreadCrumb from '../BreadCrumb'
 import Menu from '../Menu'
 
 export const MainPageReports = () => {

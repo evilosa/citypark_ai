@@ -22,7 +22,7 @@ const routes = [
   {
     path: links.REPORTS_CASH.PATH,
     title: `${links.REPORTS.TITLE}, ${links.REPORTS_CASH.TITLE}`,
-    component: 
+    component: containers.CashContainer
   },
   //restaurant
   {
@@ -58,6 +58,18 @@ const routes = [
     path: links.REPORTS_RESTAURANT_CARD_DISCOUNT.PATH,
     title: `${links.REPORTS.TITLE}, ${links.REPORTS_RESTAURANT_CARD_DISCOUNT.TITLE}`,
     component: containers.CardDiscountContainer
+  },
+  //hotel
+  {
+    path: links.REPORTS_HOTEL_SALES.PATH,
+    title: `${links.REPORTS.TITLE}, ${links.REPORTS_HOTEL_SALES.TITLE}`,
+    component: containers.HotelSalesContainer
+  },
+  //other
+  {
+    path: links.REPORTS_MONTH_PROFIT.PATH,
+    title: `${links.REPORTS.TITLE}, ${links.REPORTS_MONTH_PROFIT.TITLE}`,
+    component: containers.MonthProfitContainer
   }
   
 ]

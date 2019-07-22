@@ -33,7 +33,7 @@ const columns = [
   },
 ];
 
-export class CardDiscount extends React.Component {
+export class HotelSales extends React.Component {
 
   state = {
     isSettingsVisible: true,
@@ -58,7 +58,7 @@ export class CardDiscount extends React.Component {
     // convert to 1c dates
     const startFormatted=moment(start).format('YYYYMMDDHHmmss')
     const finishFormatted=moment(finish).format('YYYYMMDDHHmmss')
-    this.props.fetchCardDiscount(startFormatted, finishFormatted)
+    this.props.fetchHotelSales(startFormatted, finishFormatted)
   }
 
   render() {

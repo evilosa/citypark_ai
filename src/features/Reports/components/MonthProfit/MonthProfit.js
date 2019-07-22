@@ -11,19 +11,13 @@ import { groupBy } from '../../../../utils'
 numeral.locale('ru');
 numeral.defaultFormat('0,0.00')
 
-const keyName = 'Card'
+const keyName = 'Detailing2'
 
 const columns = [
   {
     title: 'Показатель',
     dataIndex: keyName,
     key: keyName,
-  },
-  {
-    title: 'Количество',
-    dataIndex: 'Count',
-    width: '28%',
-    key: 'Count',
   },
   {
     title: 'Сумма',
@@ -33,7 +27,7 @@ const columns = [
   },
 ];
 
-export class CardDiscount extends React.Component {
+export class MonthProfit extends React.Component {
 
   state = {
     isSettingsVisible: true,
@@ -42,7 +36,7 @@ export class CardDiscount extends React.Component {
    
   componentWillReceiveProps(nextProps) {
     if (nextProps.items && this.props.items !== nextProps.items) {
-      const result = groupBy(nextProps.items, keyName, [], ['Count','Sum'])
+      const result = groupBy(nextProps.items, keyName, ['Organization', 'IndicatorType', 'Detailing1', 'Detailing2'], ['Sum'])
       this.setState({
         items: result
       })
@@ -58,7 +52,7 @@ export class CardDiscount extends React.Component {
     // convert to 1c dates
     const startFormatted=moment(start).format('YYYYMMDDHHmmss')
     const finishFormatted=moment(finish).format('YYYYMMDDHHmmss')
-    this.props.fetchCardDiscount(startFormatted, finishFormatted)
+    this.props.fetchMonthProfit(startFormatted, finishFormatted)
   }
 
   render() {

@@ -1,5 +1,4 @@
 import React from 'react'
-import BreadCrumb from '../BreadCrumb'
 import { Button ,DatePicker, Typography } from 'antd'
 import moment from 'moment'
 import 'moment/locale/ru'
@@ -7,7 +6,7 @@ import './SelectionSettingsTwo.css'
 
 const { Title } = Typography
 const today = moment()
-const yesterday = moment().subtract('day', 1)
+const yesterday = moment().subtract(1, 'day')
 
 export class SelectionSettingsTwo extends React.Component {
 
@@ -29,10 +28,8 @@ export class SelectionSettingsTwo extends React.Component {
   }
 
   render() {
-    console.log('props', this.props)
     return (
       <div>
-        {/* <BreadCrumb title={this.props.route.title} path={this.props.route.path} /> */}
         <div className='selectionPageContainer'>
           <div className='startField'>
             <Title level={4} type='secondary'>Начало периода</Title>

@@ -52,3 +52,13 @@ export const REPORTS_RESTAURANT_CARD_DISCOUNT = {
   PATH: REPORTS.PATH + '/cardDiscount',
   TITLE: 'Накопления по дисконтным картам'
 }
+
+export const REPORTS_HOTEL_SALES = {
+  PATH: REPORTS.PATH + '/hotelSales',
+  TITLE: 'Сдача номеров'
+}
+
+export const REPORTS_MONTH_PROFIT = {
+  PATH: REPORTS.PATH + '/monthProfit',
+  TITLE: 'Анализ прибыли'
+}

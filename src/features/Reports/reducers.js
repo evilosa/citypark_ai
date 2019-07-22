@@ -9,7 +9,9 @@ const initialState = {
   salesByCookingType: [],
   averageBill: [],
   minimalStore: [],
-  cardDiscount: []
+  cardDiscount: [],
+  cash: [],
+  hotelSales: []
   
 }
 

@@ -5,13 +5,13 @@ import moment from 'moment'
 import numeral from 'numeral'
 
 import Breadcrumbs from '../BreadCrumb'
-import { SelectionSettingsTwo } from '../SelectionSettingsTwo'
+import { SelectionSettingsOne } from '../SelectionSettingsOne'
 import { groupBy } from '../../../../utils'
 
 numeral.locale('ru');
 numeral.defaultFormat('0,0.00')
 
-const keyName = 'Card'
+const keyName = 'Kassa'
 
 const columns = [
   {
@@ -20,20 +20,14 @@ const columns = [
     key: keyName,
   },
   {
-    title: 'Количество',
-    dataIndex: 'Count',
-    width: '28%',
-    key: 'Count',
-  },
-  {
     title: 'Сумма',
     dataIndex: 'Sum',
-    width: '28%',
+    width: '20%',
     key: 'Sum',
-  },
+  }
 ];
 
-export class CardDiscount extends React.Component {
+export class Cash extends React.Component {
 
   state = {
     isSettingsVisible: true,
@@ -42,7 +36,7 @@ export class CardDiscount extends React.Component {
    
   componentWillReceiveProps(nextProps) {
     if (nextProps.items && this.props.items !== nextProps.items) {
-      const result = groupBy(nextProps.items, keyName, [], ['Count','Sum'])
+      const result = groupBy(nextProps.items, keyName, ['Organization'], ['Sum'])
       this.setState({
         items: result
       })
@@ -56,9 +50,8 @@ export class CardDiscount extends React.Component {
     })
 
     // convert to 1c dates
-    const startFormatted=moment(start).format('YYYYMMDDHHmmss')
     const finishFormatted=moment(finish).format('YYYYMMDDHHmmss')
-    this.props.fetchCardDiscount(startFormatted, finishFormatted)
+    this.props.fetchCash(finishFormatted)
   }
 
   render() {
@@ -71,7 +64,7 @@ export class CardDiscount extends React.Component {
     return (
       <div style={{margin: '2rem'}}>
         <Breadcrumbs title={this.props.route.title} path={this.props.route.path} />
-        {this.state.isSettingsVisible && <SelectionSettingsTwo getData={this.getData} />}
+        {this.state.isSettingsVisible && <SelectionSettingsOne getData={this.getData} />}
           {this.state.isSettingsVisible === false && <Table 
           columns={columns} 
           dataSource={this.state.items}

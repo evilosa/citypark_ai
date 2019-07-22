@@ -1,6 +1,6 @@
 import React from 'react'
 import { Menu, Icon, Button } from 'antd'
-import { Link, withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import './ReportsMenu.css'
 
 const { SubMenu } = Menu
@@ -47,7 +47,7 @@ class ReportsMenu extends React.Component {
               </span>
             }
           >
-            <Menu.Item key="5">Ресторан</Menu.Item>
+            <Menu.Item key="5" onClick={e => this.menuClickHandler('/reports/cash')}>Ресторан</Menu.Item>
           </SubMenu>
 
           <SubMenu 
@@ -77,7 +77,7 @@ class ReportsMenu extends React.Component {
               </span>
             }
           >
-            <Menu.Item key="16">Выручка</Menu.Item>
+            <Menu.Item key="16" onClick={e => this.menuClickHandler('/reports/hotelSales')}>Выручка</Menu.Item>
           </SubMenu>
 
           <SubMenu
@@ -89,7 +89,7 @@ class ReportsMenu extends React.Component {
               </span>
             }
           >
-            <Menu.Item key="17">Прибыль</Menu.Item>
+            <Menu.Item key="17" onClick={e => this.menuClickHandler('/reports/monthProfit')}>Прибыль</Menu.Item>
           </SubMenu>
 
         </Menu>

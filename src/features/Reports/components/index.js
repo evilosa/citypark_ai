@@ -8,6 +8,9 @@ export * from './SalesByCookingType'
 export * from './AverageBill'
 export * from './MinimalStore'
 export * from './CardDiscount'
+export * from './Cash'
+export * from './HotelSales'
+export * from './MonthProfit'
 
 
 
