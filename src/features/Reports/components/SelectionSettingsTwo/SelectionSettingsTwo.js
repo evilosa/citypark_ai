@@ -2,6 +2,7 @@ import React from 'react'
 import BreadCrumb from '../BreadCrumb'
 import { Button ,DatePicker, Typography } from 'antd'
 import moment from 'moment'
+import 'moment/locale/ru'
 import './SelectionSettingsTwo.css'
 
 const { Title } = Typography
@@ -21,17 +22,24 @@ export class SelectionSettingsTwo extends React.Component {
     })
   }
 
+  changeFinishDateHandler = (newValue) => {
+    this.setState({
+      finishValue: newValue
+    })
+  }
+
   render() {
-    console.log('state', this.state)
+    console.log('props', this.props)
     return (
       <div>
-        <BreadCrumb title={this.props.route.title} path={this.props.route.path} />
+        {/* <BreadCrumb title={this.props.route.title} path={this.props.route.path} /> */}
         <div className='selectionPageContainer'>
           <div className='startField'>
             <Title level={4} type='secondary'>Начало периода</Title>
             <DatePicker 
               size='large' 
-              format='DD MMMM YYYY' 
+              format='DD MMMM YYYY, hh:mm' 
+              placeholder='Выберите дату начала периода'
               defaultValue={this.state.startValue}
               onChange={(date, dateString) => this.changeStartDateHandler(date, dateString)}
             />
@@ -40,13 +48,19 @@ export class SelectionSettingsTwo extends React.Component {
             <Title level={4} type='secondary'>Конец периода</Title>
             <DatePicker 
               size='large'
-              format='DD MMMM YYYY'
+              format='DD MMMM YYYY, hh:mm' 
+              placeholder='Выберите дату окончания периода'
               defaultValue={this.state.finishValue}
-              onChange={e => this.changeDateHandler('finishValue', e.target.value)}
+              onChange={(date, dateString) => this.changeFinishDateHandler(date, dateString)}
             />
           </div>
           <div className='buttonContainer'>
-            <Button type="primary" icon="save" size='large'>
+            <Button 
+              type="primary"
+              icon="save"
+              size='large'
+              onClick={e => this.props.getData(this.state.startValue, this.state.finishValue)}
+            >
               Сформировать
             </Button>
           </div>

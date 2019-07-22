@@ -33,7 +33,6 @@ class MainLayout extends React.Component {
   }
 
   render = () => {
-    console.log(Reports)
     const { route, signOut } = this.props
     const { currentTab } = this.state
     return (

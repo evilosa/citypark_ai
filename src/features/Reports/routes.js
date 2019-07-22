@@ -13,6 +13,16 @@ const routes = [
     component: containers.SalesCombinedContainer
   },
   {
+    path: links.REPORTS_RESTAURANT_SALES_TOTAL.PATH,
+    title: `${links.REPORTS.TITLE}, ${links.REPORTS_RESTAURANT_SALES_TOTAL.TITLE}`,
+    component: containers.SalesTotalContainer
+  },
+  {
+    path: links.REPORTS_RESTAURANT_SALES_BY_COOKING_PLACE.PATH,
+    title:  `${links.REPORTS.TITLE}, ${links.REPORTS_RESTAURANT_SALES_BY_COOKING_PLACE.TITLE}`,
+    component: containers.SalesByCookingPlaceContainer
+  },
+  {
     path: links.REPORTS_SELECTION_SETTINGS_ONE.PATH,
     title: `${links.REPORTS.TITLE}, ${links.REPORTS_SELECTION_SETTINGS_ONE.TITLE}`,
     component: containers.SelectionSettingsOneContainer

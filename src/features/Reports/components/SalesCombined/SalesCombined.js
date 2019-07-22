@@ -1,9 +1,19 @@
 import React from 'react'
 import './SalesCombined.css'
 import { Table } from 'antd'
+import { Spin } from 'antd'
 import uuid from 'uuid'
+import moment from 'moment'
+import numeral from 'numeral'
+import locales from 'numeral/locales'
 
 import Breadcrumbs from '../BreadCrumb'
+import { SelectionSettingsTwo } from '../SelectionSettingsTwo'
+import { groupBy } from '../../../../utils'
+
+numeral.locale('ru');
+numeral.defaultFormat('0,0.00')
+
 
 const fakeData = [
   {
@@ -162,87 +172,81 @@ const fakeData = [
   }
 ]
 
+const keyName = 'Product'
+
 const columns = [
   {
     title: 'Показатель',
-    dataIndex: 'name',
-    key: 'name',
+    dataIndex: keyName,
+    key: keyName,
   },
   {
     title: 'Единица измерения',
-    dataIndex: 'unit',
-    key: 'unit',
+    dataIndex: 'ProductUnit',
+    key: 'ProductUnit',
     width: '12%'
   },
   {
     title: 'Количество',
-    dataIndex: 'count',
-    key: 'count',
+    dataIndex: 'Count',
+    key: 'Count',
     width: '12%',
   },
   {
     title: 'Сумма',
-    dataIndex: 'sum',
-    width: '30%',
-    key: 'sum',
+    dataIndex: 'Sum',
+    width: '28%',
+    key: 'Sum',
   },
 ];
 
-const groupBy = (sourceTable, groupFields, totalFields) => {
-  const [key, ...tail] = groupFields;
-  let result = sourceTable.reduce(
-    (accum, currentRow) => {
-      const existingValues = accum.filter(accumValue => accumValue.name === currentRow[key]);
-      if (existingValues.length === 0) { // такого элемента нет: добавим его в результат
-        
-        const newGroupItem = {
-          key: uuid.v1(),
-          name: currentRow[key],
-          children: [currentRow],
-        }
-        totalFields.forEach(fieldKey => {
-          newGroupItem[fieldKey] = currentRow[fieldKey]
-        })
-        accum.push(newGroupItem)
+export class SalesCombined extends React.Component {
 
-      } else { // такой элемент уже есть в результате
-        const groupItem = existingValues[0];
-        groupItem.children.push(currentRow);
-        totalFields.forEach(fieldKey => {
-          groupItem[fieldKey] = groupItem[fieldKey] + currentRow[fieldKey]
-        })
-      }
-      
-      return accum
+  state = {
+    isSettingsVisible: true,
+    items: []
+  }
+   
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.items && this.props.items != nextProps.items) {
+      const result = groupBy(nextProps.items, keyName, ['Organization', 'Restaurant', 'TradePlace', 'CookingPlace'], ['Sum', 'Count'])
+      this.setState({
+        items: result
+      })
     }
-    ,[])
-
-  // мы сгруппировали таблицу по первому ключу, поручим детям сгруппировать свои строки
-  if (tail.length > 0) {
-    result = result.map(groupedItem => {
-      groupedItem.children = groupBy(groupedItem.children, tail, totalFields);
-      return groupedItem;
-    })
   }
   
-  return result
-}
 
-const result = groupBy(fakeData, ['organization', 'restaurantСomplex', 'hall', 'placeOfPreparation', 'name'], ['sum', 'count'])
+  getData = async (start, finish) => {
+    this.setState({
+      isSettingsVisible: false
+    })
 
-export const SalesCombined = (props) => {
-  console.log(result)
-  return (
-    <div style={{margin: '2rem'}}>
-      <Breadcrumbs title={props.route.title} path={props.route.path} />
-      <Table 
-      columns={columns} 
-      dataSource={result}
-      bordered={true} 
-      pagination={false}
-    />
-    </div>
-  )
-    
-    
+    // convert to 1c dates
+    const startFormatted=moment(start).format('YYYYMMDDHHmmss')
+    const finishFormatted=moment(finish).format('YYYYMMDDHHmmss')
+    this.props.fetchSalesCombined(startFormatted, finishFormatted)
+  }
+
+  render() {
+    if (this.props.isLoading) {
+      return <div className='spinnerContainer'><Spin size="large" tip='Loading...' /></div>
+    }
+    if (this.props.error) {
+      return <div>{this.props.error}</div>
+    }
+    return (
+      <div style={{margin: '2rem'}}>
+        <Breadcrumbs title={this.props.route.title} path={this.props.route.path} />
+        {this.state.isSettingsVisible && <SelectionSettingsTwo getData={this.getData} />}
+          {this.state.isSettingsVisible === false && <Table 
+          columns={columns} 
+          dataSource={this.state.items}
+          bordered={true} 
+          pagination={false}
+          scroll={{ y: 500 }}
+        />}
+      </div>
+    )
+  }  
 }

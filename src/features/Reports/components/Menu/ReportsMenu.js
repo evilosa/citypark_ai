@@ -31,6 +31,7 @@ class ReportsMenu extends React.Component {
           mode="inline"
           theme="dark"
           inlineCollapsed={this.state.collapsed}
+          selectable={false}
         >
           <Menu.Item key="1">
             <Icon type="appstore" theme="filled" />
@@ -49,7 +50,7 @@ class ReportsMenu extends React.Component {
             <Menu.Item key="5">Ресторан</Menu.Item>
           </SubMenu>
 
-          <SubMenu
+          <SubMenu 
             key="sub2"
             title={
               <span>
@@ -58,9 +59,9 @@ class ReportsMenu extends React.Component {
               </span>
             }
           >
-            <Menu.Item key="9">Сводно</Menu.Item>
-            <Menu.Item key="10" onClick={e => this.menuClickHandler('/reports/settings2')}>Продажи</Menu.Item>
-            <Menu.Item key="11">По местам</Menu.Item>
+            <Menu.Item key="9" onClick={e => this.menuClickHandler('/reports/salesTotal')}>Сводно</Menu.Item>
+            <Menu.Item key="10" onClick={e => this.menuClickHandler('/reports/salesCombined')}>Продажи</Menu.Item>
+            <Menu.Item key="11" onClick={e => this.menuClickHandler('/reports/salesByCookingPlace')}>По местам</Menu.Item>
             <Menu.Item key="12">По видам</Menu.Item>
             <Menu.Item key="13">Средний чек</Menu.Item>
             <Menu.Item key="14">Остатки товаров</Menu.Item>
@@ -92,8 +93,8 @@ class ReportsMenu extends React.Component {
           </SubMenu>
 
         </Menu>
-        <Button type="primary" onClick={this.toggleCollapsed} style={{ margin: 10 }}>
-          <Icon type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'} />
+        <Button onClick={this.toggleCollapsed} style={{ margin: 10, "background-color": "lightseagreen" }} >
+          <Icon type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'} style={{ color: 'white' }} />
         </Button>
       </div>
     )

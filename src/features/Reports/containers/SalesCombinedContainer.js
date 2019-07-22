@@ -1,11 +1,16 @@
 import { connect } from 'react-redux'
 
 import { SalesCombined } from '../components/SalesCombined'
+import { fetchSalesCombined } from '../actions/restaurant/fetchSalesCombined'
 
-const mapStateToProps = (state, ownProps) => ({})
+const mapStateToProps = (state, ownProps) => ({
+  items: state.reports.salesCombined,
+  isLoading: state.reports.isLoading,
+  error: state.reports.error
+})
 
 const mapDispatchToProps = {
-  //TODO add action
+  fetchSalesCombined
 }
 
 const ReduxWrapper = connect(mapStateToProps, mapDispatchToProps)
