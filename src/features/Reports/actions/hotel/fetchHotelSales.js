@@ -1,8 +1,8 @@
 import axios from 'axios'
 import * as t from '../../actionTypes'
+import settings from '../../../../config/settings'
 
 const reportKey = 'hotelSales'
-const baseUrl = 'http://185.175.119.14:8091'
 
 export const fetchHotelSales = (StartPeriod, EndPeriod) => async dispatch => {
   dispatch({
@@ -11,7 +11,7 @@ export const fetchHotelSales = (StartPeriod, EndPeriod) => async dispatch => {
   })
 
   try {
-    const response = await axios.get(`${baseUrl}/citypark_reports/hs/reports/v1/hotel_sales?StartPeriod=${StartPeriod}&EndPeriod=${EndPeriod}`, {
+    const response = await axios.get(`${settings.baseUrlHotel}/citypark_hotel/hs/reports/v1/room_sales?StartPeriod=${StartPeriod}&EndPeriod=${EndPeriod}`, {
       method: 'get',
       headers: {
         Authorization: 

@@ -12,5 +12,7 @@ export * from './Cash'
 export * from './HotelSales'
 export * from './MonthProfit'
 
+export * from './Charts'
+
 
 

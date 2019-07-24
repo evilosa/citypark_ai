@@ -11,8 +11,8 @@ const initialState = {
   minimalStore: [],
   cardDiscount: [],
   cash: [],
-  hotelSales: []
-  
+  hotelSales: [],
+  charts: []  
 }
 
 const reportsReducer = (state = initialState, action) => {

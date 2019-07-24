@@ -1,8 +1,8 @@
 import axios from 'axios'
 import * as t from '../../actionTypes'
+import settings from '../../../../config/settings'
 
 const reportKey = 'minimalStore'
-const baseUrl = 'http://185.175.119.14:8091'
 
 export const fetchMinimalStore = (EndPeriod) => async dispatch => {
   dispatch({
@@ -11,7 +11,7 @@ export const fetchMinimalStore = (EndPeriod) => async dispatch => {
   })
 
   try {
-    const response = await axios.get(`${baseUrl}/citypark_reports/hs/reports/v1/minimal_store?EndPeriod=${EndPeriod}`, {
+    const response = await axios.get(`${settings.baseUrlRestaurant}/citypark_reports/hs/reports/v1/minimal_store?EndPeriod=${EndPeriod}`, {
       method: 'get',
       headers: {
         Authorization: 
