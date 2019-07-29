@@ -13,6 +13,7 @@ export * from './HotelSales'
 export * from './MonthProfit'
 
 export * from './Charts'
+export * from './ChartsHotel'
 
 
 

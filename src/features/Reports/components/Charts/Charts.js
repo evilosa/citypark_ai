@@ -74,7 +74,7 @@ export class Charts extends React.Component {
   }
 
   getYesterdayProfit = () => {
-    const yesterday = moment().subtract(20, 'day').format('DD.MM.YYYY')
+    const yesterday = moment().subtract(1, 'day').format('DD.MM.YYYY')
     let result = this.props.items.filter(currentItem => currentItem.Date === yesterday)
       let sum = result.reduce((accum, currentItem) => {
         return accum + currentItem.Sum
@@ -83,7 +83,7 @@ export class Charts extends React.Component {
   }
 
   getWeekProfit = () => {
-    let result = this.props.items.slice(0, 14)
+    let result = this.props.items.slice(46, 60)
       let sum = result.reduce((accum, currentItem) => {
         return accum + currentItem.Sum
       }, 0)
@@ -98,13 +98,12 @@ export class Charts extends React.Component {
   }
 
   getTodayProfit = () => {
-    const today = moment().subtract(30, 'day').format('DD.MM.YYYY')
+    const today = moment().format('DD.MM.YYYY')
     let result = this.props.items.filter(currentItem => currentItem.Date === today)
       let sum = result.reduce((accum, currentItem) => {
         return accum + currentItem.Sum
       }, 0)
     return numeral(sum).format()
-    console.log('today', result)
   }
 
   render () {

@@ -1,6 +1,6 @@
 import React from 'react'
-import { Button ,DatePicker, Typography } from 'antd'
-import moment from 'moment'
+import { Button ,DatePicker, Typography, TimePicker } from 'antd'
+import moment, { isMoment } from 'moment'
 import 'moment/locale/ru'
 import './SelectionSettingsOne.css'
 
@@ -12,7 +12,8 @@ const today = moment()
 export class SelectionSettingsOne extends React.Component {
 
   state = {
-    selectedDate: today
+    selectedDate: today,
+    selectedTime: today
   }
 
   changeSelectedDateHandler = (newValue) => {
@@ -20,6 +21,17 @@ export class SelectionSettingsOne extends React.Component {
       selectedDate: newValue
     })
   }
+
+  changeSelectedTimeHandler = (newValue) => {
+    this.setState({
+      selectedTime: newValue
+    })
+  }
+
+  changeDateForComponent = () => {
+    console.log('data', this.state.selectedDate._d)
+  }
+  
 
   render() {
     console.log('state', this.state)
@@ -30,7 +42,7 @@ export class SelectionSettingsOne extends React.Component {
             <Title level={4} type='secondary'>Период</Title>
             <DatePicker 
               size='large' 
-              format='DD MMMM YYYY, hh:mm' 
+              format='DD MMMM YYYY'
               placeholder='Выберите дату'
               defaultValue={this.state.selectedDate}
               onChange={(date, dateString) => this.changeSelectedDateHandler(date, dateString)}
@@ -42,6 +54,7 @@ export class SelectionSettingsOne extends React.Component {
               icon="save"
               size='large'
               onClick={e => this.props.getData(this.state.selectedDate)}
+
             >
               Сформировать
             </Button>

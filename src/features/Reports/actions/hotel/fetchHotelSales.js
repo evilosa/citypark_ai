@@ -20,7 +20,6 @@ export const fetchHotelSales = (StartPeriod, EndPeriod) => async dispatch => {
     })
     const { data } = response
     if (data) {
-      console.log(data)
       dispatch({
         type: t.FETCH_REPORT_DATA,
         payload: data,
@@ -31,7 +30,7 @@ export const fetchHotelSales = (StartPeriod, EndPeriod) => async dispatch => {
     dispatch({
       type: t.FETCH_REPORT_DATA,
       payload: exception.message,
-      mets: { error: true, reportKey }
+      meta: { error: true, reportKey }
     })
   }
 }

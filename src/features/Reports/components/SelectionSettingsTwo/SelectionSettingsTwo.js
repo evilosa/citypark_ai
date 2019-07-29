@@ -35,7 +35,7 @@ export class SelectionSettingsTwo extends React.Component {
             <Title level={4} type='secondary'>Начало периода</Title>
             <DatePicker 
               size='large' 
-              format='DD MMMM YYYY, hh:mm' 
+              format='DD MMMM YYYY' 
               placeholder='Выберите дату начала периода'
               defaultValue={this.state.startValue}
               onChange={(date, dateString) => this.changeStartDateHandler(date, dateString)}
@@ -45,7 +45,7 @@ export class SelectionSettingsTwo extends React.Component {
             <Title level={4} type='secondary'>Конец периода</Title>
             <DatePicker 
               size='large'
-              format='DD MMMM YYYY, hh:mm' 
+              format='DD MMMM YYYY' 
               placeholder='Выберите дату окончания периода'
               defaultValue={this.state.finishValue}
               onChange={(date, dateString) => this.changeFinishDateHandler(date, dateString)}

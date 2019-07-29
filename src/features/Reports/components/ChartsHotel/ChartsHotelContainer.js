@@ -1,18 +1,18 @@
 import { connect } from 'react-redux'
 
-import { Charts } from './Charts'
-import { fetchDataForCharts } from '../../actions/other/fetchDataForCharts'
+import { ChartsHotel } from './ChartsHotel'
+import { fetchHotelSalesForCharts } from '../../actions/hotel/fetchHotelSalesForCharts'
 
 const mapStateToProps = (state, ownProps) => ({
-  items: state.reports.charts,
+  items: state.reports.hotelCharts,
   isLoading: state.reports.isLoading,
   error: state.reports.error
 })
 
 const mapDispatchToProps = {
-  fetchDataForCharts
+  fetchHotelSalesForCharts
 }
 
 const ReduxWrapper = connect(mapStateToProps, mapDispatchToProps)
 
-export const ChartsContainer = ReduxWrapper(Charts)
+export const ChartsHotelContainer = ReduxWrapper(ChartsHotel)

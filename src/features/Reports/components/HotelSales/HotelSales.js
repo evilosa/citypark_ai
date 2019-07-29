@@ -11,7 +11,7 @@ import { groupBy } from '../../../../utils'
 numeral.locale('ru');
 numeral.defaultFormat('0,0.00')
 
-const keyName = 'Card'
+const keyName = 'Room'
 
 const columns = [
   {
@@ -42,7 +42,7 @@ export class HotelSales extends React.Component {
    
   componentWillReceiveProps(nextProps) {
     if (nextProps.items && this.props.items !== nextProps.items) {
-      const result = groupBy(nextProps.items, keyName, [], ['Count','Sum'])
+      const result = groupBy(nextProps.items, keyName, ['Organization'], ['Count','Sum'])
       this.setState({
         items: result
       })
