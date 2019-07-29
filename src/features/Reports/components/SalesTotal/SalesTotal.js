@@ -22,7 +22,7 @@ const columns = [
   {
     title: 'Сумма',
     dataIndex: 'Sum',
-    width: '28%',
+    width: '20%',
     key: 'Sum',
   },
 ];
