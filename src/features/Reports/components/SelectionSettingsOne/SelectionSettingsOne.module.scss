@@ -1,0 +1,20 @@
+
+.selectionPageContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 2rem;
+}
+
+.dateField {
+  margin-bottom: 2rem;
+}
+
+.buttonContainer {
+  margin-top: 1rem;
+}
+
+// @media (max-width: 800px) {
+//   .selectionPageContainer {
+//     flex-direction: row;
+//   }
+// }

@@ -2,7 +2,7 @@ import React from 'react'
 import { Button ,DatePicker, Typography, TimePicker } from 'antd'
 import moment, { isMoment } from 'moment'
 import 'moment/locale/ru'
-import './SelectionSettingsOne.css'
+import styles from './SelectionSettingsOne.module.scss'
 
 const { Title } = Typography
 
@@ -37,22 +37,22 @@ export class SelectionSettingsOne extends React.Component {
     console.log('state', this.state)
     return (
       <div>
-        <div className='selectionPageContainer'>
-          <div className='dateField'>
+        <div className={styles.selectionPageContainer}>
+          <div className={styles.dateField}>
             <Title level={4} type='secondary'>Период</Title>
             <DatePicker 
-              size='large' 
+              size='default' 
               format='DD MMMM YYYY'
               placeholder='Выберите дату'
               defaultValue={this.state.selectedDate}
               onChange={(date, dateString) => this.changeSelectedDateHandler(date, dateString)}
             />
           </div>
-          <div className='buttonContainer'>
+          <div className={styles.buttonContainer}>
             <Button
               type="primary"
               icon="save"
-              size='large'
+              size='default'
               onClick={e => this.props.getData(this.state.selectedDate)}
 
             >

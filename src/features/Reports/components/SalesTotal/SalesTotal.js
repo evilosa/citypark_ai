@@ -64,7 +64,7 @@ export class SalesTotal extends React.Component {
       return <div>{this.props.error}</div>
     }
     return (
-      <div style={{margin: '2rem'}}>
+      <div style={{margin: '1rem'}}>
         <Breadcrumbs title={this.props.route.title} path={this.props.route.path} />
         {this.state.isSettingsVisible && <SelectionSettingsTwo getData={this.getData} />}
           {this.state.isSettingsVisible === false && <Table 

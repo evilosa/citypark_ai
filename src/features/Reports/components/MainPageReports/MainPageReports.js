@@ -7,8 +7,11 @@ export const MainPageReports = () => {
   return (
     <div style={{ display: 'flex', backgroundColor: 'F3F3F4' }}>
       <Menu />
-      <div style={{marginRight: '5rem'}}><ChartsContainer /></div>
-      <div><ChartsHotelContainer /></div>
+      <div style={{display: 'flex', flexDirection: 'column'}}>
+        <div ><ChartsContainer /></div>
+        <div><ChartsHotelContainer /></div>
+      </div>
+      
     </div>
   )
 } 

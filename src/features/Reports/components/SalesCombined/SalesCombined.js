@@ -19,24 +19,25 @@ const columns = [
     title: 'Показатель',
     dataIndex: keyName,
     key: keyName,
+    width: ''
   },
   {
-    title: 'Единица измерения',
+    title: 'Ед',
     dataIndex: 'ProductUnit',
     key: 'ProductUnit',
-    width: '12%'
+    width: '10%'
   },
   {
-    title: 'Количество',
+    title: 'Кол-во',
     dataIndex: 'Count',
     key: 'Count',
-    width: '12%',
+    width: '10%'
   },
   {
     title: 'Сумма',
     dataIndex: 'Sum',
-    width: '10%',
     key: 'Sum',
+    width: '11%'
   },
 ];
 
@@ -84,7 +85,8 @@ export class SalesCombined extends React.Component {
           dataSource={this.state.items}
           bordered={true} 
           pagination={false}
-          scroll={{ y: 500 }}
+          scroll={{ y: 100 }}
+          size='small'
         />}
       </div>
     )

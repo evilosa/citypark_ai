@@ -109,10 +109,10 @@ export class Charts extends React.Component {
   render () {
     return (
       <div style={{ marginTop: '5rem'}}>
-        <div style={{ fontSize: '2rem', marginBottom: '2rem'}}>
+        <div style={{ fontSize: '1rem', marginBottom: '1rem', marginLeft: '-2rem'}}>
           {this.getTodayProfit()}
         </div>
-        <Line data={this.getData()} options={chartOptions} width={700} height={300} />
+        <Line data={this.getData()} options={chartOptions} width={200} height={200} />
         <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '2rem'}}>
           <div style={{ display: 'flex', flexDirection: 'column' }}>
             <h3>Вчера</h3>

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Breadcrumb, Typography } from 'antd'
 import { Link, withRouter } from 'react-router-dom'
-import './BreadCrumb.css'
+import styles from './BreadCrumb.module.scss'
 
 const { Title } = Typography
 
@@ -30,9 +30,9 @@ const Breadcrumbs = (props) => {
   }
  
   return (
-    <div className='breadCrumbContainer'>
-      <div className='breadCrumb'>
-        <Title level={2}>{titles[titles.length-1]}</Title>
+    <div className={styles.breadCrumbContainer}>
+      <div className={styles.breadCrumb}>
+        <Title level={4}>{titles[titles.length-1]}</Title>
         <Breadcrumb>
           {renderItem()}
         </Breadcrumb>
