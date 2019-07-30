@@ -22,7 +22,7 @@ const columns = [
   {
     title: 'Сумма',
     dataIndex: 'Sum',
-    width: '28%',
+    width: '23%',
     key: 'Sum',
   },
 ];
@@ -71,7 +71,8 @@ export class MonthProfit extends React.Component {
           dataSource={this.state.items}
           bordered={true} 
           pagination={false}
-          scroll={{ y: 500 }}
+          scroll={{ y: 200 }}
+          size='small'
         />}
       </div>
     )

@@ -64,6 +64,7 @@ fieldset {
   font-size: 16px;
   font-size: 1rem;
   margin: 0;
+  color: white;
 }
 
 .login__body {

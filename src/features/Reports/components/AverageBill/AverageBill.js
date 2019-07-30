@@ -21,15 +21,15 @@ const columns = [
     key: keyName,
   },
   {
-    title: 'Количество',
+    title: 'Кол-во',
     dataIndex: 'Count',
     key: 'Count',
-    width: '12%',
+    width: '20%',
   },
   {
     title: 'Сумма',
     dataIndex: 'AverageBill',
-    width: '28%',
+    width: '20%',
     key: 'AverageBill',
   },
 ];
@@ -78,7 +78,8 @@ export class AverageBill extends React.Component {
           dataSource={this.state.items}
           bordered={true} 
           pagination={false}
-          scroll={{ y: 500 }}
+          scroll={{ y: 200 }}
+          size='small'
         />}
       </div>
     )

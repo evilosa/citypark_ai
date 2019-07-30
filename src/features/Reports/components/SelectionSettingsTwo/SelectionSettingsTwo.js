@@ -53,10 +53,10 @@ export class SelectionSettingsTwo extends React.Component {
           </div>
           <div className='buttonContainer'>
             <Button 
-              type="primary"
               icon="save"
               size='large'
               onClick={e => this.props.getData(this.state.startValue, this.state.finishValue)}
+              style={{ "background-color": "lightseagreen", 'color': 'white' }}
             >
               Сформировать
             </Button>

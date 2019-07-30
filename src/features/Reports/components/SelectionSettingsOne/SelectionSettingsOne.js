@@ -48,13 +48,12 @@ export class SelectionSettingsOne extends React.Component {
               onChange={(date, dateString) => this.changeSelectedDateHandler(date, dateString)}
             />
           </div>
-          <div className={styles.buttonContainer}>
+          <div style={{ marginTop: '1rem'}}>
             <Button
-              type="primary"
               icon="save"
               size='default'
               onClick={e => this.props.getData(this.state.selectedDate)}
-
+              style={{ "background-color": "lightseagreen", 'color': 'white' }}
             >
               Сформировать
             </Button>

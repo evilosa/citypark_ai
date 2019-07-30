@@ -70,7 +70,8 @@ export class Cash extends React.Component {
           dataSource={this.state.items}
           bordered={true} 
           pagination={false}
-          scroll={{ y: 500 }}
+          scroll={{ y: 200 }}
+          size='small'
         />}
       </div>
     )

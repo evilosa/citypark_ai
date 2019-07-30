@@ -5,6 +5,7 @@ import moment from 'moment'
 import numeral from 'numeral'
 
 import Breadcrumbs from '../BreadCrumb'
+import Menu from '../Menu'
 import { SelectionSettingsTwo } from '../SelectionSettingsTwo'
 import { groupBy } from '../../../../utils'
 
@@ -20,15 +21,15 @@ const columns = [
     key: keyName,
   },
   {
-    title: 'Количество',
+    title: 'Кол-во',
     dataIndex: 'Count',
-    width: '28%',
+    width: '20%',
     key: 'Count',
   },
   {
     title: 'Сумма',
     dataIndex: 'Sum',
-    width: '28%',
+    width: '25%',
     key: 'Sum',
   },
 ];
@@ -70,6 +71,7 @@ export class CardDiscount extends React.Component {
     }
     return (
       <div style={{margin: '2rem'}}>
+        <Menu />
         <Breadcrumbs title={this.props.route.title} path={this.props.route.path} />
         {this.state.isSettingsVisible && <SelectionSettingsTwo getData={this.getData} />}
           {this.state.isSettingsVisible === false && <Table 
@@ -77,7 +79,8 @@ export class CardDiscount extends React.Component {
           dataSource={this.state.items}
           bordered={true} 
           pagination={false}
-          scroll={{ y: 500 }}
+          scroll={{ y: 200 }}
+          size='small'
         />}
       </div>
     )

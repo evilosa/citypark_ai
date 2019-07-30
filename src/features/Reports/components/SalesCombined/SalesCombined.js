@@ -22,13 +22,13 @@ const columns = [
     width: ''
   },
   {
-    title: 'Ед',
+    title: 'Ед.',
     dataIndex: 'ProductUnit',
     key: 'ProductUnit',
     width: '10%'
   },
   {
-    title: 'Кол-во',
+    title: 'К-во',
     dataIndex: 'Count',
     key: 'Count',
     width: '10%'
@@ -85,7 +85,7 @@ export class SalesCombined extends React.Component {
           dataSource={this.state.items}
           bordered={true} 
           pagination={false}
-          scroll={{ y: 100 }}
+          scroll={{ y: 200 }}
           size='small'
         />}
       </div>

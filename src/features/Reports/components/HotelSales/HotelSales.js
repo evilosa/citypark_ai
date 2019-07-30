@@ -20,15 +20,15 @@ const columns = [
     key: keyName,
   },
   {
-    title: 'Количество',
+    title: 'Кол-во',
     dataIndex: 'Count',
-    width: '28%',
+    width: '20%',
     key: 'Count',
   },
   {
     title: 'Сумма',
     dataIndex: 'Sum',
-    width: '28%',
+    width: '20%',
     key: 'Sum',
   },
 ];
@@ -77,7 +77,8 @@ export class HotelSales extends React.Component {
           dataSource={this.state.items}
           bordered={true} 
           pagination={false}
-          scroll={{ y: 500 }}
+          scroll={{ y: 200 }}
+          size='small'
         />}
       </div>
     )

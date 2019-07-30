@@ -10,21 +10,20 @@ const { SubMenu } = Menu
 class ReportsMenu extends React.Component {
   
   state = {
-    isCollapsed: false,
-    width: 300,
+    isCollapsed: true,
+    width: 0,
   }
 
   toggleCollapsed = () => {
     this.setState({
       isCollapsed: !this.state.isCollapsed,
-      width: !this.state.isCollapsed ? 0 : 300,
+      width: !this.state.isCollapsed ? 0 : 240,
     })
   }
 
   menuClickHandler = (path) => {
-    console.log('call onclick func')
     this.setState({
-      width: 0,
+      width: 240,
     },
     () => {
       this.props.history.push(path)
@@ -34,13 +33,15 @@ class ReportsMenu extends React.Component {
   render() {
     const { isCollapsed, width } = this.state
     return (
-      <div style={{ display: 'flex', width, height: '100vh' }}>
-        {!isCollapsed && <Menu
+      <div style={{ display: 'flex', width, height: '100%'}}>
+        {!isCollapsed && <div style={{ overflow: 'auto' }}>
+          <Menu
+          style={{ minHeight: '100vh'}}
           mode="inline"
           theme="dark"
           selectable={false}
         >
-          <Menu.Item key="1">
+          <Menu.Item key="1" onClick={e => this.menuClickHandler('/reports')}>
             <Icon type="appstore" theme="filled" />
             <span>Главная</span>
           </Menu.Item>
@@ -99,7 +100,7 @@ class ReportsMenu extends React.Component {
             <Menu.Item key="17" onClick={e => this.menuClickHandler('/reports/monthProfit')}>Прибыль</Menu.Item>
           </SubMenu>
 
-        </Menu>}
+        </Menu></div>}
         <Button onClick={this.toggleCollapsed} style={{ margin: 10, "background-color": "lightseagreen" }} >
           <Icon type={this.state.isCollapsed ? 'menu-unfold' : 'menu-fold'} style={{ color: 'white' }} />
         </Button>

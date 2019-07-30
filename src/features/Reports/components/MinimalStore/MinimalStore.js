@@ -22,19 +22,19 @@ const columns = [
   {
     title: 'Остаток',
     dataIndex: 'Count',
-    width: '20%',
+    width: '15%',
     key: 'Count',
   },
   {
     title: 'Минимум',
     dataIndex: 'MinimalBalance',
-    width: '20%',
+    width: '15%',
     key: 'MinimalBalance',
   },
   {
     title: 'Закупить',
     dataIndex: 'ToBuy',
-    width: '20%',
+    width: '15%',
     key: 'ToBuy',
   }
 ];
@@ -84,6 +84,7 @@ export class MinimalStore extends React.Component {
           bordered={true} 
           pagination={false}
           scroll={{ y: 500 }}
+          size='small'
         />}
       </div>
     )

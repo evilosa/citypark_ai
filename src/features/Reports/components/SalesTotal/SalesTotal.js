@@ -73,6 +73,7 @@ export class SalesTotal extends React.Component {
           bordered={true} 
           pagination={false}
           scroll={{ y: 500 }}
+          size='small'
         />}
       </div>
     )

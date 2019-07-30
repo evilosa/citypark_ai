@@ -1,5 +1,5 @@
 import React from 'react'
-import { Breadcrumb, Typography } from 'antd'
+import { Breadcrumb, Typography, Button, Icon } from 'antd'
 import { Link, withRouter } from 'react-router-dom'
 import styles from './BreadCrumb.module.scss'
 
@@ -32,7 +32,16 @@ const Breadcrumbs = (props) => {
   return (
     <div className={styles.breadCrumbContainer}>
       <div className={styles.breadCrumb}>
-        <Title level={4}>{titles[titles.length-1]}</Title>
+        <div style={{display: 'flex', justifyContent: 'space-between'}}>
+          <Title level={4}>{titles[titles.length-1]}</Title>
+          <Button
+            style={{ "background-color": "lightseagreen", 'color': 'white' }}
+            onClick={e => props.history.push('/reports')}
+          >
+            <Icon type="left" style={{ color: 'white' }} />
+            Назад
+          </Button>
+        </div>
         <Breadcrumb>
           {renderItem()}
         </Breadcrumb>
