@@ -50,17 +50,19 @@ export const actions = (method, api_path, actionType, body = {}) => dispatch => 
           payload
         })
         if (actionType === '@@USER_SIGN_IN') {
-          dispatch({
-            type: '@@router/LOCATION_CHANGE',
-            payload: {
-              location: {
-                pathname: '/reports',
-                search: '',
-                hash: ''
-              },
-              action: 'PUSH'
-            }
-          })
+          if (payload.email === 'pda.citypark@mail.ru') {
+            dispatch({
+              type: '@@router/LOCATION_CHANGE',
+              payload: {
+                location: {
+                  pathname: '/reports',
+                  search: '',
+                  hash: ''
+                },
+                action: 'PUSH'
+              }
+            })
+          }
         }
       })
     )
