@@ -23,14 +23,16 @@ const chartOptions = {
         color: "black"
       }
     }]
-  }
+  },
+  responsive: false,
+  maintainAspectRatio: false
 }
  
 export class ChartsHotel extends React.Component {
 
   state = {
     startPeriod: moment().subtract(30, 'days').format('YYYYMMDDHHmmss'),
-    endPeriod: moment().format('YYYYMMDDHHmmss')
+    endPeriod: moment().format('YYYYMMDDHHmmss'),
   }
 
   componentDidMount () {
@@ -114,12 +116,14 @@ export class ChartsHotel extends React.Component {
 
   render () {
     return (
-      <div style={{ marginTop: '4rem', marginLeft: '2rem'}}>
+      <div style={{ marginTop: '4rem', marginLeft: '2rem', maxWidth: '90%'}}>
         <div style={{ fontSize: '1rem', marginBottom: '1rem'}}>
           {this.getTodayProfit()}
         </div>
-        <Line data={this.getData()} options={chartOptions} width={250} height={200} />
-        <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '2rem', marginBottom: '2rem'}}>
+        <div style={{ display: 'flex', justifyContent: 'center'}}>
+          <Line data={this.getData()} options={chartOptions} width={window.innerWidth > 400 ? 550 : 330} height={window.innerWidth > 400 ? 300 : 270} />
+        </div>
+        <div style={{ display: 'flex', justifyContent: 'space-around', marginTop: '2rem', marginBottom: '2rem'}}>
           <div style={{ display: 'flex', flexDirection: 'column' }}>
             <h3>Вчера</h3>
             {this.getYesterdayProfit()}

@@ -71,7 +71,6 @@ export class SalesByCookingPlace extends React.Component {
           dataSource={this.state.items}
           bordered={true} 
           pagination={false}
-          scroll={{ y: 200 }}
           size='small'
         />}
       </div>

@@ -19,7 +19,6 @@ export const fetchSalesCombined = (StartPeriod, EndPeriod) => async dispatch => 
       }
     })
     const { data } = response
-    // console.log(data)
     if (data) {
       dispatch({
         type: t.FETCH_REPORT_DATA,

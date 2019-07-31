@@ -72,7 +72,6 @@ export class SalesTotal extends React.Component {
           dataSource={this.state.items}
           bordered={true} 
           pagination={false}
-          scroll={{ y: 500 }}
           size='small'
         />}
       </div>

@@ -214,5 +214,3 @@ const fakeResult = [
     count: 2
   }
 ]
-
-console.log('Result', result)

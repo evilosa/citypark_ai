@@ -20,7 +20,6 @@ export const fetchCardDiscount = (StartPeriod, EndPeriod) => async dispatch => {
     })
     const { data } = response
     if (data) {
-      console.log(data)
       dispatch({
         type: t.FETCH_REPORT_DATA,
         payload: data,

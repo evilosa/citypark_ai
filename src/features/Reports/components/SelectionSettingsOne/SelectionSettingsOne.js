@@ -29,12 +29,10 @@ export class SelectionSettingsOne extends React.Component {
   }
 
   changeDateForComponent = () => {
-    console.log('data', this.state.selectedDate._d)
   }
   
 
   render() {
-    console.log('state', this.state)
     return (
       <div>
         <div className={styles.selectionPageContainer}>
@@ -48,7 +46,7 @@ export class SelectionSettingsOne extends React.Component {
               onChange={(date, dateString) => this.changeSelectedDateHandler(date, dateString)}
             />
           </div>
-          <div style={{ marginTop: '1rem'}}>
+          <div>
             <Button
               icon="save"
               size='default'

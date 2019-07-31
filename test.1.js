@@ -158,9 +158,6 @@ const fakeData = [
 const findUnics = (sourseTable, key) => {
   let i=0
   const result = sourseTable.reduce((accum, currentRow) => {
-    console.log('srep', i)
-    console.log('currentRow', currentRow)
-    console.log('accum', accum)
     i++
     const organizationRows = accum.filter(accumRow => {
       return accumRow.name === currentRow[key]
@@ -184,7 +181,6 @@ const nextLevel = organisations.map(organisation => {
   organisation.children = halls;
   return organisation
 })
-console.log(nextLevel)
 
 
 

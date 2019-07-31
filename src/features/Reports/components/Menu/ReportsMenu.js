@@ -10,8 +10,8 @@ const { SubMenu } = Menu
 class ReportsMenu extends React.Component {
   
   state = {
-    isCollapsed: true,
-    width: 0,
+    isCollapsed: false,
+    width: 240,
   }
 
   toggleCollapsed = () => {
@@ -23,7 +23,7 @@ class ReportsMenu extends React.Component {
 
   menuClickHandler = (path) => {
     this.setState({
-      width: 240,
+      width: 0,
     },
     () => {
       this.props.history.push(path)

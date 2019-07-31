@@ -44,7 +44,6 @@ export const actions = (method, api_path, actionType, body = {}) => dispatch => 
   fetch(api_path, options)
     .then(response => checkResponse(response)
       .then(payload => {
-        console.log('Shit happen')
         dispatch({
           type: actionType + SUCCESS,
           payload

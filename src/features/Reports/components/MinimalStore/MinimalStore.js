@@ -67,7 +67,6 @@ export class MinimalStore extends React.Component {
   }
 
   render() {
-    console.log('props',this.props)
     if (this.props.isLoading) {
       return <div className='spinnerContainer'><Spin size="large" tip='Loading...' /></div>
     }
@@ -83,7 +82,6 @@ export class MinimalStore extends React.Component {
           dataSource={this.state.items}
           bordered={true} 
           pagination={false}
-          scroll={{ y: 500 }}
           size='small'
         />}
       </div>

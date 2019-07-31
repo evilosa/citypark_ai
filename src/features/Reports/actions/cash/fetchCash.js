@@ -18,7 +18,6 @@ export const fetchCash = (EndPeriod) => async dispatch => {
       }
     })
     const { data } = response
-    console.log(data)
     if (data) {
       
       dispatch({

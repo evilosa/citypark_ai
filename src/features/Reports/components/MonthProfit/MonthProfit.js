@@ -36,7 +36,7 @@ export class MonthProfit extends React.Component {
    
   componentWillReceiveProps(nextProps) {
     if (nextProps.items && this.props.items !== nextProps.items) {
-      const result = groupBy(nextProps.items, keyName, ['Organization', 'IndicatorType', 'Detailing1', 'Detailing2'], ['Sum'])
+      const result = groupBy(nextProps.items, keyName, ['Organization', 'IndicatorType', 'Detailing1'], ['Sum'])
       this.setState({
         items: result
       })
@@ -71,7 +71,6 @@ export class MonthProfit extends React.Component {
           dataSource={this.state.items}
           bordered={true} 
           pagination={false}
-          scroll={{ y: 200 }}
           size='small'
         />}
       </div>
