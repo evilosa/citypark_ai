@@ -3,45 +3,37 @@
   "version": "0.1.0",
   "private": true,
   "homepage": "https://staging.cityparkvip.ru/manage",
-  "proxy": {
-    "/api/v1": {
-      "target": "http://localhost:4000"
-    },
-    "/uploads": {
-      "target": "http://localhost:4000"
-    },
-    "/onec": {
-      "target": "http://185.175.119.14:8091"
-    }
-  },
   "dependencies": {
     "@material-ui/core": "^3.1.0",
     "@material-ui/icons": "^3.0.1",
     "antd": "^3.20.1",
     "axios": "^0.19.0",
     "chart.js": "^2.8.0",
+    "connected-react-router": "^6.5.2",
     "draft-js": "^0.10.5",
     "draftjs-to-html": "^0.8.4",
-    "history": "^4.7.2",
+    "history": "^4.9.0",
     "html-to-draftjs": "^1.4.0",
+    "http-proxy-middleware": "^0.19.1",
     "install": "^0.12.1",
     "lodash": "^4.17.15",
     "moment": "^2.24.0",
+    "node-sass": "^4.12.0",
     "numeral": "^2.0.6",
-    "react": "^16.3.2",
+    "react": "^16.8.6",
     "react-chartjs-2": "^2.7.6",
     "react-color": "^2.14.1",
-    "react-dom": "^16.3.2",
+    "react-dom": "^16.8.6",
     "react-draft-wysiwyg": "^1.12.13",
     "react-fancybox": "^0.2.3",
-    "react-redux": "^5.0.7",
-    "react-router-config": "^1.0.0-beta.4",
-    "react-router-dom": "^4.2.2",
-    "react-router-redux": "^5.0.0-alpha.9",
-    "react-scripts": "1.1.4",
-    "redux": "^4.0.0",
+    "react-redux": "^7.1.0",
+    "react-router-config": "^5.0.1",
+    "react-router-dom": "^5.0.1",
+    "react-router-redux": "^4.0.8",
+    "react-scripts": "2.1.0",
+    "redux": "^4.0.4",
     "redux-devtools-extension": "^2.13.2",
-    "redux-thunk": "^2.2.0",
+    "redux-thunk": "^2.3.0",
     "sass": "^1.22.9"
   },
   "scripts": {
@@ -49,5 +41,11 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
-  }
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }

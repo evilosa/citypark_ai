@@ -43,10 +43,26 @@ export const actions = (method, api_path, actionType, body = {}) => dispatch => 
 
   fetch(api_path, options)
     .then(response => checkResponse(response)
-      .then(payload => dispatch({
-        type: actionType + SUCCESS,
-        payload
-      }))
+      .then(payload => {
+        console.log('Shit happen')
+        dispatch({
+          type: actionType + SUCCESS,
+          payload
+        })
+        if (actionType === '@@USER_SIGN_IN') {
+          dispatch({
+            type: '@@router/LOCATION_CHANGE',
+            payload: {
+              location: {
+                pathname: '/reports',
+                search: '',
+                hash: ''
+              },
+              action: 'PUSH'
+            }
+          })
+        }
+      })
     )
     .catch(errors => {
       if (!errors.msg) errors = {
