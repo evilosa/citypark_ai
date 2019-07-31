@@ -43,10 +43,27 @@ export const actions = (method, api_path, actionType, body = {}) => dispatch => 
 
   fetch(api_path, options)
     .then(response => checkResponse(response)
-      .then(payload => dispatch({
-        type: actionType + SUCCESS,
-        payload
-      }))
+      .then(payload => {
+        dispatch({
+          type: actionType + SUCCESS,
+          payload
+        })
+        if (actionType === '@@USER_SIGN_IN') {
+          if (payload.email === 'pda.citypark@mail.ru') {
+            dispatch({
+              type: '@@router/LOCATION_CHANGE',
+              payload: {
+                location: {
+                  pathname: '/reports',
+                  search: '',
+                  hash: ''
+                },
+                action: 'PUSH'
+              }
+            })
+          }
+        }
+      })
     )
     .catch(errors => {
       if (!errors.msg) errors = {
