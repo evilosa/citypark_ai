@@ -11,7 +11,7 @@ export const fetchHotelSalesForCharts = (StartPeriod, EndPeriod) => async dispat
   })
 
   try {
-    const response = await axios.get(`${settings.baseUrlHotel}/citypark_hotel/hs/reports/v1/month_sales?StartPeriod=${StartPeriod}&EndPeriod=${EndPeriod}`, {
+    const response = await axios.get(`${settings.baseUrlHotel}/CityParkHotel/hs/reports/v1/month_sales?StartPeriod=${StartPeriod}&EndPeriod=${EndPeriod}`, {
       method: 'get',
       headers: {
         Authorization: 

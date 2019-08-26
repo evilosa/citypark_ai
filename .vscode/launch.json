@@ -7,12 +7,12 @@
       "name": "Launch Program",
       "program": "${workspaceFolder}/test.js"
     },
-      {
-          "type": "chrome",
-          "request": "launch",
-          "name": "Launch Chrome",
-          "url": "http://localhost:3003",
-          "webRoot": "${workspaceFolder}"
-      }
+    {
+        "type": "chrome",
+        "request": "launch",
+        "name": "Chrome",
+        "url": "http://localhost:3003",
+        "webRoot": "${workspaceFolder}"
+    }
   ]
 }
