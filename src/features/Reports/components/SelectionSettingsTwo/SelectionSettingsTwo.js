@@ -4,6 +4,8 @@ import moment from 'moment'
 import 'moment/locale/ru'
 import './SelectionSettingsTwo.css'
 
+import { AdminResource } from 'features/User/containers'
+
 const { Title } = Typography
 const today = moment()
 const yesterday = moment().subtract(1, 'day')
@@ -29,40 +31,42 @@ export class SelectionSettingsTwo extends React.Component {
 
   render() {
     return (
-      <div>
-        <div className='selectionPageContainer'>
-          <div className='startField'>
-            <Title level={4} type='secondary'>Начало периода</Title>
-            <DatePicker 
-              size='large' 
-              format='DD MMMM YYYY' 
-              placeholder='Выберите дату начала периода'
-              defaultValue={this.state.startValue}
-              onChange={(date, dateString) => this.changeStartDateHandler(date, dateString)}
-            />
-          </div>
-          <div className='finishField'>
-            <Title level={4} type='secondary'>Конец периода</Title>
-            <DatePicker 
-              size='large'
-              format='DD MMMM YYYY' 
-              placeholder='Выберите дату окончания периода'
-              defaultValue={this.state.finishValue}
-              onChange={(date, dateString) => this.changeFinishDateHandler(date, dateString)}
-            />
-          </div>
-          <div className='buttonContainer'>
-            <Button 
-              icon="save"
-              size='large'
-              onClick={e => this.props.getData(this.state.startValue, this.state.finishValue)}
-              style={{ "background-color": "lightseagreen", 'color': 'white' }}
-            >
-              Сформировать
-            </Button>
-          </div>
-        </div>  
-      </div>
+      <AdminResource>
+        <div>
+          <div className='selectionPageContainer'>
+            <div className='startField'>
+              <Title level={4} type='secondary'>Начало периода</Title>
+              <DatePicker 
+                size='large' 
+                format='DD MMMM YYYY' 
+                placeholder='Выберите дату начала периода'
+                defaultValue={this.state.startValue}
+                onChange={(date, dateString) => this.changeStartDateHandler(date, dateString)}
+              />
+            </div>
+            <div className='finishField'>
+              <Title level={4} type='secondary'>Конец периода</Title>
+              <DatePicker 
+                size='large'
+                format='DD MMMM YYYY' 
+                placeholder='Выберите дату окончания периода'
+                defaultValue={this.state.finishValue}
+                onChange={(date, dateString) => this.changeFinishDateHandler(date, dateString)}
+              />
+            </div>
+            <div className='buttonContainer'>
+              <Button 
+                icon="save"
+                size='large'
+                onClick={e => this.props.getData(this.state.startValue, this.state.finishValue)}
+                style={{ "background-color": "lightseagreen", 'color': 'white' }}
+              >
+                Сформировать
+              </Button>
+            </div>
+          </div>  
+        </div>
+      </AdminResource>
     )
   }
 }
