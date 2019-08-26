@@ -5,7 +5,6 @@ import { Spin } from 'antd'
 import moment from 'moment'
 import numeral from 'numeral'
 
-import { AdminResource } from 'features/User/containers'
 import Breadcrumbs from '../BreadCrumb'
 import { SelectionSettingsTwo } from '../SelectionSettingsTwo'
 import { groupBy } from '../../../../utils'
@@ -78,22 +77,20 @@ export class SalesCombined extends React.Component {
       return <div>{this.props.error}</div>
     }
     return (
-      <AdminResource>
-        <div style={{margin: '2rem'}}>
-          <Breadcrumbs title={this.props.route.title} path={this.props.route.path} />
-          {this.state.isSettingsVisible && <SelectionSettingsTwo getData={this.getData} />}
-            {this.state.isSettingsVisible === false && 
-            <div>
-              <Table 
-              columns={columns} 
-              dataSource={this.state.items}
-              bordered={true} 
-              pagination={false}
-              size='small'
-            />
-          </div>}
-        </div>
-      </AdminResource>
+      <div style={{margin: '2rem'}}>
+        <Breadcrumbs title={this.props.route.title} path={this.props.route.path} />
+        {this.state.isSettingsVisible && <SelectionSettingsTwo getData={this.getData} />}
+          {this.state.isSettingsVisible === false && 
+          <div>
+            <Table 
+            columns={columns} 
+            dataSource={this.state.items}
+            bordered={true} 
+            pagination={false}
+            size='small'
+          />
+        </div>}
+      </div>
     )
   }  
 }

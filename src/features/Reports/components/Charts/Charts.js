@@ -5,8 +5,6 @@ import 'moment/locale/ru'
 import numeral from 'numeral'
 import { fetchCardDiscount } from '../../actions/restaurant/fetchCardDiscount'
 
-import { AdminResource } from 'features/User/containers'
-
 numeral.locale('ru');
 numeral.defaultFormat('0,0.00')
 
@@ -112,30 +110,28 @@ export class Charts extends React.Component {
 
   render () {
     return (
-      <AdminResource>
-        <div style={{ marginTop: '4rem', marginLeft: '2rem', maxWidth: '90%'}}>
-          <div style={{ fontSize: '1rem', marginBottom: '1rem'}}>
-            {this.getTodayProfit()}
+      <div style={{ marginTop: '4rem', marginLeft: '2rem', maxWidth: '90%'}}>
+        <div style={{ fontSize: '1rem', marginBottom: '1rem'}}>
+          {this.getTodayProfit()}
+        </div>
+        <div style={{ display: 'flex', justifyContent: 'center'}}>
+        <Line data={this.getData()} options={chartOptions} width={window.innerWidth > 400 ? 550 : 330} height={window.innerWidth > 400 ? 300 : 270} />
+        </div>
+        <div style={{ display: 'flex', justifyContent: 'space-around', marginTop: '2rem' }}>
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <h3>Вчера</h3>
+            {this.getYesterdayProfit()}
           </div>
-          <div style={{ display: 'flex', justifyContent: 'center'}}>
-          <Line data={this.getData()} options={chartOptions} width={window.innerWidth > 400 ? 550 : 330} height={window.innerWidth > 400 ? 300 : 270} />
+          <div>
+            <h3>7 дней</h3>
+            {this.getWeekProfit()}
           </div>
-          <div style={{ display: 'flex', justifyContent: 'space-around', marginTop: '2rem' }}>
-            <div style={{ display: 'flex', flexDirection: 'column' }}>
-              <h3>Вчера</h3>
-              {this.getYesterdayProfit()}
-            </div>
-            <div>
-              <h3>7 дней</h3>
-              {this.getWeekProfit()}
-            </div>
-            <div>
-              <h3>Месяц</h3>
-              {this.getMonthProfit()}
-            </div>
+          <div>
+            <h3>Месяц</h3>
+            {this.getMonthProfit()}
           </div>
         </div>
-      </AdminResource>
+      </div>
     )
   }
 }

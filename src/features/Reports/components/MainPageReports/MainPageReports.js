@@ -3,8 +3,6 @@ import Menu from '../Menu'
 import { ChartsContainer } from '../Charts'
 import { ChartsHotelContainer } from '../ChartsHotel'
 
-import { AdminResource } from 'features/User/containers'
-
 export class MainPageReports extends React.Component {
 
   state = {
@@ -31,15 +29,13 @@ export class MainPageReports extends React.Component {
 
   render() {
     return (
-      <AdminResource>
-        <div style={{ display: 'flex', height: '100%', backgroundColor: 'F3F3F4' }}>
-          <Menu />
-          <div style={{display: 'flex',  overflowX: 'auto', flexDirection: 'column'}}>
-            <div><ChartsContainer /></div>
-            <div><ChartsHotelContainer /></div>
-          </div>
+      <div style={{ display: 'flex', height: '100%', backgroundColor: 'F3F3F4' }}>
+        <Menu />
+        <div style={{display: 'flex',  overflowX: 'auto', flexDirection: 'column'}}>
+          <div><ChartsContainer /></div>
+          <div><ChartsHotelContainer /></div>
         </div>
-      </AdminResource>
+      </div>
     )
   }
 } 

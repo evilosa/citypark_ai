@@ -15,29 +15,33 @@ class MainLayout extends React.Component {
 
   constructor(props) {
     super(props)
+    
+    const { history: { location: { pathname } }} = props
     this.state = {
-      currentTab: Menu.links.MENU.PATH
+      currentTab: Menu.links.MENU.PATH,
+      isMenuHidden: pathname === '/reports'
     }
   }
 
   handleChange = (event, currentTab) => {
-    const { history } = this.props
-    history.push(currentTab)
-    this.setState({ currentTab })
+    const { history, history: { location: { pathname }} } = this.props
+    this.setState({ currentTab, isMenuHidden: currentTab === '/reports' }, () => {
+      history.push(currentTab)
+    })
   }
 
   componentDidMount = () => {
     const { history, location: { pathname } } = this.props
     const { currentTab } = this.state
-    pathname === "/" ? history.push(currentTab) : this.setState({ currentTab: pathname })
+    pathname === "/" ? history.push(currentTab) : this.setState({ currentTab: pathname, isMenuHidden: pathname === '/reports' })
   }
 
   render = () => {
     const { route, signOut } = this.props
-    const { currentTab } = this.state
+    const { currentTab, isMenuHidden } = this.state
     return (
       <AdminResource>
-        <AppBar className="app-bar" position="static">
+        {!isMenuHidden && <AppBar className="app-bar" position="static">
           <Tabs value={currentTab} onChange={this.handleChange}>
             <Tab value={Menu.links.MENU.PATH} label={Menu.links.MENU.TITLE} />
             <Tab value={News.links.NEWS.PATH} label={News.links.NEWS.TITLE} />
@@ -45,7 +49,7 @@ class MainLayout extends React.Component {
             <Tab value={Reports.links.REPORTS.PATH} label={Reports.links.REPORTS.TITLE} />
           </Tabs>
           <Button onClick={() => signOut()} color="inherit">Выйти</Button>
-        </AppBar>
+        </AppBar>}
         <Typography component="div" style={{ height: "100%" }}>
           {route && renderRoutes(route.routes)}
         </Typography>

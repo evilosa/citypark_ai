@@ -4,8 +4,6 @@ import moment, { isMoment } from 'moment'
 import 'moment/locale/ru'
 import styles from './SelectionSettingsOne.module.scss'
 
-import { AdminResource } from 'features/User/containers'
-
 const { Title } = Typography
 
 const today = moment()
@@ -36,32 +34,30 @@ export class SelectionSettingsOne extends React.Component {
 
   render() {
     return (
-      <AdminResource>
-        <div>
-          <div className={styles.selectionPageContainer}>
-            <div className={styles.dateField}>
-              <Title level={4} type='secondary'>Период</Title>
-              <DatePicker 
-                size='default' 
-                format='DD MMMM YYYY'
-                placeholder='Выберите дату'
-                defaultValue={this.state.selectedDate}
-                onChange={(date, dateString) => this.changeSelectedDateHandler(date, dateString)}
-              />
-            </div>
-            <div>
-              <Button
-                icon="save"
-                size='default'
-                onClick={e => this.props.getData(this.state.selectedDate)}
-                style={{ "background-color": "lightseagreen", 'color': 'white' }}
-              >
-                Сформировать
-              </Button>
-            </div>
-          </div>  
-        </div>
-      </AdminResource>
+      <div>
+        <div className={styles.selectionPageContainer}>
+          <div className={styles.dateField}>
+            <Title level={4} type='secondary'>Период</Title>
+            <DatePicker 
+              size='default' 
+              format='DD MMMM YYYY'
+              placeholder='Выберите дату'
+              defaultValue={this.state.selectedDate}
+              onChange={(date, dateString) => this.changeSelectedDateHandler(date, dateString)}
+            />
+          </div>
+          <div>
+            <Button
+              icon="save"
+              size='default'
+              onClick={e => this.props.getData(this.state.selectedDate)}
+              style={{ "background-color": "lightseagreen", 'color': 'white' }}
+            >
+              Сформировать
+            </Button>
+          </div>
+        </div>  
+      </div>
     )
   }
 }
