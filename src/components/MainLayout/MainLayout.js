@@ -11,6 +11,10 @@ import Button from '@material-ui/core/Button'
 import { Menu, News, Blogs, User, Reports } from 'features'
 import { AdminResource } from 'features/User/containers'
 
+const isMenuHidden = pathname => {
+  const matching = /\/reports/.exec(pathname)
+  return !!matching
+}
 class MainLayout extends React.Component {
 
   constructor(props) {
@@ -19,13 +23,13 @@ class MainLayout extends React.Component {
     const { history: { location: { pathname } }} = props
     this.state = {
       currentTab: Menu.links.MENU.PATH,
-      isMenuHidden: pathname === '/reports'
+      isMenuHidden: isMenuHidden(pathname)
     }
   }
 
   handleChange = (event, currentTab) => {
     const { history, history: { location: { pathname }} } = this.props
-    this.setState({ currentTab, isMenuHidden: currentTab === '/reports' }, () => {
+    this.setState({ currentTab, isMenuHidden: isMenuHidden(currentTab) }, () => {
       history.push(currentTab)
     })
   }
@@ -33,7 +37,7 @@ class MainLayout extends React.Component {
   componentDidMount = () => {
     const { history, location: { pathname } } = this.props
     const { currentTab } = this.state
-    pathname === "/" ? history.push(currentTab) : this.setState({ currentTab: pathname, isMenuHidden: pathname === '/reports' })
+    pathname === "/" ? history.push(currentTab) : this.setState({ currentTab: pathname, isMenuHidden: isMenuHidden(pathname) })
   }
 
   render = () => {
