@@ -10,7 +10,7 @@ export const fetchCash = (EndPeriod) => async dispatch => {
     meta: { reportKey }
   })
   try {
-    const response = await axios.get(`${settings.baseUrlRestaurant}/citypark_reports/hs/reports/v1/cash?EndPeriod=${EndPeriod}`, {
+    const response = await axios.get(`${settings.baseUrlRestaurant}/CityPark/hs/reports/v1/cash?EndPeriod=${EndPeriod}`, {
       method: 'get',
       headers: {
         Authorization: 

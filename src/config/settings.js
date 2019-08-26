@@ -1,4 +1,4 @@
 export default {
-  baseUrlRestaurant: 'http://185.175.119.14:8091',
-  baseUrlHotel: 'http://185.175.119.14:8091'
+  baseUrlRestaurant: '/onec', //'http://185.175.119.14:8091',
+  baseUrlHotel: '/onec_restaurant' //'http://185.175.119.14:8091'
 }

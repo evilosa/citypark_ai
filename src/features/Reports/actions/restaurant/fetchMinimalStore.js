@@ -11,7 +11,7 @@ export const fetchMinimalStore = (EndPeriod) => async dispatch => {
   })
 
   try {
-    const response = await axios.get(`${settings.baseUrlRestaurant}/citypark_reports/hs/reports/v1/minimal_store?EndPeriod=${EndPeriod}`, {
+    const response = await axios.get(`${settings.baseUrlRestaurant}/CityPark/hs/reports/v1/minimal_store?EndPeriod=${EndPeriod}`, {
       method: 'get',
       headers: {
         Authorization: 

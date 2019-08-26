@@ -10,7 +10,7 @@ export const fetchDataForCharts = (StartPeriod, EndPeriod) => async dispatch => 
     meta: { reportKey }
   })
   try {
-    const response = await axios.get(`${settings.baseUrlRestaurant}/citypark_reports/hs/reports/v1/sales_graph?StartPeriod=${StartPeriod}&EndPeriod=${EndPeriod}`,{
+    const response = await axios.get(`${settings.baseUrlRestaurant}/CityPark/hs/reports/v1/sales_graph?StartPeriod=${StartPeriod}&EndPeriod=${EndPeriod}`,{
       method: 'get',
       headers: {
         Authorization:

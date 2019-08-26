@@ -11,7 +11,7 @@ export const fetchCardDiscount = (StartPeriod, EndPeriod) => async dispatch => {
   })
 
   try {
-    const response = await axios.get(`${settings.baseUrlRestaurant}/citypark_reports/hs/reports/v1/card_discounts?StartPeriod=${StartPeriod}&EndPeriod=${EndPeriod}`, {
+    const response = await axios.get(`${settings.baseUrlRestaurant}/CityPark/hs/reports/v1/card_discounts?StartPeriod=${StartPeriod}&EndPeriod=${EndPeriod}`, {
       method: 'get',
       headers: {
         Authorization: 

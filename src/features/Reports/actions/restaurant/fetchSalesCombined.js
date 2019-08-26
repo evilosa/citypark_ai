@@ -11,7 +11,7 @@ export const fetchSalesCombined = (StartPeriod, EndPeriod) => async dispatch => 
   })
 
   try { 
-    const response = await axios(`${settings.baseUrlRestaurant}/citypark_reports/hs/reports/v1/sales?StartPeriod=${StartPeriod}&EndPeriod=${EndPeriod}`, {
+    const response = await axios(`${settings.baseUrlRestaurant}/CityPark/hs/reports/v1/sales?StartPeriod=${StartPeriod}&EndPeriod=${EndPeriod}`, {
       method: 'get',
       headers: {
         Authorization:
