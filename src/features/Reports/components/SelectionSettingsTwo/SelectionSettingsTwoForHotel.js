@@ -5,8 +5,8 @@ import 'moment/locale/ru'
 import './SelectionSettingsTwo.css'
 
 const { Title } = Typography
-const today = moment().startOf('date')
-const tomorrow = moment().add(1, 'day').startOf('date')
+const today = moment().hour(12).minute(0).second(0)
+const tomorrow = moment().add(1, 'day').hour(12).minute(0).second(0)
 
 
 export class SelectionSettingsTwoForHotel extends React.Component {
