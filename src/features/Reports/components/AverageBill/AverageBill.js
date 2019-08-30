@@ -78,6 +78,7 @@ export class AverageBill extends React.Component {
           bordered={true} 
           pagination={false}
           size='small'
+          defaultExpandAllRows
         />}
       </div>
     )

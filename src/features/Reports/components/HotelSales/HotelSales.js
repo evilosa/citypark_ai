@@ -5,7 +5,7 @@ import moment from 'moment'
 import numeral from 'numeral'
 
 import Breadcrumbs from '../BreadCrumb'
-import { SelectionSettingsTwo } from '../SelectionSettingsTwo'
+import { SelectionSettingsTwoForHotel } from '../SelectionSettingsTwo'
 import { groupBy } from '../../../../utils'
 
 numeral.locale('ru');
@@ -71,13 +71,14 @@ export class HotelSales extends React.Component {
     return (
       <div style={{margin: '2rem'}}>
         <Breadcrumbs title={this.props.route.title} path={this.props.route.path} />
-        {this.state.isSettingsVisible && <SelectionSettingsTwo getData={this.getData} />}
+        {this.state.isSettingsVisible && <SelectionSettingsTwoForHotel getData={this.getData} />}
           {this.state.isSettingsVisible === false && <Table 
           columns={columns} 
           dataSource={this.state.items}
           bordered={true} 
           pagination={false}
           size='small'
+          defaultExpandAllRows={true}
         />}
       </div>
     )

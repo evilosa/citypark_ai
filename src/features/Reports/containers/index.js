@@ -1,6 +1,7 @@
 export * from './MainPageReportsContainer'
 export * from './SelectionSettingsOneContainer'
 export * from './SelectionSettingsTwoContainer'
+export * from './SelectionSettingsTwoForHotelContainer'
 export * from './SalesCombinedContainer'
 export * from './SalesTotalContainer'
 export * from './SalesByCookingPlaceContainer'

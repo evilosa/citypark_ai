@@ -71,6 +71,7 @@ export class Cash extends React.Component {
           bordered={true} 
           pagination={false}
           size='small'
+          defaultExpandAllRows={true}
         />}
       </div>
     )

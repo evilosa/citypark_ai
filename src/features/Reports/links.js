@@ -13,6 +13,11 @@ export const REPORTS_SELECTION_SETTINGS_TWO = {
   TITLE: 'Настройки отбора'
 }
 
+export const REPORTS_SELECTION_SETTINGS_TWO_FOR_HOTEL = {
+  PATH: REPORTS.PATH + './settingsHotel',
+  TITLE: 'Настройки отбора'
+}
+
 export const REPORTS_CASH = {
   PATH: REPORTS.PATH + '/cash',
   TITLE: 'Остатки в кассе ресторана'

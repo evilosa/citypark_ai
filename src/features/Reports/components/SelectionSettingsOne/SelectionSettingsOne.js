@@ -8,12 +8,10 @@ const { Title } = Typography
 
 const today = moment()
 
-
 export class SelectionSettingsOne extends React.Component {
 
   state = {
     selectedDate: today,
-    selectedTime: today
   }
 
   changeSelectedDateHandler = (newValue) => {
@@ -40,8 +38,9 @@ export class SelectionSettingsOne extends React.Component {
             <Title level={4} type='secondary'>Период</Title>
             <DatePicker 
               size='default' 
-              format='DD MMMM YYYY'
+              format='DD MMMM YYYY HH:mm'
               placeholder='Выберите дату'
+              showTime= {{ format: 'HH:mm' }}
               defaultValue={this.state.selectedDate}
               onChange={(date, dateString) => this.changeSelectedDateHandler(date, dateString)}
             />

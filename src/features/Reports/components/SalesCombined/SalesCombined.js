@@ -69,7 +69,8 @@ export class SalesCombined extends React.Component {
     this.props.fetchSalesCombined(startFormatted, finishFormatted)
   }
 
-  render() {
+    render() {
+
     if (this.props.isLoading) {
       return <div className='spinnerContainer'><Spin size="large" tip='Loading...' /></div>
     }
@@ -82,7 +83,9 @@ export class SalesCombined extends React.Component {
         {this.state.isSettingsVisible && <SelectionSettingsTwo getData={this.getData} />}
           {this.state.isSettingsVisible === false && 
           <div>
-            <Table 
+            <Table
+            defaultExpandedRowKeys={['Organization', 'Restaurant', 'TradePlace']}
+            rowKey={record => record.rowKey}
             columns={columns} 
             dataSource={this.state.items}
             bordered={true} 

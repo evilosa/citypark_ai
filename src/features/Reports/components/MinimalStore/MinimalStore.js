@@ -83,6 +83,8 @@ export class MinimalStore extends React.Component {
           bordered={true} 
           pagination={false}
           size='small'
+          defaultExpandedRowKeys={['Organization', 'Restaurant', 'TradePlace']}
+          rowKey={record => record.rowKey}
         />}
       </div>
     )

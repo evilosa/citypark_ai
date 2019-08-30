@@ -33,6 +33,7 @@ export const groupBy = (sourceTable, mainKey, groupFields, totalFields) => {
       if (existingValues.length === 0) { // такого элемента нет: добавим его в результат
         
         const newGroupItem = {
+          rowKey: key,
           key: uuid.v1(),
           [mainKey]: currentRow[key],
           children: [currentRow],
@@ -63,6 +64,7 @@ export const groupBy = (sourceTable, mainKey, groupFields, totalFields) => {
         groupedItem[fieldKey] = numeral(groupedItem[fieldKey]).format()
       })
       return groupedItem;
+      console.log(groupedItem)
     })
   } else if (tail.length === 0) {
     result = result.map(groupedItem => {

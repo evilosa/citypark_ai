@@ -72,6 +72,8 @@ export class MonthProfit extends React.Component {
           bordered={true} 
           pagination={false}
           size='small'
+          defaultExpandedRowKeys={['Organization', 'IndicatorType']}
+          rowKey={record => record.rowKey}
         />}
       </div>
     )

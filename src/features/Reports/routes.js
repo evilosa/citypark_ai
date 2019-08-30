@@ -18,6 +18,11 @@ const routes = [
     title: `${links.REPORTS.TITLE}, ${links.REPORTS_SELECTION_SETTINGS_TWO.TITLE}`,
     component: containers.SelectionSettingsTwoContainer
   },
+  {
+    path: links.REPORTS_SELECTION_SETTINGS_TWO_FOR_HOTEL.PATH,
+    title: `${links.REPORTS.TITLE}, ${links.REPORTS_SELECTION_SETTINGS_TWO_FOR_HOTEL.TITLE}`,
+    component: containers.SelectionSettingsTwoForHotelContainer
+  },
   //cash
   {
     path: links.REPORTS_CASH.PATH,

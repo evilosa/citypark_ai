@@ -73,6 +73,7 @@ export class SalesByCookingPlace extends React.Component {
           bordered={true} 
           pagination={false}
           size='small'
+          defaultExpandAllRows={true}
         />}
       </div>
     )

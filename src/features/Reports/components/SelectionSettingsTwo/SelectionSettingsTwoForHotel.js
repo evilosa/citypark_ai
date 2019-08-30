@@ -5,10 +5,11 @@ import 'moment/locale/ru'
 import './SelectionSettingsTwo.css'
 
 const { Title } = Typography
-const today = moment().hour(9).minute(0).second(0)
-const tomorrow = moment().add(1, 'day').hour(10).minute(0).second(0)
+const today = moment().startOf('date')
+const tomorrow = moment().add(1, 'day').startOf('date')
 
-export class SelectionSettingsTwo extends React.Component {
+
+export class SelectionSettingsTwoForHotel extends React.Component {
 
   state = {
     startValue: today,
