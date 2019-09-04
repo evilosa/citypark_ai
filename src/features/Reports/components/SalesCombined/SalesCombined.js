@@ -25,7 +25,7 @@ const columns = [
     title: 'Ед.',
     dataIndex: 'ProductUnit',
     key: 'ProductUnit',
-    width: '10%'
+    width: '5%'
   },
   {
     title: 'К-во',
@@ -37,7 +37,7 @@ const columns = [
     title: 'Сумма',
     dataIndex: 'Sum',
     key: 'Sum',
-    width: '11%'
+    width: '15%'
   },
 ];
 

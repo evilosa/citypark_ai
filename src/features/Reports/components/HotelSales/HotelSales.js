@@ -43,6 +43,11 @@ export class HotelSales extends React.Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.items && this.props.items !== nextProps.items) {
       const result = groupBy(nextProps.items, keyName, ['Organization'], ['Count','Sum'])
+        result.map(item => {
+          return item.children.sort((a,b) => {
+            return a.Room > b.Room ? 1 : -1
+          })
+        })
       this.setState({
         items: result
       })
@@ -68,6 +73,7 @@ export class HotelSales extends React.Component {
     if (this.props.error) {
       return <div>{this.props.error}</div>
     }
+   
     return (
       <div style={{margin: '2rem'}}>
         <Breadcrumbs title={this.props.route.title} path={this.props.route.path} />
